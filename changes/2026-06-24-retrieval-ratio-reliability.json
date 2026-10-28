@@ -1,0 +1,39 @@
+{
+  "id": "2026-06-24-retrieval-ratio-reliability",
+  "date": "2026-06-24",
+  "system": "engine",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Tightened valuation, ratio, and statement retrieval behavior",
+  "points": [
+    "P/E numerator/denominator asks now preserve valuation-input attachments instead of rewriting curated view rows into empty model-ready tables.",
+    "Single-company dividend-yield answers now require one checked calculation from scaled dividends paid and current market cap, avoiding contradictory correction notes or DPS/share-count reconstruction when DPS was not retrieved.",
+    "Ratio questions with missing precomputed rows now return a clear unavailable-data answer instead of exposing internal lane failure text.",
+    "ROIC screen output now labels rankings as available-period averages inside the requested lookback, with usable-period disclosure, instead of implying full-horizon coverage.",
+    "Regression coverage now checks FFC/MARI P/E numerator-denominator answers, UPFL revenue evidence, low-debt positive-CFO screens, dividend-yield arithmetic, ratio unavailability, and ROIC coverage wording."
+  ],
+  "public": true,
+  "keystones": [
+    {
+      "name": "valuation_inputs attachments preserved for P/E answers",
+      "groups": [
+        ["valuation_inputs", "P/E numerator", "P/E denominator"],
+        ["market cap", "annual net profit", "P/E"]
+      ]
+    },
+    {
+      "name": "dividend yield uses scaled dividends paid over market cap",
+      "groups": [
+        ["dividend yield", "dividends_paid", "market cap"],
+        ["DPS", "share count", "correction note"]
+      ]
+    },
+    {
+      "name": "ROIC screen coverage labels available usable periods",
+      "groups": [
+        ["ROIC", "usable periods", "10 year average"],
+        ["available periods", "lookback window"]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-pe-no-eps-fallback",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 23,
+  "tag": "fix",
+  "title": "Prevented unsupported EPS-based P/E fallbacks",
+  "points": [
+    "P/E answers now follow the production basis of market cap divided by selected annual or LTM net profit, and refuse to calculate a multiple from EPS, annualized interim EPS, share count, or historical shares outstanding.",
+    "No-reference SCS P/E cases no longer surface reference-warning Data checks blocks; they are explained as missing-input conditions when annual or LTM net profit is unavailable."
+  ],
+  "public": true
+}

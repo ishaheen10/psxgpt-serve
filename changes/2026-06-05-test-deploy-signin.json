@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-05-test-deploy-signin",
+  "date": "2026-06-05",
+  "system": "app",
+  "seq": 0,
+  "tag": "improvement",
+  "title": "Test deployment and sign-in fix",
+  "points": [
+    "Stood up a test deployment so changes can be verified before they reach production.",
+    "Fixed the Google sign-in OAuth redirect, which could land users on the wrong URL after authenticating."
+  ],
+  "public": true
+}

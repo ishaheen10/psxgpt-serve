@@ -1,0 +1,21 @@
+{
+  "name": "@psxgpt/market",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "migrate": "wrangler d1 execute psx --remote --file=migrations/0001_tables.sql && wrangler d1 execute psx --remote --file=migrations/0002_memory_indexes.sql && wrangler d1 execute psx --remote --file=migrations/0003_runtime_tables.sql",
+    "migrate:local": "wrangler d1 execute psx --local --file=migrations/0001_tables.sql && wrangler d1 execute psx --local --file=migrations/0002_memory_indexes.sql && wrangler d1 execute psx --local --file=migrations/0003_runtime_tables.sql",
+    "sync:manual": "wrangler dev --test-scheduled",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.6.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260605.1",
+    "typescript": "^5.0.0",
+    "wrangler": "^4.98.0"
+  }
+}

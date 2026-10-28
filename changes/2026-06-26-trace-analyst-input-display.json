@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-trace-analyst-input-display",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 22,
+  "tag": "improvement",
+  "title": "Clarified analyst input in traces",
+  "points": [
+    "The trace viewer now labels the formatted analyst message as the input sent to the model.",
+    "Stored analystContext JSON remains available as a secondary debug view.",
+    "Older traces fall back to the final user message in the stored analyst message list when the dedicated input field is absent."
+  ],
+  "public": true
+}

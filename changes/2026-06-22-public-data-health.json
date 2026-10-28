@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-22-public-data-health",
+  "date": "2026-06-22",
+  "system": "app",
+  "seq": 2,
+  "tag": "new",
+  "title": "Public data health page",
+  "points": [
+    "Added a public Data Health page that explains how psxGPT checks filings before answering.",
+    "Users can now see corpus-level coverage across the full parsed history, clean/caution/known-issue counts, and searchable ticker-level cautions in plain language.",
+    "The public view keeps operational repair details private while still showing when a caution is scoped to a specific ticker, period, table, or metric."
+  ],
+  "public": true
+}

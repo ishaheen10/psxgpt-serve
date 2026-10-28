@@ -1,0 +1,17 @@
+{
+  "id": "2026-07-20-typed-runtime-authority",
+  "date": "2026-07-20",
+  "system": "engine",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Removed residual shadow routing from runtime",
+  "points": [
+    "Valid Router plans now cross runtime without query-regex surface overrides; corrective retries enforce structural contracts only.",
+    "Empty-plan recovery recognizes only closed deterministic compute products and otherwise uses one generic scoped evidence fallback.",
+    "The Router now emits typed entity resolution metadata, replacing uppercase-word stoplists as the authority over company, unresolved, and topic mentions.",
+    "Report inventory and mixed-duration financial screens now activate through typed deterministic-surface fields rather than ask wording.",
+    "Narrative retrieval no longer appends bank-deposit pages through a topic-specific runtime booster; the searchable filing vocabulary owns those terms.",
+    "Focused runtime collision cases cover plan preservation, typed entity context, both deterministic surfaces, compute recovery, and deposit retrieval."
+  ],
+  "public": true
+}

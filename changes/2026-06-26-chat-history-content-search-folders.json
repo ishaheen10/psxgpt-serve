@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-chat-history-content-search-folders",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 22,
+  "tag": "improvement",
+  "title": "Made chat history searchable by message content",
+  "points": [
+    "Chat search now searches the full message content in each saved conversation instead of only the first prompt shown as the chat title.",
+    "Search results show the matching message snippet so users can recognize old research threads by remembered keywords.",
+    "Signed-in users can create folders and move chats into folders, making it easier to group company-specific research threads."
+  ],
+  "public": true
+}

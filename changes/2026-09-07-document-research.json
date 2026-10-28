@@ -1,0 +1,15 @@
+{
+  "id": "2026-09-07-document-research",
+  "date": "2026-09-07",
+  "system": "engine",
+  "seq": 1,
+  "tag": "improvement",
+  "title": "Document research with independently completing sections",
+  "points": [
+    "The simplified research path reads original filings, PSX announcements and economic documents; dated PSX market snapshots remain available.",
+    "Normalized financial statements, precomputed ratios and saved financial model calculations are bypassed. Historical models remain readable.",
+    "Broad questions can be answered in up to three sections, with progress showing actual searches and page reading. Follow-ups can reuse source evidence.",
+    "Company discovery and documentation are simpler. Source transcription errors and missing periods remain limitations to verify against the linked originals."
+  ],
+  "public": true
+}

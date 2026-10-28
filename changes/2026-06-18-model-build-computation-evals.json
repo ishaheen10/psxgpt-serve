@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-18-model-build-computation-evals",
+  "date": "2026-06-18",
+  "system": "engine",
+  "seq": 0,
+  "tag": "new",
+  "title": "Deterministic financial-model builds and deployed evals",
+  "points": [
+    "Added a deterministic model-build computation stage for explicit financial-model requests: banks use a bank template, non-financial operating companies use a corporate template, and holding companies fail loudly until NAV and investment-portfolio inputs are modeled.",
+    "Model builds now emit actuals, assumptions, and five-year forecast tables, save snapshots in the user's Durable Object workspace, and support follow-up assumption updates such as changing KOHC revenue growth to 8%.",
+    "Added an EVAL_TOKEN-protected deployed eval runner that writes JSON and HTML trace reports and verifies bank, non-financial, saved-model update, and unsupported holding-company paths."
+  ],
+  "public": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-model-build-provenance-fast-path",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 5,
+  "tag": "fix",
+  "title": "Faster model-build source recovery",
+  "points": [
+    "Structured provenance recovery now uses direct statement source URLs and page numbers when they are already present, instead of re-querying statement rows one by one.",
+    "Fresh deterministic model builds keep the same source-page evidence contract while avoiding avoidable D1 lookups.",
+    "The model-build eval harness can now run a focused build/update subset and records per-case timeouts as reportable failures."
+  ],
+  "public": true
+}

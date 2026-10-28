@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-pe-interim-guardrail",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 29,
+  "tag": "fix",
+  "title": "Blocked interim-profit P/E fallbacks",
+  "points": [
+    "P/E answers now require annual or LTM net profit and no longer compute a numeric multiple from 3M, 6M, or 9M profit rows.",
+    "The regression suite now covers a BPL P/E query where only interim profit was retrieved, forcing an unavailable-input answer instead of a misleading multiple."
+  ],
+  "public": true
+}

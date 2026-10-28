@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-27-banking-deposits-canonical-fix",
+  "date": "2026-06-27",
+  "system": "pipeline",
+  "seq": 27,
+  "tag": "fix",
+  "title": "Bank balance-sheet deposits canonicalized in pipeline source artifacts",
+  "points": [
+    "Canonical label `deposits_and_other_accounts` was migrated to `deposits` for selected bank tickers in pipeline-generated statement artifacts (extracted markdown, JSON dumps, and flat balance-sheet rows).",
+    "D1 propagation is complete using deduplicating scoped pushes: each bank ticker was re-uploaded with `pipeline/13_d1_push.py --type bs --ticker <TICKER>`, which deletes existing `balance_sheet` rows for that ticker before re-inserting normalized rows.",
+    "D1 now has zero remaining `deposits_and_other_accounts` rows for the scoped bank tickers and no duplicate `ticker+statement_type+period_end+section+canonical` rows for `deposits` in sampled checks."
+  ],
+  "public": true
+}

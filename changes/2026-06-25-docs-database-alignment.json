@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-25-docs-database-alignment",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 11,
+  "tag": "improvement",
+  "title": "Aligned docs and database view with served corpus",
+  "points": [
+    "Updated the public Database view to describe the live served corpus separately from the ticker-period QC matrix, including Statements, Filings, Announcements, and Macro.",
+    "Updated public docs, app copy, README guidance, and the engine spec so table descriptions match the current D1 and source-asset boundaries.",
+    "Macro source previews now carry source-document metadata and are grouped by report family: Economic Survey, Budget, and SBP Report.",
+    "Removed public external learning links while keeping docs, specs, and generated changelog records repo-owned and auditable."
+  ],
+  "public": true
+}

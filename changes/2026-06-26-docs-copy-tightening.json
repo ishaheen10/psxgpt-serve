@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-copy-tightening",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 18,
+  "tag": "improvement",
+  "title": "Tightened public docs copy",
+  "points": [
+    "Shortened query-engine stage explanations so the core concepts land faster.",
+    "Condensed the compute and provenance explanation while preserving the grain, source-page, and missing-value rules.",
+    "Reduced repeated design-choice prose now that the diagrams carry the main visual structure."
+  ],
+  "public": true
+}

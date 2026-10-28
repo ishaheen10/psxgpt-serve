@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-mobile-diagram-readability",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 16,
+  "tag": "improvement",
+  "title": "Made docs diagrams readable on phones",
+  "points": [
+    "Large query-engine, pipeline, provenance, write/verify, narrative retrieval, and design-choice diagrams now keep their original SVG labels instead of swapping to alternate mobile wording.",
+    "Phone views can scroll diagrams horizontally so the diagram text remains legible without changing the concepts shown.",
+    "Small inline flow diagrams now become vertical mobile lists instead of awkward wrapped desktop flows."
+  ],
+  "public": true
+}

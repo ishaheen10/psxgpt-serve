@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-depreciation-followup-regression",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 17,
+  "tag": "improvement",
+  "title": "Added D&A follow-up regression coverage",
+  "points": [
+    "Added a regression for depreciation/amortization follow-ups with prior ticker context and the common typo 'depriceation'.",
+    "The regression verifies numeric filing-note extraction rather than a failed structured statement lane."
+  ],
+  "public": false
+}

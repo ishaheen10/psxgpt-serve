@@ -1,0 +1,18 @@
+{
+  "id": "2026-07-08-runtime-collision-cleanup",
+  "date": "2026-07-08",
+  "system": "engine",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Reduced high-risk runtime interference in analyst routing and answers",
+  "points": [
+    "Removed post-answer semantic rewrites for source-unit claims, ROIC horizon wording, and numeric-screen narrative-gap wording so runtime no longer changes analyst meaning after generation.",
+    "Restricted model-build runtime support lanes to explicit model-building requests instead of broad projected-financials language.",
+    "Aligned the secondary deterministic model-build detector with the same explicit-intent boundary, so vague projected-financials wording no longer bypasses router guards.",
+    "Made model-build support retrieval industry-aware, so bank and cement model inputs request sector-appropriate fields instead of generic industrial fields.",
+    "Preserved exact bank deposit labels such as individual deposits in numeric retrieval concepts and deposit-schedule ranking, so the workpaper keeps the user-requested label instead of drifting to nearby customer/FI deposit tables.",
+    "Added narrow support lanes for latest-quarter industry performance, top-company bear-market profit protection, and one-page profitability/valuation summaries so analyst context includes the ratios, peer scope, and period evidence needed for the answer.",
+    "Stopped analyst table pivots from silently overwriting duplicate metric-period cells; conflicting values are now preserved together in the rendered analyst context."
+  ],
+  "public": true
+}

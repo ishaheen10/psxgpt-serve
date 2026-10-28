@@ -1,0 +1,19 @@
+{
+  "id": "2026-07-18-router-evidence-contracts",
+  "date": "2026-07-18",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Aligned routing with authoritative evidence surfaces",
+  "points": [
+    "Current P/E and P/B questions now use the aligned valuation_inputs package instead of independently timed market and earnings lanes.",
+    "Report inventory is counted from filing records rather than the listed-company market universe.",
+    "Dividend-payer rankings use the deterministic cash-flow-dividend yield screen, with signed values scaled and ranked on an auditable absolute-payout basis.",
+    "Invalid selector dependency graphs receive one Router-authored corrective retry instead of being rewritten after routing.",
+    "Announcement and filing searches remain independent evidence paths, so one narrative corpus cannot suppress the other through a selector dependency.",
+    "Ticker follow-ups keep the most recent entity-bearing conversation scope instead of merging older company subjects into a new plan.",
+    "Analyst-selected table and source markers are emitted before long answer prose, preserving auditable attachments without runtime-inferred evidence.",
+    "Known source quarantines remain explicit XFAILs in model evals and cannot be bypassed merely to produce a forecast."
+  ],
+  "public": true
+}

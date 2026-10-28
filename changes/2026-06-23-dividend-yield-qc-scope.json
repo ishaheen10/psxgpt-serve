@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-dividend-yield-qc-scope",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 27,
+  "tag": "fix",
+  "title": "Kept SCS dividend-yield checks operator-only",
+  "points": [
+    "SCS dividend-yield differences no longer publish user-facing data-quality cautions until the pipeline has a declared-dividend or DPS basis.",
+    "The production health matrix now drops proxy dividend-yield warnings and reports 94 open flags, 35 yellow cells, and 0 red cells across the latest 12 periods."
+  ],
+  "public": true
+}

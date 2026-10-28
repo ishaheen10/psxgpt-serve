@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-changelog-crosslinks",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 1,
+  "tag": "improvement",
+  "title": "Linked docs error categories to concrete changelog fixes",
+  "points": [
+    "The public docs now link the error-to-fix explanation to specific changelog entries for ticker grounding, source corpus gaps, data-quality warnings, deterministic compute, and answer synthesis.",
+    "Changelog entries now carry stable IDs into the generated frontend data so docs can link directly to one change instead of only opening the changelog tab.",
+    "The query-engine docs now make the repair loop navigable: users can move from an error category to the exact public fix that shows how that class of issue was addressed."
+  ],
+  "public": true
+}

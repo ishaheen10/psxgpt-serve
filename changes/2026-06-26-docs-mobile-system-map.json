@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-mobile-system-map",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 13,
+  "tag": "fix",
+  "title": "Made the docs system map legible on phones",
+  "points": [
+    "The overview system map now uses a simplified stacked card layout on mobile instead of shrinking the full desktop SVG.",
+    "Mobile readers can now read the pipeline, database, market cron, and query-engine roles without zooming.",
+    "The existing desktop diagram remains in place for larger screens."
+  ],
+  "public": true
+}

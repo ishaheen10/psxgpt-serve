@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-flow-interaction-polish",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 6,
+  "tag": "improvement",
+  "title": "Polished query-flow controls and compute diagram",
+  "points": [
+    "The query-engine docs now use a single clickable and collapsible stage flow instead of duplicated stage cards and pills.",
+    "The active stage panel explains the selected trace artifact and links to the detailed section below.",
+    "The Design Choices compute diagram now shows the analyst reading authoritative table output, with the no-recalculation rule as a guardrail instead of a crossed flow."
+  ],
+  "public": true
+}

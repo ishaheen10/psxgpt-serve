@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-current-ratio-qc-scope",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 30,
+  "tag": "fix",
+  "title": "Scoped current-ratio health warnings to source failures",
+  "points": [
+    "Step 15 now keeps clean high current ratios as operator outliers instead of publishing them as user-facing unit/scale warnings.",
+    "TPLP's 2024-12-31 current-liability subtotal is now flagged at Step 09 as a source-reported subtotal inconsistency, with visible child rows, reported subtotal, source page, and calculation evidence.",
+    "Production D1 ratios and quality flags were refreshed. The latest health matrix shows 56 open flags, 16 yellow cells, and 0 red cells across the latest 12 periods; AGP remains a known source-filing issue."
+  ],
+  "public": true
+}

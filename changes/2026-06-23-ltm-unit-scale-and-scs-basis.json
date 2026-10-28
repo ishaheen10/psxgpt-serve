@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-ltm-unit-scale-and-scs-basis",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 30,
+  "tag": "fix",
+  "title": "Repaired LTM unit scaling and narrowed SCS health cautions",
+  "points": [
+    "Profit/loss LTM derivation now uses peer-aware unit selection before arithmetic, preventing mixed thousand/million headers from creating 1,000x P/E distortions.",
+    "SCS P/E remains an external spot check, but user-facing health cautions now exclude cases where SCS is explained by another clean reported basis such as an older annual or different section row.",
+    "Production D1 was refreshed for profit/loss rows, ratios, pipeline state, and quality flags; the database health matrix now has 427 green tickers, 44 yellow tickers, and 0 red tickers."
+  ],
+  "public": true
+}

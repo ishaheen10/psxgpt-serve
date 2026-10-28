@@ -1,0 +1,14 @@
+{
+  "id": "2026-07-14-comprehensive-reliability-evals",
+  "date": "2026-07-14",
+  "system": "engine",
+  "seq": 2,
+  "tag": "improvement",
+  "title": "Added a comprehensive reliability eval matrix",
+  "points": [
+    "Added 24 durable cases covering entity grounding, follow-up scope, periods and coverage, deterministic computes, runtime collisions, narrative evidence, data quality, and correct insufficiency.",
+    "Eval reports now distinguish unexpected failures from documented known failures and flag known defects that appear resolved for repeat verification.",
+    "The first test-Worker run isolated ambiguous missing scope, uppercase-prose ticker noise, compute ownership collisions, missing model-input QC propagation, and a failed bear-market selector handoff as the next reliability priorities."
+  ],
+  "public": true
+}

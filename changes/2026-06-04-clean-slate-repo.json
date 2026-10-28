@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-04-clean-slate-repo",
+  "date": "2026-06-04",
+  "system": "app",
+  "seq": 0,
+  "tag": "improvement",
+  "title": "Clean-slate serving repo",
+  "points": [
+    "Restructured the serving layer into three apps: the web frontend, the analysis engine worker, and the daily market-data sync worker.",
+    "Prompt packs that drive the query engine now live in exactly one canonical place, with generated copies for downstream consumers.",
+    "The evaluation harness (gold-set router and lane evals, quality audits) is now part of the repo and gates merges."
+  ],
+  "public": true
+}

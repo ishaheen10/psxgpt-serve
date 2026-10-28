@@ -1,0 +1,19 @@
+{
+  "id": "2026-07-27-plan-v2-contract-registry",
+  "date": "2026-07-27",
+  "system": "engine",
+  "seq": 1,
+  "tag": "improvement",
+  "title": "Rebuilt routing and evidence handoffs around Plan V2",
+  "points": [
+    "Router plans now carry typed evidence products, coverage policy, result requirements, compute parameters, session scope, and selector dependencies from one contract registry shared by routing, lanes, compute, and Analyst instructions.",
+    "The live Router prompt is smaller and no longer assembles the legacy rules, examples, router-ask, or analysis-intent packs.",
+    "Segment and subsidiary breakdowns now prioritize the complete disclosed segment schedule, including all panels and requested profit, depreciation, asset, or capital-expenditure rows.",
+    "Database-wide filing inventories use a typed report-inventory product, while exact filing-note tables use a typed numeric-note product with required category labels that retrieval must preserve.",
+    "Narrative retrieval now accumulates a bounded candidate inventory across recovery searches, so finding a missing company cannot erase useful pages already retrieved for the rest of the comparison.",
+    "Open market-wide statement screens run through the ordinary typed lane contract; the legacy phrase-specific deterministic-surface switch and redundant market-topic validation were removed.",
+    "Deterministic compute stages consume typed parameters instead of recognizing limits, horizons, thresholds, or arithmetic from query wording, and model builds continue with every usable annual period available.",
+    "Runtime no longer infers follow-up scope, report lookup, company overview, workspace actions, or compute parameters from query-text shortcuts; one bounded recovery module remains only for otherwise empty plans."
+  ],
+  "public": true
+}

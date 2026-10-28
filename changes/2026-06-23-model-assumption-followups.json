@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-model-assumption-followups",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "More reliable model assumption follow-ups",
+  "points": [
+    "Follow-up model edits now bind each assumption to its nearby percentage, so requests such as revenue growth to 12% and gross margin to 35% update the two assumptions separately.",
+    "Bank model follow-ups no longer misread cost-to-income edits as generic income-growth updates.",
+    "The model-build eval now includes multi-assumption follow-up cases for corporate and bank models."
+  ],
+  "public": true
+}

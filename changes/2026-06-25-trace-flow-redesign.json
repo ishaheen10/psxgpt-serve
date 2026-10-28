@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-trace-flow-redesign",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 16,
+  "tag": "improvement",
+  "title": "Redesigned traces around the answer workflow",
+  "points": [
+    "Failure case: traces still felt like implementation panels instead of a readable audit trail, with too many internal stage names and duplicated summary chips.",
+    "Flow logic changed: the trace viewer now starts with a compact run summary and presents the workflow as Plan, Retrieve, Compute, Write, and Verify.",
+    "Shipped result: users can follow how an answer was produced in order, opening raw JSON, SQL, prompts, artifacts, and source logs only inside the relevant stage."
+  ],
+  "public": true
+}

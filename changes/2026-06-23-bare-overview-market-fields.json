@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-bare-overview-market-fields",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 26,
+  "tag": "fix",
+  "title": "Removed legacy valuation fields from ticker overviews",
+  "points": [
+    "Bare ticker overviews now show current close and market cap from market data without displaying deprecated market-data P/E, P/B, or dividend-yield columns.",
+    "Regression coverage now checks that deterministic ticker overviews do not bypass the traced ratio and dividend-yield calculation paths."
+  ],
+  "public": true
+}

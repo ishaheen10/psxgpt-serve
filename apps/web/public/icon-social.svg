@@ -1,0 +1,11 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Chart bars with solid teal color -->
+  <rect x="18" y="52" width="13" height="26" rx="3" fill="#14B8A6"/>
+  <rect x="35" y="38" width="13" height="40" rx="3" fill="#14B8A6"/>
+  <rect x="52" y="28" width="13" height="50" rx="3" fill="#14B8A6"/>
+  <rect x="69" y="42" width="13" height="36" rx="3" fill="#14B8A6"/>
+
+  <!-- AI spark on top bar -->
+  <circle cx="58" cy="28" r="8" fill="#2DD4BF" opacity="0.9"/>
+  <circle cx="58" cy="28" r="4" fill="white"/>
+</svg>

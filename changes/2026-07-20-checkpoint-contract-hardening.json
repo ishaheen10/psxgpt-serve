@@ -1,0 +1,18 @@
+{
+  "id": "2026-07-20-checkpoint-contract-hardening",
+  "date": "2026-07-20",
+  "system": "engine",
+  "seq": 3,
+  "tag": "fix",
+  "title": "Hardened model targeting and Router recovery at the validated checkpoint",
+  "points": [
+    "Saved-model updates now require the exact requested model and cannot fall back to another ticker or silently become a fresh model build.",
+    "Model templates are selected from authoritative ticker industry, so Investment Holding requests fail explicitly instead of running a corporate forecast.",
+    "Router corrective retries now preserve valid selector graphs and make the smallest structural repair instead of growing or discarding useful plans.",
+    "Unknown tickers cannot be silently replaced by a nearby valid symbol, and small multi-company filing lanes preserve already-retrieved pages across a bounded ticker-scaled recovery budget before shaping, then stop re-querying once every requested ticker has source-page coverage.",
+    "Fresh model builds cannot be suppressed by an untargeted saved-model action, and non-bank finance-cost ratios are no longer mislabeled as net interest margin.",
+    "Closed compute products now require a market-wide rank/screen for their exact metric; single-company, multi-metric, sector-best, low-leverage cash-flow, and bear-market comparisons retain their structured evidence plans.",
+    "Focused deployed evals cover HBL workspace preservation, a missing KOHC model, DAWH unsupported handling, National Foods peer correction, and both market-screen recipes."
+  ],
+  "public": true
+}

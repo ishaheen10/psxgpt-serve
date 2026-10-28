@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-26-equities-label-contrast",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 17,
+  "tag": "fix",
+  "title": "Improved light-mode contrast for prompt labels",
+  "points": [
+    "Equities sample-query category labels now use the stronger action orange in light mode instead of the pale primary fill color.",
+    "Similar docs text actions that used primary as text now use the dedicated docs action color, while icon and filled-control colors remain unchanged."
+  ],
+  "public": true
+}

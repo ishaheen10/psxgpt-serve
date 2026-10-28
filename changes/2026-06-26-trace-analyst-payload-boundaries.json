@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-trace-analyst-payload-boundaries",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 24,
+  "tag": "improvement",
+  "title": "Clarified analyst payload boundaries in traces",
+  "points": [
+    "The trace viewer now explains that structured lane SQL results reach the analyst as Computed Data CSV tables.",
+    "Narrative source sections now label whether the analyst saw extracted evidence, source page text, or compact fallback text.",
+    "Retrieve lane cards mark structured attachments that were sent to the analyst and show the CSV that reappears in the Write-stage payload."
+  ],
+  "public": true
+}

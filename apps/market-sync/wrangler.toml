@@ -1,0 +1,20 @@
+name = "psxgpt-market-sync"
+main = "src/index.ts"
+compatibility_date = "2025-10-28"
+compatibility_flags = ["nodejs_compat"]
+
+# Scheduled triggers - runs daily after market close.
+# 24 five-minute batches from 18:00 through 19:55 UTC keep each run small
+# enough for the expanded ticker universe.
+[triggers]
+crons = ["*/5 18-19 * * *"]
+
+# Same D1 database as the main app
+[[d1_databases]]
+binding = "DB"
+database_name = "psx"
+database_id = "YOUR_D1_DATABASE_ID"
+preview_database_id = "YOUR_D1_DATABASE_ID"
+
+# DeepSeek API key for memory extraction (set via wrangler secret)
+# Run: wrangler secret put DEEPSEEK_API_KEY

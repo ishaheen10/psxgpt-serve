@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-scs-health-scope",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 19,
+  "tag": "fix",
+  "title": "Scoped SCS ratio cautions to served tickers",
+  "points": [
+    "SCS P/E and dividend-yield reference checks now publish health flags only for tickers in the served statement/ratio corpus.",
+    "The database health matrix now lines up with production quality flags: 179 open flags across 100 served tickers, with no hidden market-only symbols counted outside the grid."
+  ],
+  "public": true
+}

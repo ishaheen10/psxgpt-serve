@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-overview-exploration-links",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 9,
+  "tag": "improvement",
+  "title": "Made the docs overview easier to explore",
+  "points": [
+    "The overview now uses compact signal blocks to make source coverage, structured data, modeling, and trace validation easier to scan.",
+    "Overview sections now include stronger route links into equities, database coverage, the query engine, the data pipeline, design choices, and changelog fixes.",
+    "The error-learning section now presents concrete error-to-fix examples as navigable blocks instead of a single dry paragraph."
+  ],
+  "public": true
+}

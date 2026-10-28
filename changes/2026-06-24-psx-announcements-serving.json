@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-24-psx-announcements-serving",
+  "date": "2026-06-24",
+  "system": "engine",
+  "seq": 4,
+  "tag": "new",
+  "title": "Made PSX announcements queryable in chat",
+  "points": [
+    "Added a dedicated `psx_announcements` retrieval lane so the router can intentionally pull ticker-specific exchange notices instead of mixing them into annual-report filing pages.",
+    "Announcement retrieval now uses `psx_announcements_fts` for BM25 search over material disclosures, board meeting notices/results, corporate briefing notices, unusual movement notices, dividends, book closure, and other PSX announcements.",
+    "The source panel now distinguishes statements, filings, announcements, and other unstructured text so users can see what kind of evidence supports an answer.",
+    "Announcement PDFs and first-page thumbnails are hosted under `source.psxgpt.com/ANNOUNCEMENTS/...` and `ANNOUNCEMENT_THUMBNAILS/...` when the pipeline publishes announcement assets."
+  ],
+  "public": true
+}

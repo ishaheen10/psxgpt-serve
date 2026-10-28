@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-trace-stage-io-reviewer",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 25,
+  "tag": "improvement",
+  "title": "Simplified trace write-stage input and output review",
+  "points": [
+    "Changed the Write trace stage to show the analyst input before the final answer output.",
+    "Reduced explanatory copy in the analyst payload viewer so it behaves more like a stage input reviewer.",
+    "Used stored analyst context only to label whether source blocks came from extracted evidence or raw page text."
+  ],
+  "public": true
+}

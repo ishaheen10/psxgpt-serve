@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-multi-ticker-followup-scope",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 15,
+  "tag": "fix",
+  "title": "Preserved multi-company scope in statement follow-ups",
+  "points": [
+    "Follow-up statement questions now recover a bounded recent ticker set from chat history when the current query refers to prior figures without repeating a company name.",
+    "Added a regression for FCFE-style borrowing follow-ups after SYS and NATF conversations so the router does not ask for scope again.",
+    "Documented the bounded multi-ticker follow-up recovery rule in the analysis spec."
+  ],
+  "public": true
+}

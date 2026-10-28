@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-product-help-guardrail",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 8,
+  "tag": "improvement",
+  "title": "Answered product-help prompts without retrieval lanes",
+  "points": [
+    "First-time and 'what can you do?' prompts now return a deterministic capabilities response instead of planning filing or statement retrieval.",
+    "This removes noisy missing-scope and lane-failure traces for onboarding prompts that do not ask for company evidence.",
+    "Regression coverage now verifies the capabilities response uses no retrieval lanes."
+  ],
+  "public": true
+}

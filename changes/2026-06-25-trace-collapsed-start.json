@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-trace-collapsed-start",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 22,
+  "tag": "improvement",
+  "title": "Started traces with all drill-downs collapsed",
+  "points": [
+    "Failure case: the trace still felt busy because Plan opened automatically before the user chose a step.",
+    "Display logic changed: selecting a trace now shows only the workflow chain first, with no stage details expanded by default.",
+    "Shipped result: users can scan the full Plan, Retrieve, Compute, Write, and Verify flow, then open exactly one step when ready."
+  ],
+  "public": true
+}

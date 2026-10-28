@@ -1,0 +1,17 @@
+{
+  "id": "2026-07-25-deterministic-policy-cleanup",
+  "date": "2026-07-25",
+  "system": "engine",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Removed silent eligibility rules from deterministic screens",
+  "points": [
+    "ROIC, dividend-yield, and free-cash-flow-yield screens no longer silently blacklist whole tickers through broad or old quality flags; quality metadata now has to overlap the selected input row's ticker, table, metric, and period.",
+    "FCF-yield rankings no longer impose hidden market-cap, sector, age, positive-FCF, or 100% yield gates, and dividend-yield rankings no longer impose fixed 45-day, 550-day, positive-only, or 50% filters.",
+    "ROIC now carries the reported taxation and capital inputs needed by its stated formula, accepts explicit one-year and longer horizons without clamping them to three through ten years, preserves signed results, and requires only one formula-valid period.",
+    "The low-debt and positive-operating-cash-flow screen now ranks positive-CFO companies by leverage instead of inventing a debt-to-equity cutoff of 0.5.",
+    "Model forecasts retain historical assumptions without hidden runtime clamps, while missing-history template or industry defaults remain disclosed scenario assumptions.",
+    "Selector handoffs now follow typed dependency IDs rather than interpreting words such as selected, winner, or ranked in ask prose."
+  ],
+  "public": true
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-ratio-method-consistency",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 20,
+  "tag": "fix",
+  "title": "Prevented mixed-period ratio calculations",
+  "points": [
+    "Profit-and-loss ratios with multiple components now use a complete same-method component set, so a flagged LTM revenue row cannot be silently replaced with a different-period revenue row while the numerator stays on the original LTM method.",
+    "Rebuilt production D1 ratios and refreshed data-quality flags. The deterministic pipeline gate now reports 52 pipeline quality flags across 32 warning tickers before SCS reference cautions."
+  ],
+  "public": true
+}

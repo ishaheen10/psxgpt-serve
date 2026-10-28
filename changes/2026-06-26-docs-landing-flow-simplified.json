@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-landing-flow-simplified",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 19,
+  "tag": "improvement",
+  "title": "Simplified the docs landing flow",
+  "points": [
+    "Changed the docs landing headline and lead to explain the answer flow in simpler terms.",
+    "Renamed the pipeline section from a build-oriented framing to how data is checked.",
+    "Adjusted the first-path navigation so new readers start with a question, then inspect traces, data coverage, and fixes."
+  ],
+  "public": true
+}

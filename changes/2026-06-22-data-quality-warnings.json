@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-22-data-quality-warnings",
+  "date": "2026-06-22",
+  "system": "engine",
+  "seq": 0,
+  "tag": "improvement",
+  "title": "Row-scoped data quality warnings and database health view",
+  "points": [
+    "Published the pipeline QC ledger into the serving database so open blockers and warnings can be matched to the exact ticker, period, table, statement section, and metric a query retrieves.",
+    "Answers now surface a data quality notice when retrieved rows overlap an open QC flag, with a short explanation of the deterministic checks behind the warning.",
+    "Added an admin database health matrix that shows tickers as rows and reporting periods as columns, with green, yellow, and red cells that expand into the underlying QC concerns."
+  ],
+  "public": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-24-industry-query-surfaces",
+  "date": "2026-06-24",
+  "system": "engine",
+  "seq": 2,
+  "tag": "improvement",
+  "title": "Added industry-aware model inputs and common query surfaces",
+  "points": [
+    "Added industry-family model input views for banks, cement, energy, fertilizer, pharma/consumer, textile/industrial, and technology so model and valuation retrieval can start from sector-appropriate input bundles.",
+    "Added deterministic input surfaces for common user asks: latest market snapshots, valuation numerator/denominator inputs, net-cash screens, and growth-screen inputs.",
+    "Updated the financial-statement lane contract to prefer these views before raw statement SQL, preserving the rule that P/E uses market cap divided by annual net profit rather than EPS or historical shares."
+  ],
+  "public": true
+}

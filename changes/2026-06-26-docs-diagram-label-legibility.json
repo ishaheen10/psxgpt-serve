@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-diagram-label-legibility",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 17,
+  "tag": "improvement",
+  "title": "Made docs diagrams easier to read",
+  "points": [
+    "Increased the baseline diagram width used on phone-sized screens so SVG labels are larger before horizontal scrolling is needed.",
+    "Reduced small prose inside the system, query-engine, write/verify, BM25, provenance, and design-choice diagrams.",
+    "Kept specifics in captions and surrounding documentation while making the diagrams behave more like visual step markers."
+  ],
+  "public": true
+}

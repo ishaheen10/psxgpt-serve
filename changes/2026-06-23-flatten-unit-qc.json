@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-flatten-unit-qc",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 29,
+  "tag": "fix",
+  "title": "Tightened unit QC before ratio publishing",
+  "points": [
+    "Step 12 now resolves peer-confirmed cumulative statement unit labels before publishing to D1, fixing rows where a filing section was tagged as millions even though the peer section showed the same thousands-scale values.",
+    "Ambiguous thousands/rupees cumulative rows stay QC-flagged and are excluded from ratio inputs, while LTM rows now carry forward known scale-discontinuity warnings until the series exits the bad scale band.",
+    "Production D1 statements, ratios, and quality flags were refreshed. The latest health matrix shows 57 open flags, 17 yellow cells, and 0 red cells across the latest 12 periods."
+  ],
+  "public": true
+}

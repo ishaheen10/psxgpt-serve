@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-priced-universe-regression",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 7,
+  "tag": "improvement",
+  "title": "Added regression coverage for stale-price ticker exclusions",
+  "points": [
+    "Regression evals can now be filtered with EVAL_CASES for focused production replays.",
+    "Added a guard that verifies stale-price symbols such as AASM short-circuit as outside the served priced universe instead of running failing market-data SQL.",
+    "Updated schema documentation to distinguish the 471-ticker statement/document corpus from the narrower served ticker reference used for price-dependent answers."
+  ],
+  "public": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-write-verify-and-error-fix-chains",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 3,
+  "tag": "improvement",
+  "title": "Clarified write/verify docs and concrete error-to-fix chains",
+  "points": [
+    "The query-engine docs now include a Write and Verify diagram showing how a bounded evidence package becomes an answer and how claims are checked against tables, warnings, trace stages, and source pages.",
+    "The error-to-fix section now uses concrete examples that show the user-visible error, the trace evidence that located the cause, the actual fix, and the regression or corpus guard that keeps it from recurring.",
+    "Each error-to-fix example links directly to the relevant changelog entry so readers can navigate from the repair pattern to the specific shipped change."
+  ],
+  "public": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-dividend-yield-screen",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 3,
+  "tag": "fix",
+  "title": "Deterministic dividend-yield screens",
+  "points": [
+    "Market-wide dividend-yield ranking now uses a deterministic compute stage instead of a fragile market-data selector.",
+    "The screen computes yield from cash-flow dividends paid divided by current market cap, with stale-row and implausible-yield filters.",
+    "Regression eval coverage now checks that dividend selector handoffs expose the selected ticker set correctly."
+  ],
+  "public": true
+}

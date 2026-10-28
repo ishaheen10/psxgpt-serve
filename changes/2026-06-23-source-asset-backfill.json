@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-source-asset-backfill",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 4,
+  "tag": "fix",
+  "title": "Completed source asset coverage backfill",
+  "points": [
+    "Reconciled the source-asset manifest against R2 and uploaded missing page PDF and thumbnail objects for the tickers flagged by the pipeline state gate.",
+    "Pipeline state now shows zero asset-coverage warnings across the 471-ticker served universe.",
+    "The only remaining pipeline state blocker is AGP annual 2024 unconsolidated cash-flow extraction QC."
+  ],
+  "public": true
+}

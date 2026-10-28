@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-qc-followup-routing",
+  "date": "2026-06-25",
+  "system": "engine",
+  "seq": 12,
+  "tag": "fix",
+  "title": "Fixed QC source follow-up routing",
+  "points": [
+    "Failure case: follow-up questions such as source-page or QC audits could treat QC / quality-control wording as an unsupported ticker instead of staying scoped to the answer the user was auditing.",
+    "Source logic fixed: router guidance now preserves the prior ticker, source-page, and retrieved-evidence scope when the user asks to audit or map source pages for already returned data points.",
+    "Shipped result: source follow-ups stay on the relevant company and evidence trail, so users can inspect the original pages without triggering a false out-of-universe ticker path."
+  ],
+  "public": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-22-query-resolver-audit",
+  "date": "2026-06-22",
+  "system": "engine",
+  "seq": 5,
+  "tag": "fix",
+  "title": "Fixed sector and formula-term query routing from audit replays",
+  "points": [
+    "Stopped finance terms such as NOPAT and BMR from being treated as unsupported ticker symbols in router and admin issue scans.",
+    "Routed sector-style prompts such as sugar-sector stock screens through explicit industry ticker sets instead of out-of-universe ticker handling.",
+    "Bound sector screens to a lean market-data plus financial-statement plan so they return usable answers instead of timing out on broad multi-lane retrieval."
+  ],
+  "public": true
+}

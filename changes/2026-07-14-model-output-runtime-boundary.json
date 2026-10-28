@@ -1,0 +1,16 @@
+{
+  "id": "2026-07-14-model-output-runtime-boundary",
+  "date": "2026-07-14",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Stopped runtime fallbacks from replacing valid model output",
+  "points": [
+    "Valid non-empty Router plans now remain authoritative after structural validation; regex recovery runs only when no executable plan or compute intent exists.",
+    "Narrative pages that were retrieved but never validly submitted remain trace diagnostics and are no longer promoted into AnalystContext evidence.",
+    "Missing analyst source or table selections now trigger one model-authored corrective retry instead of exposing every available source and attachment.",
+    "Runtime collision evals now reject unallowlisted high-risk interventions, evaluate their expectation contracts, and replay the exact same captured Router plan during ablation.",
+    "Bank individual-deposit retrieval and market-wide deterministic screen routing now live in their prompt and stage contracts instead of post-Router plan rewrites."
+  ],
+  "public": true
+}

@@ -1,0 +1,158 @@
+[
+  {
+    "id": "hubco_alias_should_retrieve_hubc_context",
+    "origin_trace_id": "2334701e-7e1b-40c1-bb60-220bc11cd9f3",
+    "query": "Can you analyse HUBCO performance and growth factors moving forward?",
+    "intent": "A common-name alias should not collapse into an out-of-universe answer when the served ticker is HUBC.",
+    "expect": {
+      "required_tables": ["financial_statements", "market_data", "financial_documents_new"],
+      "required_tickers": ["HUBC"],
+      "forbidden_phrases": ["OUT_OF_UNIVERSE", "out of universe", "not in the served universe"],
+      "min_context_tables": 2,
+      "min_context_sources": 4,
+      "min_final_attachments": 1,
+      "min_final_sources": 1,
+      "answer_terms": ["HUBC", "performance", "growth"]
+    }
+  },
+  {
+    "id": "fabl_individual_deposit_breakup_has_numeric_workpaper",
+    "origin_trace_id": "8d02617a-fb3e-4309-92ae-71ffb8eace9a",
+    "query": "so can we find out the breakup for faysal bank's individual deposit vs total deposit",
+    "intent": "Numeric note extraction should surface a model-visible table/workpaper, not only page snippets.",
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "required_tickers": ["FABL"],
+      "min_context_sources": 8,
+      "min_extracted_sources": 4,
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "context_terms": ["individual", "deposit", "total"],
+      "table_terms": ["individual", "deposit"],
+      "answer_terms": ["individual", "deposit", "total"]
+    }
+  },
+  {
+    "id": "cnergy_segment_operating_income_complete_and_not_inferred",
+    "origin_trace_id": "303db7d8-98e2-4331-9210-6e1aa465c17a",
+    "query": "Can you share CNERGY's operating income by refinery and marketing segment for the past 5 years?",
+    "intent": "Segment tables should be backed by retrieved annual segment pages and must not invent missing years.",
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "required_tickers": ["CNERGY"],
+      "min_context_sources": 5,
+      "min_extracted_sources": 3,
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "context_terms": ["refinery", "marketing", "operating"],
+      "answer_terms": ["refin", "marketing", "operating income"],
+      "forbidden_phrases": ["not directly available", "inferred", "assumed", "proxy"]
+    }
+  },
+  {
+    "id": "isil_segment_growth_context_keeps_segment_sources",
+    "origin_trace_id": "ced7dfaa-eda9-4e6c-be1b-54914672d2f3",
+    "query": "Can you analyse ISIL's segment performance and future growth drivers?",
+    "intent": "Segment and growth-driver analysis should preserve both numeric statement context and extracted filing-page context.",
+    "expect": {
+      "required_tables": ["financial_statements", "financial_documents_new"],
+      "required_tickers": ["ISIL"],
+      "min_context_tables": 1,
+      "min_context_sources": 8,
+      "min_extracted_sources": 4,
+      "min_final_attachments": 1,
+      "min_final_sources": 2,
+      "context_terms": ["segment", "growth"],
+      "answer_terms": ["segment", "growth"]
+    }
+  },
+  {
+    "id": "chcc_one_page_summary_retrieves_shareholders_and_capacity",
+    "origin_trace_id": "7d260422-d5dc-49bf-8c97-ca5c14aae999",
+    "query": "Give me a one page summary of CHCC covering business, capacity, shareholders, profitability and valuation.",
+    "intent": "A one-page company summary should retrieve the specific source pages for each requested section before saying something is unavailable.",
+    "expect": {
+      "required_tables": ["financial_documents_new", "financial_statements", "ratios"],
+      "required_tickers": ["CHCC"],
+      "min_context_tables": 2,
+      "min_context_sources": 5,
+      "min_extracted_sources": 3,
+      "min_final_attachments": 1,
+      "min_final_sources": 1,
+      "context_terms": ["capacity", "shareholder", "profitability"],
+      "answer_terms": ["capacity", "shareholder", "profitability", "valuation"],
+      "forbidden_phrases": ["shareholders are not disclosed", "major shareholders not disclosed"]
+    }
+  },
+  {
+    "id": "cement_capacity_expansion_keeps_filings_after_empty_announcements",
+    "origin_trace_id": "85ccce7a-4ece-43ed-8ec0-a3756a2d7eb8",
+    "query": "Narrow down Cement companies which have announced capacity expansions and when are those expected to go live.",
+    "intent": "An empty announcements lane must not gate or suppress broad filing retrieval.",
+    "expect": {
+      "required_tables": ["psx_announcements", "financial_documents_new"],
+      "min_context_sources": 8,
+      "min_extracted_sources": 6,
+      "context_terms": ["cement", "capacity", "expansion"],
+      "answer_terms": ["capacity", "expansion"],
+      "allow_empty_tables": ["psx_announcements"]
+    }
+  },
+  {
+    "id": "cement_latest_quarter_selector_handoff_to_tables",
+    "origin_trace_id": "653fc43f-2457-4884-86b1-6c6ba3697746",
+    "query": "Compare latest quarter performance of top cement companies by revenue.",
+    "intent": "Selector output should feed the dependent quarterly statement and ratio tables without losing selected ticker scope.",
+    "expect": {
+      "required_tables": ["financial_statements", "ratios"],
+      "min_selected_tickers": 5,
+      "min_context_tables": 2,
+      "min_final_attachments": 1,
+      "table_terms": ["revenue", "quarter"],
+      "answer_terms": ["cement", "revenue", "quarter"]
+    }
+  },
+  {
+    "id": "efert_fair_price_context_is_scenario_based_and_fast_enough",
+    "origin_trace_id": "f7259ba5-e684-4e14-9072-3ce62c19cecd",
+    "query": "Can you calculate all possible fair price models for EFERT?",
+    "intent": "Broad valuation asks should assemble deterministic model inputs and source context, but avoid an unbounded slow analyst run.",
+    "expect": {
+      "required_tables": ["financial_statements", "market_data", "financial_documents_new"],
+      "required_tickers": ["EFERT"],
+      "min_context_tables": 2,
+      "min_context_sources": 2,
+      "min_final_attachments": 1,
+      "answer_terms": ["scenario", "valuation"],
+      "max_duration_ms": 180000,
+      "forbidden_phrases": ["definitive fair value is", "single fair value is"]
+    }
+  },
+  {
+    "id": "bear_market_top_companies_discloses_scope_and_period",
+    "origin_trace_id": "1ebac998-a5b5-406a-ac10-93d411929db7",
+    "query": "Among top PSX companies, who protected profits best during the bear market?",
+    "intent": "A market-regime screen should make the selected peer set and bear-market period explicit.",
+    "expect": {
+      "required_tables": ["financial_statements"],
+      "min_selected_tickers": 10,
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "answer_terms": ["bear market", "period", "profit"]
+    }
+  },
+  {
+    "id": "dyno_governance_red_flags_no_crash_and_source_backed",
+    "origin_trace_id": "07b6d156-9461-4953-a00e-6512055835e0",
+    "query": "Any governance red flags for DYNO?",
+    "intent": "Governance-risk asks should not fail, and should be source-backed by filings or announcements.",
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "required_tickers": ["DYNO"],
+      "min_context_sources": 3,
+      "min_final_sources": 1,
+      "context_terms": ["director", "governance", "related party", "audit"],
+      "answer_terms": ["governance", "red flag"]
+    }
+  }
+]

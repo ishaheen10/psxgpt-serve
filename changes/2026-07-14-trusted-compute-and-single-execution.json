@@ -1,0 +1,16 @@
+{
+  "id": "2026-07-14-trusted-compute-and-single-execution",
+  "date": "2026-07-14",
+  "system": "engine",
+  "seq": 3,
+  "tag": "fix",
+  "title": "Added trusted compute inputs and one authoritative execution path",
+  "points": [
+    "Deterministic models and screens now check scoped pipeline quality flags before arithmetic; models stop on relevant blockers and market screens exclude blocked observations with coverage disclosure.",
+    "ROIC, dividend-yield, and FCF-yield computes no longer collide with valid Router evidence plans; conflicting closed-compute plans receive one Router-authored corrective retry.",
+    "Closed computes are rejected when the query does not authorize them, and all-caps prose is no longer misread as a list of unknown ticker symbols.",
+    "Selector handoffs now support explicit ask IDs and dependencies so downstream lanes cannot silently broaden when a selector returns no evidence-backed tickers.",
+    "The upstream unit contract now preserves values already reported in thousands, including Rupees in thousand labels, while retaining ambiguity flags for repair visibility."
+  ],
+  "public": true
+}

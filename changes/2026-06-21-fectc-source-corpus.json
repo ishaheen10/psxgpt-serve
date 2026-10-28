@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-21-fectc-source-corpus",
+  "date": "2026-06-21",
+  "system": "pipeline",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Fecto Cement source corpus restored",
+  "points": [
+    "FECTC filing-page rows were published into financial_documents_new and filings_fts_new, closing the gap where Fecto Cement numeric answers could appear without source previews.",
+    "FECTC reviewed page PDFs and thumbnails were uploaded to the remote source host so source links resolve under source.psxgpt.com.",
+    "Pipeline operations now include a scoped document/source publish step for new tickers, with checks for document rows, FTS rows, and source-host assets."
+  ],
+  "public": true
+}

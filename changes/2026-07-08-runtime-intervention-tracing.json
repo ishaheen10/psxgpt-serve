@@ -1,0 +1,14 @@
+{
+  "id": "2026-07-08-runtime-intervention-tracing",
+  "date": "2026-07-08",
+  "system": "engine",
+  "seq": 1,
+  "tag": "improvement",
+  "title": "Made runtime interventions traceable across lanes and analyst answers",
+  "points": [
+    "Lane submit vetoes and fallback evidence insertion now emit structured runtime-intervention records instead of only free-text retry errors.",
+    "Analyst answer cleanup passes now record whether they changed the answer, with before/after snippets and failure-bucket metadata.",
+    "Internal eval traces can now bucket failures as prompt fact, prompt instruction, runtime, corpus, or provider issues without changing the user-facing trace UI."
+  ],
+  "public": true
+}

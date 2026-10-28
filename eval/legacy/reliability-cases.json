@@ -1,0 +1,475 @@
+[
+  {
+    "id": "bank_deposit_valuation_conclusions_match_table",
+    "tier": "canary",
+    "category": "analyst_consistency",
+    "query": "Which banks have the highest deposits, and how do their valuations compare?",
+    "intent": "Deterministic valuation rankings must remain consistent between the shared table and Analyst prose.",
+    "expect": {
+      "required_tables": ["financial_statements"],
+      "min_context_tables": 2,
+      "answer_terms": ["NBP","MEBL","P/E"],
+      "forbidden_patterns": [
+        "annual[^.\\n]{0,100}(deposits|2026-03-31)",
+        "(deposits|2026-03-31)[^.\\n]{0,100}annual",
+      "MEBL[^.\\n]{0,100}(lowest|cheapest)[^.\\n]{0,40}\\bP\\s*/\\s*E\\b",
+      "BAHL[^.\\n]{0,100}(highest|most expensive)[^.\\n]{0,40}\\bP\\s*/\\s*E\\b",
+      "UBL[^.\\n]{0,100}(lowest|cheapest)[^.\\n]{0,40}\\bP\\s*/\\s*E\\b"
+      ],
+      "max_failed_lanes": 0,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "cnergy_spm_followup_live_router_keeps_company_scope",
+    "tier": "canary",
+    "category": "entity_grounding",
+    "query": "what benefit per barrel in procurement does it get via SPM, what is the chemical plant on its balance sheet",
+    "chat_history": [
+      {"role": "user", "content": "tell me interesting facts about cynergico that may be unknown"},
+      {"role": "assistant", "content": "Cnergyico PK Limited (CNERGY) operates Pakistan's first Single Point Mooring facility."}
+    ],
+    "intent": "The live Router must resolve SPM as a topic inside the most recent CNERGY scope without a fixed-plan override.",
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "required_tickers": ["CNERGY"],
+      "forbidden_tickers": ["SPM"],
+      "min_context_sources": 1,
+      "max_failed_lanes": 0,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "sys_competitor_followup_live_router_builds_selector_chain",
+    "tier": "canary",
+    "category": "scope_and_followups",
+    "query": "how does the forward PE compare to its competitors?",
+    "chat_history": [
+      {"role": "user", "content": "Analyse Systems Limited's recent quarterly results."},
+      {"role": "assistant", "content": "Systems Limited (SYS) trades on a premium trailing P/E."}
+    ],
+    "intent": "The live Router must expand an explicit competitor follow-up through a selector and hand its evidence-backed peers to valuation retrieval.",
+    "expect": {
+      "required_tables": ["market_data", "financial_statements"],
+      "required_tickers": ["SYS", "AVN", "NETSOL", "TRG"],
+      "min_context_tables": 2,
+      "max_failed_lanes": 0,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "unknown_bfargo_closes_without_substitution",
+    "tier": "canary",
+    "category": "entity_grounding",
+    "query": "Tell me about BFARGO.",
+    "intent": "An unknown explicit symbol must close as out of universe and never retrieve the nearest valid ticker.",
+    "expect": {
+      "required_tables": ["market_data"],
+      "forbidden_tickers": ["BFAGRO"],
+      "trace_terms": ["OUT_OF_UNIVERSE", "BFARGO"],
+      "answer_any_terms": [["not in", "outside", "out of"], ["coverage", "universe"]],
+      "max_context_tables": 0,
+      "max_context_sources": 0,
+      "allow_empty_tables": ["market_data", "psx_announcements", "financial_statements", "financial_documents_new"]
+    }
+  },
+  {
+    "id": "bare_fecto_name_resolves_only_to_fectc",
+    "tier": "canary",
+    "category": "entity_grounding",
+    "query": "How is Fecto cement doing?",
+    "intent": "Bare company-name resolution is the dangerous alias path: Fecto must resolve to FECTC, never FCCL.",
+    "expect": {
+      "required_tickers": ["FECTC"],
+      "forbidden_tickers": ["FCCL"],
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "quality_flags_within_selected_tickers": true,
+      "max_data_quality_flags": 12,
+      "max_failed_lanes": 0,
+      "forbidden_phrases": ["Fauji Cement"]
+    }
+  },
+  {
+    "id": "roshan_packages_name_never_substitutes_prl_or_pkgs",
+    "tier": "extended",
+    "category": "entity_grounding",
+    "query": "Explain Roshan Packages' business and latest profitability.",
+    "intent": "Company-name grounding must preserve RPL and reject two historically observed substitutes.",
+    "expect": {
+      "required_tickers": ["RPL"],
+      "forbidden_tickers": ["PRL", "PKGS"],
+      "min_context_tables": 1,
+      "max_failed_lanes": 0,
+      "min_final_attachments": 1
+    }
+  },
+  {
+    "id": "hubco_alias_resolves_without_unresolved_diagnostic",
+    "tier": "extended",
+    "category": "entity_grounding",
+    "query": "Analyse HUBCO performance and growth factors moving forward.",
+    "intent": "The market alias HUBCO should resolve non-destructively to HUBC.",
+    "expect": {
+      "required_tickers": ["HUBC"],
+      "forbidden_phrases": ["not in the current psxGPT coverage universe", "unresolved ticker"],
+      "min_context_tables": 1,
+      "min_context_sources": 1
+    }
+  },
+  {
+    "id": "finance_acronyms_do_not_become_tickers",
+    "tier": "canary",
+    "category": "entity_grounding",
+    "query": "For SYS, calculate FCFE using CFO, capex and net borrowing, and explain any SBP-related financing context.",
+    "intent": "Finance acronyms and institutions are concepts, not ticker candidates, when a valid company scope exists.",
+    "expect": {
+      "required_tickers": ["SYS"],
+      "forbidden_tickers": ["FCFE", "CFO", "SBP"],
+      "required_tables": ["financial_statements"],
+      "min_context_tables": 1
+    }
+  },
+  {
+    "id": "uppercase_prose_does_not_create_fake_ticker_scope",
+    "tier": "extended",
+    "category": "entity_grounding",
+    "query": "For FCCL, RECHECK THE FINANCIAL STATEMENT NOTES AND GIVE A BRIEF SUMMARY OF WHAT IT ENTAILS.",
+    "intent": "Uppercase prose seen in issue scans must not become unresolved ticker requests.",
+    "expect": {
+      "required_tickers": ["FCCL"],
+      "forbidden_tickers": ["RECHECK", "THE", "FINANCIAL", "STATEMENT", "NOTES", "AND", "GIVE", "BRIEF", "SUMMARY", "WHAT", "ENTAILS"],
+      "required_tables": ["financial_documents_new"],
+      "min_context_sources": 1,
+      "min_final_sources": 1
+    }
+  },
+  {
+    "id": "scopeless_latest_result_returns_missing_scope",
+    "tier": "canary",
+    "category": "scope_and_followups",
+    "query": "Give me the latest result.",
+    "intent": "A scopeless financial ask must request a company/ticker or emit missing scope, not scan unrelated companies.",
+    "expect": {
+      "trace_terms": ["MISSING_SCOPE"],
+      "answer_any_terms": [["ticker", "company"]],
+      "max_context_tables": 0,
+      "max_context_sources": 0,
+      "allow_empty_tables": ["financial_statements", "market_data", "ratios", "financial_documents_new"]
+    }
+  },
+  {
+    "id": "followup_recovers_only_most_recent_company_scope",
+    "tier": "canary",
+    "category": "scope_and_followups",
+    "query": "Can you find the start and end borrowing figures in the financial statements?",
+    "chat_history": [
+      {"role": "user", "content": "Calculate FCFE for Systems Limited."},
+      {"role": "assistant", "content": "For Systems Limited (SYS), FCFE uses CFO, capex, and net borrowing."},
+      {"role": "user", "content": "Do the same for National Foods."},
+      {"role": "assistant", "content": "For National Foods Limited (NATF), the prior net borrowing figure should be checked against beginning and ending borrowings."}
+    ],
+    "intent": "Follow-up reconstruction should use the most recent relevant entity rather than merging every historical ticker.",
+    "expect": {
+      "required_tickers": ["NATF"],
+      "required_tables": ["financial_statements"],
+      "min_context_tables": 1
+    }
+  },
+  {
+    "id": "multi_ticker_latest_period_preserves_both_companies",
+    "tier": "canary",
+    "category": "period_and_coverage",
+    "query": "Compare the latest annual revenue and net profit for LUCK and NATF.",
+    "intent": "Per-ticker latest-period logic must not silently drop a company with a different fiscal year-end.",
+    "expect": {
+      "required_tables": ["financial_statements"],
+      "required_tickers": ["LUCK", "NATF"],
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "answer_terms": ["LUCK", "NATF"]
+    }
+  },
+  {
+    "id": "mixed_ratio_durations_keep_basis_and_period",
+    "tier": "extended",
+    "category": "period_and_coverage",
+    "query": "For CNERGY show latest annual ROE, net margin and debt-to-equity, including each metric's period basis.",
+    "intent": "Flow and point-in-time ratios must retain their distinct period-duration contracts and denominator basis.",
+    "expect": {
+      "required_tables": ["ratios"],
+      "required_tickers": ["CNERGY"],
+      "min_context_tables": 1,
+      "table_terms": ["period_duration", "basis", "12M", "PIT"]
+    }
+  },
+  {
+    "id": "dividend_yield_is_cash_flow_proxy_not_dps_truth",
+    "tier": "canary",
+    "category": "deterministic_compute",
+    "query": "Which five PSX companies have the highest latest dividend yield, and how is the yield calculated?",
+    "intent": "The deterministic cash-flow proxy should answer directly; superseded Router lanes should not fail before the compute result is surfaced.",
+    "expect": {
+      "required_tables": ["dividend_yield_screen"],
+      "min_selected_tickers": 5,
+      "min_context_tables": 1,
+      "quality_flags_within_selected_tickers": true,
+      "max_data_quality_flags": 12,
+      "min_final_attachments": 1,
+      "answer_terms": ["dividend", "yield"],
+      "answer_any_terms": [["cash flow", "dividends paid"], ["proxy", "basis", "calculated"]],
+      "forbidden_phrases": ["declared DPS truth", "authoritative DPS"]
+    }
+  },
+  {
+    "id": "roic_ten_year_request_discloses_usable_periods",
+    "tier": "extended",
+    "category": "deterministic_compute",
+    "query": "List the top 10 PSX companies by 10-year average ROIC.",
+    "intent": "The compute may use fewer periods but must disclose actual usable coverage instead of pretending every company has ten years.",
+    "expect": {
+      "required_tables": ["roic_screen"],
+      "min_selected_tickers": 5,
+      "min_context_tables": 1,
+      "answer_any_terms": [["usable", "available", "periods", "years"]]
+    }
+  },
+  {
+    "id": "fcf_yield_closed_compute_has_no_colliding_lane",
+    "tier": "extended",
+    "category": "deterministic_compute",
+    "query": "Rank the top 10 PSX companies by free cash flow yield.",
+    "intent": "FCF-yield screening is one closed deterministic compute; runtime must not append query-detected work beside a valid Router plan.",
+    "expect": {
+      "required_tables": ["fcf_yield_screen"],
+      "min_selected_tickers": 5,
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "max_failed_lanes": 0,
+      "quality_flags_within_selected_tickers": true,
+      "max_data_quality_flags": 12,
+      "answer_terms": ["FCF", "yield"]
+    }
+  },
+  {
+    "id": "bare_ticker_uses_overview_without_legacy_market_ratios",
+    "tier": "extended",
+    "category": "deterministic_compute",
+    "query": "GHNI",
+    "intent": "A bare ticker should take the concise deterministic overview path and not surface legacy market PE, PB, or dividend-yield fields.",
+    "expect": {
+      "required_tickers": ["GHNI"],
+      "min_context_tables": 1,
+      "forbidden_patterns": ["dividend yield", "price[- ]to[- ]book|P/B", "price[- ]to[- ]earnings|P/E"]
+    }
+  },
+  {
+    "id": "explicit_bank_model_build_keeps_model_lane",
+    "tier": "extended",
+    "category": "routing_and_runtime",
+    "query": "Build a simple financial model for UBL using deposits, advances, net interest income, provisions, profit and valuation multiples.",
+    "intent": "An explicit model request must keep the Router's model_build plan and bank-specific inputs.",
+    "expect": {
+      "required_tickers": ["UBL"],
+      "require_model_build": true,
+      "min_model_build_attachments": 2,
+      "min_final_attachments": 1,
+      "forbid_unallowlisted_high_risk_interventions": true
+    }
+  },
+  {
+    "id": "vague_projection_language_does_not_force_model_build",
+    "tier": "canary",
+    "category": "routing_and_runtime",
+    "query": "What are KOHC projected financials based on the latest trend and management outlook?",
+    "intent": "Projection wording alone must not cause runtime code to overwrite a valid narrative/statements Router plan with model_build.",
+    "expect": {
+      "required_tickers": ["KOHC"],
+      "forbid_model_build": true,
+      "min_context_tables": 1,
+      "forbid_unallowlisted_high_risk_interventions": true
+    }
+  },
+  {
+    "id": "fabl_individual_deposits_requires_exact_numeric_note",
+    "tier": "canary",
+    "category": "narrative_evidence",
+    "query": "Find Faysal Bank's individual deposits versus total deposits from the latest available filing.",
+    "intent": "A precise note-category request must return numeric query-shaped evidence or explicitly say the exact category is unavailable.",
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "required_tickers": ["FABL"],
+      "min_context_sources": 1,
+      "min_extracted_sources": 1,
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "answer_terms": ["individual", "deposit"]
+    }
+  },
+  {
+    "id": "empty_announcements_do_not_gate_cement_filings",
+    "tier": "extended",
+    "category": "narrative_evidence",
+    "query": "Narrow down cement companies that announced capacity expansions and when those expansions were expected to go live.",
+    "intent": "An empty announcements lane must not suppress broad filing retrieval that can still answer the question.",
+    "expect": {
+      "required_tables": ["psx_announcements", "financial_documents_new"],
+      "allow_empty_tables": ["psx_announcements"],
+      "min_context_sources": 1,
+      "min_extracted_sources": 1,
+      "answer_any_terms": [["capacity", "expansion"], ["expected", "commission", "online", "operation"]]
+    }
+  },
+  {
+    "id": "segment_history_does_not_invent_missing_years",
+    "tier": "extended",
+    "category": "narrative_evidence",
+    "query": "Share CNERGY operating income by refinery and marketing segment for the past five years.",
+    "intent": "Segment extraction must retain filing evidence and disclose missing years rather than interpolate them.",
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "required_tickers": ["CNERGY"],
+      "min_context_sources": 1,
+      "min_extracted_sources": 1,
+      "answer_terms": ["marketing"],
+      "answer_any_terms": [["refinery", "refining"]],
+      "forbidden_phrases": ["I inferred the missing years", "estimated the missing years"]
+    }
+  },
+  {
+    "id": "depreciation_typo_followup_uses_numeric_notes",
+    "tier": "extended",
+    "category": "scope_and_followups",
+    "query": "Get depriceation and amortization values now.",
+    "chat_history": [
+      {"role": "user", "content": "At least get net income for these companies."},
+      {"role": "assistant", "content": "Here is the latest annual net income for Systems Limited (SYS), Interloop (ILP), National Foods (NATF), and TRG Pakistan (TRG)."}
+    ],
+    "intent": "A misspelled follow-up must recover the prior four-company scope and retrieve numeric filing notes.",
+    "expect": {
+      "required_tickers": ["SYS", "ILP", "NATF", "TRG"],
+      "required_tables": ["financial_documents_new"],
+      "min_context_sources": 2,
+      "min_extracted_sources": 1,
+      "answer_any_terms": [["depreciation", "depriceation"], ["amortization", "amortisation"]]
+    }
+  },
+  {
+    "id": "analyst_selected_evidence_is_not_runtime_replaced",
+    "tier": "extended",
+    "category": "routing_and_runtime",
+    "query": "Analyse ISIL segment performance and future growth drivers using the filing evidence.",
+    "intent": "Model-selected filing sources must survive; runtime may not replace missing selections by surfacing everything or force an unrelated structured lane.",
+    "expect": {
+      "required_tickers": ["ISIL"],
+      "required_tables": ["financial_documents_new"],
+      "min_context_sources": 1,
+      "min_final_sources": 1,
+      "forbid_citation_selection_fallback": true,
+      "forbid_unallowlisted_high_risk_interventions": true
+    }
+  },
+  {
+    "id": "mcb_model_blocks_or_flags_mixed_scale_actuals",
+    "tier": "canary",
+    "category": "data_quality",
+    "query": "Build a simple financial model for MCB using deposits, net interest income, profit, provisions and valuation multiples.",
+    "intent": "The repaired upstream actuals must remain scale-consistent and support deterministic bank-model computation without a synthetic warning.",
+    "expect": {
+      "required_tickers": ["MCB"],
+      "require_model_build": true,
+      "min_model_build_attachments": 2,
+      "forbid_unallowlisted_high_risk_interventions": true
+    }
+  },
+  {
+    "id": "bear_market_screen_blocks_or_flags_mixed_scale_rows",
+    "tier": "canary",
+    "category": "routing_and_runtime",
+    "query": "Among top PSX companies, who protected profits best during the bear market?",
+    "intent": "The repaired corpus must preserve the deterministic market selector and return comparable profitability rows without synthetic scale warnings.",
+    "expect": {
+      "required_tables": ["market_data", "financial_statements"],
+      "min_selected_tickers": 3,
+      "min_context_tables": 1,
+      "answer_terms": ["bear market", "period"],
+      "allow_empty_tables": ["financial_documents_new"]
+    }
+  },
+  {
+    "id": "holding_company_model_failure_is_explicit_not_invented",
+    "tier": "extended",
+    "category": "expected_insufficiency",
+    "query": "Build a full five-year financial model for ENGROH with segment forecasts and a target price.",
+    "intent": "An unsupported holding-company model should fail loudly or limit scope, never invent an unattached forecast table.",
+    "expect": {
+      "required_tickers": ["ENGROH"],
+      "answer_any_terms": [["unsupported", "cannot", "unable", "limited", "not available", "illustrative"]],
+      "forbidden_patterns": ["definitive target price|guaranteed forecast"]
+    }
+  },
+  {
+    "id": "unsupported_exact_ratio_returns_unavailable_not_substitute",
+    "tier": "extended",
+    "category": "expected_insufficiency",
+    "query": "What was FECTC net interest margin for 2025?",
+    "intent": "A bank-only ratio requested for a cement company must return unavailable/unsupported, not substitute another ratio or ticker.",
+    "expect": {
+      "required_tickers": ["FECTC"],
+      "forbidden_tickers": ["FCCL"],
+      "required_tables": ["financial_documents_new"],
+      "answer_any_terms": [["not available", "not directly available", "not directly reported", "does not explicitly report", "not presented", "unavailable", "not applicable", "cannot"]],
+      "answer_terms": ["net interest margin"]
+    }
+  },
+  {
+    "id": "mixed_statement_last_six_annual_periods_preserve_pit_and_flows",
+    "tier": "canary",
+    "category": "period_and_coverage",
+    "query": "Show UBL deposits and net interest income for the last 6 annual periods.",
+    "intent": "Annual cadence is a shared date window: retain 12M flow rows and same-date PIT balance-sheet rows without admitting quarterly flow rows.",
+    "expect": {
+      "required_tickers": ["UBL"],
+      "required_tables": ["financial_statements"],
+      "min_context_tables": 1,
+      "max_failed_lanes": 0,
+      "trace_terms": ["statement_annual_history"],
+      "table_terms": ["deposits", "net_interest_income"],
+      "required_table_column_values": {
+        "period_duration": ["12M", "PIT"]
+      },
+      "forbidden_table_column_values": {
+        "period_duration": ["3M", "6M", "9M", "LTM"]
+      },
+      "exact_distinct_table_column_values": {
+        "period_end": 6
+      },
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "mixed_statement_last_six_quarters_preserve_pit_and_flows",
+    "tier": "canary",
+    "category": "period_and_coverage",
+    "query": "Show UBL deposits and net interest income for the last 6 quarterly periods.",
+    "intent": "Quarterly cadence is a shared date window: retain 3M flow rows and same-date PIT balance-sheet rows without falling back to annual flow rows.",
+    "expect": {
+      "required_tickers": ["UBL"],
+      "required_tables": ["financial_statements"],
+      "min_context_tables": 1,
+      "max_failed_lanes": 0,
+      "trace_terms": ["statement_quarterly_history"],
+      "table_terms": ["deposits", "net_interest_income"],
+      "required_table_column_values": {
+        "period_duration": ["3M", "PIT"]
+      },
+      "forbidden_table_column_values": {
+        "period_duration": ["12M", "6M", "9M", "LTM"]
+      },
+      "exact_distinct_table_column_values": {
+        "period_end": 6
+      },
+      "max_duration_ms": 180000
+    }
+  }
+]

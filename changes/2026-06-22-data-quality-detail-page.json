@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-22-data-quality-detail-page",
+  "date": "2026-06-22",
+  "system": "app",
+  "seq": 1,
+  "tag": "improvement",
+  "title": "Dedicated data quality health page",
+  "points": [
+    "Moved the ticker-period database health matrix out of the narrow trace sidebar into a dedicated admin page.",
+    "Clicking a matrix cell now selects the ticker and period, then shows open QC flags, passed statement/document checks, statement coverage, and filing document inventory in a stable detail panel.",
+    "The trace viewer now links to the full health view instead of trying to show the entire grid inline."
+  ],
+  "public": true
+}

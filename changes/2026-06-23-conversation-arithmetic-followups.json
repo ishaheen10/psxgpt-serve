@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-conversation-arithmetic-followups",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Faster deterministic arithmetic follow-ups",
+  "points": [
+    "Follow-up questions that explicitly reuse prior figures can now compute simple sensitivities directly instead of re-querying the statement corpus.",
+    "Net-margin follow-ups such as increasing revenue while holding net profit unchanged now show the numerator, denominator, formula, and revised margin in a table-backed answer.",
+    "The regression eval now includes a conversation-history arithmetic case so this behavior is tested alongside routing and source-retrieval checks."
+  ],
+  "public": true
+}

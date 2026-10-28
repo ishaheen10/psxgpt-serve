@@ -1,0 +1,14 @@
+{
+  "id": "2026-07-06-calculation-qc-workpapers",
+  "date": "2026-07-06",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Added calculation QC workpapers to answer tables",
+  "points": [
+    "Analyst answers now include a deterministic calculation breakdown table when retrieved statement, ratio, or valuation tables support formula-level QC.",
+    "The breakdown shows the metric formula, numerator, denominator, result, source table, and whether any formula components were missing from the retrieved context.",
+    "Shared conversations now render data attachments inline instead of hiding them behind CSV downloads, so table outputs can be inspected on mobile."
+  ],
+  "public": true
+}

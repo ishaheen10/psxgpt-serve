@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-admin-database-panel-navigation",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 4,
+  "tag": "improvement",
+  "title": "Clarified the admin database panel access path",
+  "points": [
+    "The public Database docs now explain the split between the public corpus health summary and the admin-only operator matrix at /admin/data-quality.",
+    "The admin Database Health page now labels itself as the operator view, links back to the public Database docs, and no longer displays backend deployment identifiers in the page chrome.",
+    "The admin database panel remains protected for admin accounts and is intentionally accessed by direct URL or trace-viewer context rather than the main app navigation."
+  ],
+  "public": true
+}

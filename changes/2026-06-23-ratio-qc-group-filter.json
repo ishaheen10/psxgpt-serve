@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-ratio-qc-group-filter",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 28,
+  "tag": "fix",
+  "title": "Filtered ratio inputs by clean statement groups",
+  "points": [
+    "Ratios now exclude an entire ticker-period canonical group when any sibling extraction method is QC-flagged, preventing stale LTM methods from using known scale-discontinuous components.",
+    "The production health matrix improved to 70 open flags, 23 yellow cells, and 0 red cells across the latest 12 periods."
+  ],
+  "public": true
+}

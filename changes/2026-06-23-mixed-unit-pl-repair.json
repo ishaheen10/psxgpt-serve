@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-mixed-unit-pl-repair",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 19,
+  "tag": "fix",
+  "title": "Repaired mixed-unit profit-and-loss scaling",
+  "points": [
+    "Pipeline normalization now treats extracted unit labels containing both `thousands` and `millions` as thousands while preserving the raw ambiguity warning for audit visibility.",
+    "Rebuilt and published profit-and-loss statements, ratios, and quality flags after correcting ASL March and June 2024 P&L rows that had been affected by inconsistent mixed-unit scaling.",
+    "Production quality flags now show one open unit-or-scale ratio warning, down from three, with ASL and BGL removed from that user-facing warning class."
+  ],
+  "public": true
+}

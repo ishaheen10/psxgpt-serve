@@ -1,0 +1,4590 @@
+{
+  "version": 1,
+  "generated_from": "gold-50.json",
+  "case_count": 81,
+  "cases": [
+    {
+      "id": "q001_a01",
+      "qid": "q001",
+      "query": "For UBL show net profit trend over last 6 quarters.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "net profit trend over the last 6 quarterly periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "net profit",
+            "profit"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q002_a01",
+      "qid": "q002",
+      "query": "For HBL compute ROE trend over last 5 years.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "ratios",
+        "tickers": [
+          "HBL"
+        ],
+        "ratio_names": [
+          "roe"
+        ],
+        "ask": "ROE trend for the last 5 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "ratio_name",
+            "value"
+          ],
+          "preferred_headers": [
+            "period_duration",
+            "section"
+          ],
+          "semantic_targets": [
+            "roe"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q003_a01",
+      "qid": "q003",
+      "query": "For MCB show deposits and advances for last 8 quarters.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "MCB"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "deposits and advances trend over the last 8 quarterly periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MCB"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "deposits",
+            "advances"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q004_a01",
+      "qid": "q004",
+      "query": "For NBP calculate cost-to-income trend over last 4 years.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "NBP"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "cost-to-income trend for the last 4 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "NBP"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 12,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "cost-to-income",
+            "operating expenses",
+            "total income"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q005_a01",
+      "qid": "q005",
+      "query": "For MEBL show quarterly EPS and revenue trend over last 8 quarters.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "MEBL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "EPS and revenue trend over the last 8 quarterly periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MEBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "revenue",
+            "eps"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q006_a01",
+      "qid": "q006",
+      "query": "For LUCK calculate gross margin trend over last 5 years.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "ratios",
+        "tickers": [
+          "LUCK"
+        ],
+        "ratio_names": [
+          "gross_margin"
+        ],
+        "ask": "gross margin trend for the last 5 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "LUCK"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "ratio_name",
+            "value"
+          ],
+          "preferred_headers": [
+            "period_duration",
+            "section"
+          ],
+          "semantic_targets": [
+            "gross_margin"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q007_a01",
+      "qid": "q007",
+      "query": "For ENGRO compare revenue and net profit trend over last 5 years.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "ENGRO"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "revenue and net profit trend for the last 5 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ENGRO"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 12,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "revenue",
+            "net profit",
+            "profit"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q008_a01",
+      "qid": "q008",
+      "query": "For FFC compute dividend yield and PE trend over last 12 months.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "market_data",
+        "tickers": [
+          "FFC"
+        ],
+        "ask": "dividend yield and PE ratio trend over the last 12 months"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "FFC"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "date",
+            "pe_ratio",
+            "dividend_yield"
+          ],
+          "preferred_headers": [
+            "fundamentals_period_end"
+          ],
+          "semantic_targets": [
+            "dividend_yield",
+            "pe_ratio"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q009_a01",
+      "qid": "q009",
+      "query": "For PSO show operating cash flow trend over last 4 years.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "PSO"
+        ],
+        "statement_types": [
+          "cash_flow"
+        ],
+        "ask": "operating cash flow trend for the last 4 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "PSO"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "operating cash flow"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q010_a01",
+      "qid": "q010",
+      "query": "For HUBC show profit trend over last 6 quarters.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "HUBC"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "profit trend over the last 6 quarterly periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HUBC"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "profit"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q011_a01",
+      "qid": "q011",
+      "query": "For UBL calculate 5-year deposit growth and explain drivers from directors report.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "deposits trend for the last 5 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "deposits"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q011_a02",
+      "qid": "q011",
+      "query": "For UBL calculate 5-year deposit growth and explain drivers from directors report.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "deposit strategy",
+          "deposit growth",
+          "funding strategy",
+          "low-cost deposits"
+        ],
+        "ask": "directors report discussion of deposit growth drivers across the last 5 annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 5,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "deposit strategy",
+            "deposit growth",
+            "funding strategy",
+            "low-cost deposits"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q012_a01",
+      "qid": "q012",
+      "query": "For HBL compute 5-year ROE trend and summarize commentary on margins from annual reports.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "ratios",
+        "tickers": [
+          "HBL"
+        ],
+        "ratio_names": [
+          "roe"
+        ],
+        "ask": "ROE trend for the last 5 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "ratio_name",
+            "value"
+          ],
+          "preferred_headers": [
+            "period_duration",
+            "section"
+          ],
+          "semantic_targets": [
+            "roe"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q012_a02",
+      "qid": "q012",
+      "query": "For HBL compute 5-year ROE trend and summarize commentary on margins from annual reports.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "margin pressure",
+          "cost of funds",
+          "spread",
+          "profitability"
+        ],
+        "ask": "management commentary on margins across the last 5 annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 5,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "margin pressure",
+            "cost of funds",
+            "spread",
+            "profitability"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q013_a01",
+      "qid": "q013",
+      "query": "For MEBL compute cost-to-income trend and pull qualitative discussion on digital banking growth.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "MEBL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "cost-to-income trend for the last 3 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MEBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 9,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "cost-to-income",
+            "operating expenses",
+            "total income"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q013_a02",
+      "qid": "q013",
+      "query": "For MEBL compute cost-to-income trend and pull qualitative discussion on digital banking growth.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MEBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "digital banking",
+          "mobile banking",
+          "strategy",
+          "growth"
+        ],
+        "ask": "management discussion of digital banking growth in the latest annual report"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MEBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "digital banking",
+            "mobile banking",
+            "strategy",
+            "growth"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q014_a01",
+      "qid": "q014",
+      "query": "For LUCK calculate 5-year gross margin trend and summarize capacity expansion commentary from filings.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "ratios",
+        "tickers": [
+          "LUCK"
+        ],
+        "ratio_names": [
+          "gross_margin"
+        ],
+        "ask": "gross margin trend for the last 5 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "LUCK"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "ratio_name",
+            "value"
+          ],
+          "preferred_headers": [
+            "period_duration",
+            "section"
+          ],
+          "semantic_targets": [
+            "gross_margin"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q014_a02",
+      "qid": "q014",
+      "query": "For LUCK calculate 5-year gross margin trend and summarize capacity expansion commentary from filings.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "LUCK"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "capacity expansion",
+          "capacity utilization",
+          "clinker",
+          "growth project"
+        ],
+        "ask": "management commentary on capacity expansion across recent filings"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "LUCK"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 5,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "capacity expansion",
+            "capacity utilization",
+            "clinker",
+            "growth project"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q015_a01",
+      "qid": "q015",
+      "query": "For PSO compute 4-year operating cash flow trend and explain working-capital commentary from filings.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "PSO"
+        ],
+        "statement_types": [
+          "cash_flow"
+        ],
+        "ask": "operating cash flow trend for the last 4 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "PSO"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "operating cash flow"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q015_a02",
+      "qid": "q015",
+      "query": "For PSO compute 4-year operating cash flow trend and explain working-capital commentary from filings.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "PSO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "working capital",
+          "receivables",
+          "inventory",
+          "cash flow"
+        ],
+        "ask": "management commentary on working capital across recent filings"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "PSO"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 4,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "working capital",
+            "receivables",
+            "inventory",
+            "cash flow"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q016_a01",
+      "qid": "q016",
+      "query": "Compare HUBC and KAPCO on profitability trend and extract guidance language from latest filings.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "profitability trend for the last 3 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 6,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "profitability"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q016_a02",
+      "qid": "q016",
+      "query": "Compare HUBC and KAPCO on profitability trend and extract guidance language from latest filings.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "guidance",
+          "outlook",
+          "future outlook",
+          "strategy"
+        ],
+        "ask": "guidance language from the latest annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 2,
+          "preferred_source_ids": 4,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "guidance",
+            "outlook",
+            "future outlook",
+            "strategy"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q017_a01",
+      "qid": "q017",
+      "query": "For NBP compute deposit growth from 2020 to latest period and summarize directors explanation.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "NBP"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "deposits trend from 2020 to the latest annual period"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "NBP"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 1,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "deposits"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q017_a02",
+      "qid": "q017",
+      "query": "For NBP compute deposit growth from 2020 to latest period and summarize directors explanation.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "NBP"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "deposit growth",
+          "funding strategy",
+          "low-cost deposits",
+          "deposit mix"
+        ],
+        "ask": "directors report explanation of deposit growth"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "NBP"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "deposit growth",
+            "funding strategy",
+            "low-cost deposits",
+            "deposit mix"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q018_a01",
+      "qid": "q018",
+      "query": "For ENGRO show revenue CAGR over 3 years and summarize management outlook from annual report.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "ENGRO"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "revenue CAGR over the last 3 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ENGRO"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 3,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "revenue"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q018_a02",
+      "qid": "q018",
+      "query": "For ENGRO show revenue CAGR over 3 years and summarize management outlook from annual report.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "ENGRO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "outlook",
+          "guidance",
+          "future prospects",
+          "strategy"
+        ],
+        "ask": "management outlook from the latest annual report"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ENGRO"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 3,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "outlook",
+            "guidance",
+            "future prospects",
+            "strategy"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q019_a01",
+      "qid": "q019",
+      "query": "For EFERT show margin trend over last 4 years and extract risk commentary from filings.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "EFERT"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "margin trend for the last 4 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "EFERT"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "margin"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q019_a02",
+      "qid": "q019",
+      "query": "For EFERT show margin trend over last 4 years and extract risk commentary from filings.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "EFERT"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "risk",
+          "key risks",
+          "gas supply",
+          "demand outlook"
+        ],
+        "ask": "risk commentary from recent filings"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "EFERT"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 4,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "risk",
+            "key risks",
+            "gas supply",
+            "demand outlook"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q020_a01",
+      "qid": "q020",
+      "query": "For MARI show earnings trend over last 6 quarters and summarize production commentary from filings.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "MARI"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "earnings trend over the last 6 quarterly periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MARI"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "profit"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q020_a02",
+      "qid": "q020",
+      "query": "For MARI show earnings trend over last 6 quarters and summarize production commentary from filings.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MARI"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "production",
+          "output",
+          "field performance",
+          "guidance"
+        ],
+        "ask": "production commentary from recent filings"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MARI"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 6,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "quarterly",
+          "semantic_targets": [
+            "production",
+            "output",
+            "field performance",
+            "guidance"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q021_a01",
+      "qid": "q021",
+      "query": "Top 5 banks by latest deposits.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "latest deposits for Banking companies"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 48,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "deposits"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q022_a01",
+      "qid": "q022",
+      "query": "Top 5 banks by latest CASA/deposit ratio and explain funding strategy from directors report.",
+      "ask_index": 1,
+      "benchmark_type": "exploratory",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "posture": "numeric",
+        "concepts": [
+          "CASA",
+          "current accounts",
+          "savings accounts",
+          "deposit mix",
+          "low-cost deposits"
+        ],
+        "ask": "latest CASA mix and deposit ratio for Banking companies"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 14,
+          "preferred_source_ids": 14,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "CASA",
+            "current accounts",
+            "savings accounts",
+            "deposit mix",
+            "low-cost deposits"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q022_a02",
+      "qid": "q022",
+      "query": "Top 5 banks by latest CASA/deposit ratio and explain funding strategy from directors report.",
+      "ask_index": 2,
+      "benchmark_type": "exploratory",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "funding strategy",
+          "deposit strategy",
+          "low-cost deposits",
+          "funding mix"
+        ],
+        "ask": "directors report discussion of funding strategy in the latest annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 14,
+          "preferred_source_ids": 14,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "funding strategy",
+            "deposit strategy",
+            "low-cost deposits",
+            "funding mix"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q023_a01",
+      "qid": "q023",
+      "query": "Top 3 cement companies by 3-year revenue growth.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "industry": "Cement",
+        "tickers": [
+          "BWCL",
+          "CHCC",
+          "DGKC",
+          "FCCL",
+          "KOHC",
+          "LUCK",
+          "MLCF",
+          "PIOC",
+          "THCCL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "3-year revenue growth for Cement companies"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "BWCL",
+          "CHCC",
+          "DGKC",
+          "FCCL",
+          "KOHC",
+          "LUCK",
+          "MLCF",
+          "PIOC",
+          "THCCL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 27,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "revenue"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q024_a01",
+      "qid": "q024",
+      "query": "Top 3 fertilizer firms by net profit growth over last 3 years.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "industry": "Fertilizer",
+        "tickers": [
+          "EFERT",
+          "FATIMA",
+          "FFBL",
+          "FFC"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "net profit growth over the last 3 annual periods for Fertilizer companies"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "EFERT",
+          "FATIMA",
+          "FFBL",
+          "FFC"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 12,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "net profit"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q025_a01",
+      "qid": "q025",
+      "query": "Largest banks by total assets and summarize their funding commentary.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "latest total assets for Banking companies"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 14,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "total assets"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q025_a02",
+      "qid": "q025",
+      "query": "Largest banks by total assets and summarize their funding commentary.",
+      "ask_index": 2,
+      "benchmark_type": "exploratory",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "funding strategy",
+          "deposit mix",
+          "low-cost deposits",
+          "borrowings"
+        ],
+        "ask": "funding commentary from the latest annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 14,
+          "preferred_source_ids": 14,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "funding strategy",
+            "deposit mix",
+            "low-cost deposits",
+            "borrowings"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q026_a01",
+      "qid": "q026",
+      "query": "Top 5 companies by market cap and their latest PE ratio.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "market_data",
+        "ask": "latest market cap and PE ratio"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 40,
+          "must_include_headers": [
+            "ticker",
+            "date",
+            "market_cap",
+            "pe_ratio"
+          ],
+          "preferred_headers": [
+            "fundamentals_period_end"
+          ],
+          "semantic_targets": [
+            "market_cap",
+            "pe_ratio"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q027_a01",
+      "qid": "q027",
+      "query": "Top 3 textile firms by net profit growth and summarize export-demand commentary from annual reports.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "industry": "Textile",
+        "tickers": [
+          "BNWM",
+          "GADT",
+          "IBFL",
+          "ILP",
+          "KTML",
+          "MEHT",
+          "NCL",
+          "YOUW"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "net profit growth over the last 3 annual periods for Textile companies"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "BNWM",
+          "GADT",
+          "IBFL",
+          "ILP",
+          "KTML",
+          "MEHT",
+          "NCL",
+          "YOUW"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 24,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "net profit"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q027_a02",
+      "qid": "q027",
+      "query": "Top 3 textile firms by net profit growth and summarize export-demand commentary from annual reports.",
+      "ask_index": 2,
+      "benchmark_type": "exploratory",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "industry": "Textile",
+        "tickers": [
+          "BNWM",
+          "GADT",
+          "IBFL",
+          "ILP",
+          "KTML",
+          "MEHT",
+          "NCL",
+          "YOUW"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "export demand",
+          "exports",
+          "orders",
+          "outlook"
+        ],
+        "ask": "export-demand commentary from annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "BNWM",
+          "GADT",
+          "IBFL",
+          "ILP",
+          "KTML",
+          "MEHT",
+          "NCL",
+          "YOUW"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 8,
+          "preferred_source_ids": 10,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "export demand",
+            "exports",
+            "orders",
+            "outlook"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q028_a01",
+      "qid": "q028",
+      "query": "Largest power producers by revenue over last year and extract guidance from latest filings.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "industry": "Power",
+        "tickers": [
+          "HUBC",
+          "KAPCO",
+          "KEL",
+          "NCPL",
+          "NPL",
+          "PKGP",
+          "SPWL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "latest annual revenue for Power companies"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HUBC",
+          "KAPCO",
+          "KEL",
+          "NCPL",
+          "NPL",
+          "PKGP",
+          "SPWL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 7,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "revenue"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q028_a02",
+      "qid": "q028",
+      "query": "Largest power producers by revenue over last year and extract guidance from latest filings.",
+      "ask_index": 2,
+      "benchmark_type": "exploratory",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "industry": "Power",
+        "tickers": [
+          "HUBC",
+          "KAPCO",
+          "KEL",
+          "NCPL",
+          "NPL",
+          "PKGP",
+          "SPWL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "guidance",
+          "outlook",
+          "capacity utilization",
+          "generation"
+        ],
+        "ask": "guidance from the latest filings"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HUBC",
+          "KAPCO",
+          "KEL",
+          "NCPL",
+          "NPL",
+          "PKGP",
+          "SPWL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 7,
+          "preferred_source_ids": 10,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "guidance",
+            "outlook",
+            "capacity utilization",
+            "generation"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q029_a01",
+      "qid": "q029",
+      "query": "Top 5 banks by advances growth over last 4 quarters.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "advances growth over the last 4 quarterly periods for Banking companies"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 48,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "advances"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q030_a01",
+      "qid": "q030",
+      "query": "Top 5 companies by latest dividend yield.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "market_data",
+        "ask": "latest dividend yield"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 20,
+          "must_include_headers": [
+            "ticker",
+            "date",
+            "dividend_yield"
+          ],
+          "preferred_headers": [
+            "fundamentals_period_end"
+          ],
+          "semantic_targets": [
+            "dividend_yield"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q031_a01",
+      "qid": "q031",
+      "query": "Summarize directors report commentary for UBL on deposit strategy.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "deposit strategy",
+          "funding strategy",
+          "deposit mix",
+          "low-cost deposits"
+        ],
+        "ask": "directors report commentary on deposit strategy"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "deposit strategy",
+            "funding strategy",
+            "deposit mix",
+            "low-cost deposits"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q032_a01",
+      "qid": "q032",
+      "query": "What did HBL management say about margin pressure in the latest annual report?",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "margin pressure",
+          "cost of funds",
+          "spread",
+          "profitability"
+        ],
+        "ask": "management commentary on margin pressure in the latest annual report"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "margin pressure",
+            "cost of funds",
+            "spread",
+            "profitability"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q033_a01",
+      "qid": "q033",
+      "query": "Extract guidance language from HUBC latest filing.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HUBC"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "guidance",
+          "outlook",
+          "future outlook",
+          "strategy"
+        ],
+        "ask": "guidance language from the latest filing"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HUBC"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "guidance",
+            "outlook",
+            "future outlook",
+            "strategy"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q034_a01",
+      "qid": "q034",
+      "query": "From PSO annual report, summarize commentary on working capital and receivables.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "PSO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "working capital",
+          "receivables",
+          "liquidity",
+          "cash flow"
+        ],
+        "ask": "commentary on working capital and receivables from the annual report"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "PSO"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "working capital",
+            "receivables",
+            "liquidity",
+            "cash flow"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q035_a01",
+      "qid": "q035",
+      "query": "For MEBL, summarize digital banking strategy from directors report over last 2 years.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MEBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "digital banking",
+          "mobile banking",
+          "strategy",
+          "customer adoption"
+        ],
+        "ask": "directors report discussion of digital banking strategy across the last 2 annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MEBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "digital banking",
+            "mobile banking",
+            "strategy",
+            "customer adoption"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q036_a01",
+      "qid": "q036",
+      "query": "For ENGRO, summarize key risks discussed in latest filing.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "ENGRO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "key risks",
+          "principal risks",
+          "business risk",
+          "risk management"
+        ],
+        "ask": "key risks discussed in the latest filing"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ENGRO"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "key risks",
+            "principal risks",
+            "business risk",
+            "risk management"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q037_a01",
+      "qid": "q037",
+      "query": "For LUCK, what does management say about capacity utilization?",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "LUCK"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "capacity utilization",
+          "clinker",
+          "cement demand",
+          "operations"
+        ],
+        "ask": "management commentary on capacity utilization"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "LUCK"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "capacity utilization",
+            "clinker",
+            "cement demand",
+            "operations"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q038_a01",
+      "qid": "q038",
+      "query": "For EFERT, summarize export and demand commentary from latest annual report.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "EFERT"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "export demand",
+          "domestic demand",
+          "urea demand",
+          "market outlook"
+        ],
+        "ask": "export and demand commentary from the latest annual report"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "EFERT"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "export demand",
+            "domestic demand",
+            "urea demand",
+            "market outlook"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q039_a01",
+      "qid": "q039",
+      "query": "For NBP, summarize loan mix commentary from directors report.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "NBP"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "loan mix",
+          "advances mix",
+          "sectoral concentration",
+          "credit portfolio"
+        ],
+        "ask": "directors report commentary on loan mix"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "NBP"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "loan mix",
+            "advances mix",
+            "sectoral concentration",
+            "credit portfolio"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q040_a01",
+      "qid": "q040",
+      "query": "For KAPCO, extract forward-looking statements from the latest filing.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "KAPCO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "forward-looking",
+          "outlook",
+          "guidance",
+          "going forward"
+        ],
+        "ask": "forward-looking statements from the latest filing"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "KAPCO"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": false,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "forward-looking",
+            "outlook",
+            "guidance",
+            "going forward"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q041_a01",
+      "qid": "q041",
+      "query": "Compare UBL and HBL deposits trend over last 6 quarters.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL",
+          "HBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "deposits trend over the last 6 quarterly periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "UBL",
+          "HBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "deposits"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q042_a01",
+      "qid": "q042",
+      "query": "Compare ENGRO, FFC, EFERT on 3-year revenue CAGR.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "ENGRO",
+          "FFC",
+          "EFERT"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "revenue CAGR over the last 3 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ENGRO",
+          "FFC",
+          "EFERT"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 9,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "revenue"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q043_a01",
+      "qid": "q043",
+      "query": "Compare HUBC and KAPCO PE ratio trend over last 12 months.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "market_data",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "ask": "PE ratio trend over the last 12 months"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "date",
+            "pe_ratio"
+          ],
+          "preferred_headers": [
+            "fundamentals_period_end"
+          ],
+          "semantic_targets": [
+            "pe_ratio"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q044_a01",
+      "qid": "q044",
+      "query": "Compare UBL, MCB, and MEBL cost-to-income trend over last 4 years.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL",
+          "MCB",
+          "MEBL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "cost-to-income trend for the last 4 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "UBL",
+          "MCB",
+          "MEBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 36,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "cost-to-income",
+            "operating expenses",
+            "total income"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q045_a01",
+      "qid": "q045",
+      "query": "Compare PSO and APL on operating cash flow trend over last 4 years.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "PSO",
+          "APL"
+        ],
+        "statement_types": [
+          "cash_flow"
+        ],
+        "ask": "operating cash flow trend for the last 4 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "PSO",
+          "APL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "operating cash flow"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q046_a01",
+      "qid": "q046",
+      "query": "Compare HBL and UBL and summarize differences in funding commentary from latest reports.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HBL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "funding strategy",
+          "deposit mix",
+          "low-cost deposits",
+          "funding commentary"
+        ],
+        "ask": "differences in funding commentary from the latest annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HBL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 2,
+          "preferred_source_ids": 4,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "funding strategy",
+            "deposit mix",
+            "low-cost deposits",
+            "funding commentary"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q047_a01",
+      "qid": "q047",
+      "query": "Compare LUCK and DGKC on gross margin trend and extract demand outlook commentary.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "ratios",
+        "tickers": [
+          "LUCK",
+          "DGKC"
+        ],
+        "ratio_names": [
+          "gross_margin"
+        ],
+        "ask": "gross margin trend for the last 3 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "LUCK",
+          "DGKC"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 6,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "ratio_name",
+            "value"
+          ],
+          "preferred_headers": [
+            "period_duration",
+            "section"
+          ],
+          "semantic_targets": [
+            "gross_margin"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q047_a02",
+      "qid": "q047",
+      "query": "Compare LUCK and DGKC on gross margin trend and extract demand outlook commentary.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "LUCK",
+          "DGKC"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "demand outlook",
+          "cement demand",
+          "future outlook",
+          "domestic demand"
+        ],
+        "ask": "demand outlook commentary from recent annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "LUCK",
+          "DGKC"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 2,
+          "preferred_source_ids": 4,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "demand outlook",
+            "cement demand",
+            "future outlook",
+            "domestic demand"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q048_a01",
+      "qid": "q048",
+      "query": "Compare ENGRO and EFERT profitability trend and summarize management guidance.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "ENGRO",
+          "EFERT"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "profitability trend for the last 3 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ENGRO",
+          "EFERT"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 6,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "profitability"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q048_a02",
+      "qid": "q048",
+      "query": "Compare ENGRO and EFERT profitability trend and summarize management guidance.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "ENGRO",
+          "EFERT"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "guidance",
+          "outlook",
+          "strategy",
+          "future prospects"
+        ],
+        "ask": "management guidance from recent annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ENGRO",
+          "EFERT"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 2,
+          "preferred_source_ids": 4,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "guidance",
+            "outlook",
+            "strategy",
+            "future prospects"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q049_a01",
+      "qid": "q049",
+      "query": "Compare MEBL and UBL loan growth trend and summarize digital strategy commentary.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "MEBL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "advances trend for the last 4 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MEBL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "advances"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q049_a02",
+      "qid": "q049",
+      "query": "Compare MEBL and UBL loan growth trend and summarize digital strategy commentary.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MEBL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "digital strategy",
+          "digital banking",
+          "mobile banking",
+          "customer adoption"
+        ],
+        "ask": "digital strategy commentary from recent annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MEBL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 2,
+          "preferred_source_ids": 4,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "digital strategy",
+            "digital banking",
+            "mobile banking",
+            "customer adoption"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q050_a01",
+      "qid": "q050",
+      "query": "Compare HUBC and KAPCO earnings trend and summarize forward-looking statements.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "earnings trend for the last 4 annual periods"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "profit"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q050_a02",
+      "qid": "q050",
+      "query": "Compare HUBC and KAPCO earnings trend and summarize forward-looking statements.",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "forward-looking",
+          "outlook",
+          "guidance",
+          "going forward"
+        ],
+        "ask": "forward-looking statements from recent annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 2,
+          "preferred_source_ids": 4,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "forward-looking",
+            "outlook",
+            "guidance",
+            "going forward"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q051_a01",
+      "qid": "q051",
+      "query": "Can you perform a discounted cash flow analysis of UBL",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL"
+        ],
+        "statement_types": [
+          "profit_loss",
+          "balance_sheet",
+          "cash_flow"
+        ],
+        "ask": "historical financial model inputs for UBL discounted cash flow analysis"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "historical",
+            "financial",
+            "model",
+            "inputs"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q051_a02",
+      "qid": "q051",
+      "query": "Can you perform a discounted cash flow analysis of UBL",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "market_data",
+        "tickers": [
+          "UBL"
+        ],
+        "ask": "latest market price, total shares, market cap, PE, PB, dividend yield, and enterprise value for valuation context"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 2,
+          "must_include_headers": [
+            "ticker",
+            "date",
+            "market_cap",
+            "dividend_yield",
+            "enterprise_value"
+          ],
+          "preferred_headers": [
+            "fundamentals_period_end"
+          ],
+          "semantic_targets": [
+            "dividend_yield",
+            "market_cap"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q051_a03",
+      "qid": "q051",
+      "query": "Can you perform a discounted cash flow analysis of UBL",
+      "ask_index": 3,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "future outlook",
+          "funding strategy",
+          "capital adequacy",
+          "asset quality",
+          "NPL",
+          "deposit mix",
+          "dividend policy",
+          "risk"
+        ],
+        "ask": "management outlook, funding strategy, capital adequacy, asset quality, and risks relevant to DCF assumptions"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "future outlook",
+            "funding strategy",
+            "capital adequacy",
+            "asset quality",
+            "NPL",
+            "deposit mix",
+            "dividend policy",
+            "risk"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q052_a01",
+      "qid": "q052",
+      "query": "What is the fair value of HALEON",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "HALEON"
+        ],
+        "statement_types": [
+          "profit_loss",
+          "balance_sheet",
+          "cash_flow"
+        ],
+        "ask": "historical financial model inputs for HALEON fair value analysis"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HALEON"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "historical",
+            "financial",
+            "model",
+            "inputs"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q052_a02",
+      "qid": "q052",
+      "query": "What is the fair value of HALEON",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "market_data",
+        "tickers": [
+          "HALEON"
+        ],
+        "ask": "latest market price, total shares, market cap, PE, PB, dividend yield, and enterprise value for valuation context"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HALEON"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 2,
+          "must_include_headers": [
+            "ticker",
+            "date",
+            "market_cap",
+            "dividend_yield",
+            "enterprise_value"
+          ],
+          "preferred_headers": [
+            "fundamentals_period_end"
+          ],
+          "semantic_targets": [
+            "dividend_yield",
+            "market_cap"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q052_a03",
+      "qid": "q052",
+      "query": "What is the fair value of HALEON",
+      "ask_index": 3,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HALEON"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "future outlook",
+          "strategy",
+          "demand",
+          "margins",
+          "cost pressure",
+          "capex",
+          "competition",
+          "risk"
+        ],
+        "ask": "management outlook, business drivers, and risks relevant to fair value assumptions"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "HALEON"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "future outlook",
+            "strategy",
+            "demand",
+            "margins",
+            "cost pressure",
+            "capex",
+            "competition",
+            "risk"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q053_a01",
+      "qid": "q053",
+      "query": "Do a deep research on Systems Limited listed on PSX as SYS. Business quality only, no financials, no valuation.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "SYS"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "customers",
+          "segments",
+          "geography",
+          "contracts",
+          "acquisitions",
+          "competition",
+          "strategy",
+          "risk",
+          "outlook"
+        ],
+        "ask": "business quality evidence from filings, excluding financial statement trend and valuation analysis"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "SYS"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": false,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "customers",
+            "segments",
+            "geography",
+            "contracts",
+            "acquisitions",
+            "competition",
+            "strategy",
+            "risk",
+            "outlook"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q054_a01",
+      "qid": "q054",
+      "query": "Find the top 5 banks by deposits and explain their funding strategy.",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_composed",
+      "ask_object": {
+        "table": "financial_statements",
+        "industry": "Commercial Banks",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SNBL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "rank Commercial Banks by latest deposits and select the top 5"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SNBL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 48,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "deposits"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q054_a02",
+      "qid": "q054",
+      "query": "Find the top 5 banks by deposits and explain their funding strategy.",
+      "ask_index": 2,
+      "benchmark_type": "exploratory",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "industry": "Commercial Banks",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SNBL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "deposit mix",
+          "low-cost deposits",
+          "funding strategy",
+          "CASA",
+          "cost of deposits"
+        ],
+        "ask": "funding strategy commentary for the selected top-deposit banks"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SNBL",
+          "UBL"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 14,
+          "preferred_source_ids": 14,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": null,
+          "semantic_targets": [
+            "deposit mix",
+            "low-cost deposits",
+            "funding strategy",
+            "CASA",
+            "cost of deposits"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q055_a01",
+      "qid": "q055",
+      "query": "Can you compare DGKC and MLCF and give a 360 view of both companies?",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_statements",
+        "tickers": [
+          "DGKC",
+          "MLCF"
+        ],
+        "statement_types": [
+          "profit_loss",
+          "balance_sheet",
+          "cash_flow"
+        ],
+        "ask": "historical financial model inputs for a 360 view comparison"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "DGKC",
+          "MLCF"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": true
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 8,
+          "must_include_headers": [
+            "ticker",
+            "period_end",
+            "value"
+          ],
+          "preferred_headers": [
+            "canonical_name",
+            "statement_type",
+            "source_pages",
+            "source_url"
+          ],
+          "semantic_targets": [
+            "historical",
+            "financial",
+            "model",
+            "inputs"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q055_a02",
+      "qid": "q055",
+      "query": "Can you compare DGKC and MLCF and give a 360 view of both companies?",
+      "ask_index": 2,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "market_data",
+        "tickers": [
+          "DGKC",
+          "MLCF"
+        ],
+        "ask": "latest market price, market cap, PE, PB, dividend yield, and enterprise value for comparison"
+      },
+      "expect": {
+        "artifact_kind": "structured",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "DGKC",
+          "MLCF"
+        ],
+        "context_contract": {
+          "analyst_payload": "analysis_attachment",
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_rows": 1,
+          "preferred_min_rows": 4,
+          "must_include_headers": [
+            "ticker",
+            "date",
+            "market_cap",
+            "dividend_yield",
+            "enterprise_value"
+          ],
+          "preferred_headers": [
+            "fundamentals_period_end"
+          ],
+          "semantic_targets": [
+            "dividend_yield",
+            "market_cap"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "flat_select",
+          "avoid_unnecessary_cte": true,
+          "avoid_unnecessary_windows": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q055_a03",
+      "qid": "q055",
+      "query": "Can you compare DGKC and MLCF and give a 360 view of both companies?",
+      "ask_index": 3,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "DGKC",
+          "MLCF"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "growth drivers",
+          "future outlook",
+          "management plans",
+          "cement demand",
+          "capacity utilization",
+          "margins",
+          "risk",
+          "strategy"
+        ],
+        "ask": "growth drivers, future outlook, management plans, strategy, and risks from recent annual reports"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "DGKC",
+          "MLCF"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": true,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 2,
+          "preferred_source_ids": 4,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "growth drivers",
+            "future outlook",
+            "management plans",
+            "cement demand",
+            "capacity utilization",
+            "margins",
+            "risk",
+            "strategy"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    },
+    {
+      "id": "q056_a01",
+      "qid": "q056",
+      "query": "fixed asset schedule for maple leaf cement",
+      "ask_index": 1,
+      "benchmark_type": "retrieval_clear",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MLCF"
+        ],
+        "posture": "numeric",
+        "concepts": [
+          "fixed assets",
+          "property plant equipment",
+          "capital work in progress",
+          "additions",
+          "disposals",
+          "depreciation"
+        ],
+        "ask": "fixed asset schedule and related notes from the latest annual report"
+      },
+      "expect": {
+        "artifact_kind": "narrative",
+        "must_submit": true,
+        "must_cover_tickers": [
+          "MLCF"
+        ],
+        "context_contract": {
+          "analyst_payload": "source_pages",
+          "prefer_extractions": false,
+          "provenance_separate": false
+        },
+        "ideal_output": {
+          "min_source_ids": 1,
+          "preferred_source_ids": 2,
+          "min_sources_per_ticker": 1,
+          "preferred_filing_type": "annual",
+          "semantic_targets": [
+            "fixed assets",
+            "property plant equipment",
+            "capital work in progress",
+            "additions",
+            "disposals",
+            "depreciation"
+          ]
+        },
+        "sql_preferences": {
+          "simplicity": "simple_if_possible",
+          "preferred_shape": "fts_flat_select",
+          "avoid_redundant_discovery": true,
+          "complexity_budget": "minimal"
+        }
+      }
+    }
+  ]
+}

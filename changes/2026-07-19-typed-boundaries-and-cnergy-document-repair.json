@@ -1,0 +1,17 @@
+{
+  "id": "2026-07-19-typed-boundaries-and-cnergy-document-repair",
+  "date": "2026-07-19",
+  "system": "engine",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Made entity, selector, comparison, and document-QC boundaries explicit",
+  "points": [
+    "Router traces now persist typed entity-resolution context so topic acronyms such as SPM do not displace valid company scope or create false unresolved-ticker incidents.",
+    "Peer selectors now pass their evidence-backed selected tickers to dependent valuation and filing lanes without being discarded by broad-universe metadata.",
+    "Dependent filing lanes now disclose partial peer coverage instead of failing and discarding valid pages when some selected companies have no matching commentary.",
+    "Shared comparison tables provide deterministic minimum, maximum, availability, and period-basis facts to the Analyst, with one model-authored retry when conclusions contradict those facts.",
+    "Latest bank deposits retain their point-in-time basis and are no longer described as annual solely because of their period-end date.",
+    "The CNERGY 2025 fixed-asset page was reparsed from the source PDF, correcting a shifted safety-and-lab-equipment written-down value, and the refreshed 989-page CNERGY corpus was published to D1 behind a deterministic negative-WDV quarantine check."
+  ],
+  "public": true
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2026-09-07-context-and-selection",
+  "date": "2026-09-07",
+  "system": "engine",
+  "seq": 2,
+  "tag": "improvement",
+  "title": "Source context, bounded company selection and web research",
+  "points": [
+    "The test research engine keeps a shared Pakistan company scope and can select companies before independent sections gather context and stream answers.",
+    "A small source-page index supports filtering reported deposits, assets and equity; PSX market capitalization remains as supplied. Initial filing coverage is a partial March 2026 bank slice, with gaps shown.",
+    "Tagged-page discovery supplements full-text search. A scoped bank-report pass corrects false statement tags without removing original page text.",
+    "Web discovery is followed by page retrieval, with sources and retrieval dates preserved. Empty evidence cannot trigger an answer from model memory.",
+    "Full statement extraction, precomputed ratios, synthetic LTM periods and financial-model builders remain outside the research path."
+  ],
+  "public": true
+}

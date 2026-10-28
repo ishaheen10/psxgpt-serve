@@ -1,0 +1,23 @@
+{
+  "id": "2026-06-29-evidence-backed-selector-handoffs",
+  "date": "2026-06-29",
+  "system": "engine",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Prevented empty selector lanes from narrowing downstream retrieval",
+  "points": [
+    "Router guidance now treats broad sector initiative searches, such as capacity expansions and commissioning timelines, as independent announcement and filing retrieval rather than a selector-gated chain.",
+    "Narrative lane instructions now require selected tickers to be backed by selected source pages or announcements.",
+    "The orchestrator now ignores selected ticker handoffs from lanes with no evidence rows or pages, preventing empty selector results from dropping downstream company coverage."
+  ],
+  "public": true,
+  "keystones": [
+    {
+      "name": "empty narrative selectors cannot narrow filings",
+      "groups": [
+        ["selected_tickers", "zero-page", "financial_documents_new"],
+        ["psx_announcements", "full sector", "capacity expansion"]
+      ]
+    }
+  ]
+}

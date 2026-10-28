@@ -1,0 +1,48 @@
+{
+  "id": "2026-06-29-mixed-duration-financial-screens",
+  "date": "2026-06-29",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Generalized mixed-duration financial screens and analyst evidence shape",
+  "points": [
+    "Market-wide financial screens that combine balance-sheet strength with annual flow metrics now use a generalized mixed-duration screen contract instead of a one-off low-debt/CFO fallback.",
+    "The screen builder selects each metric on its correct statement basis: latest PIT rows for balance-sheet items and latest annual 12M rows for profit/loss or cash-flow items.",
+    "Screen tables now carry per-metric period fields and a basis note so analyst answers can disclose when leverage and cash-flow evidence come from different statement periods.",
+    "Plain P/E and P/B requests now use the curated valuation_inputs evidence package without also feeding noisy latest-interim net-profit rows into AnalystContext.",
+    "Sector ranking overrides now preserve broad sector market-data coverage instead of appending a duplicate top-10 market selector that can obscure the full peer set.",
+    "Analyst answer cleanup now normalizes valuation multiple glyphs and ROIC horizon titles so final wording matches deterministic coverage notes.",
+    "Router, lane, analyst prompt, spec, and repo skill guidance now document the same contract to reduce future ad hoc screen patches."
+  ],
+  "public": true,
+  "keystones": [
+    {
+      "name": "mixed-duration screen basis is visible",
+      "groups": [
+        ["mixed-duration financial screen", "PIT", "12M"],
+        ["debt to equity", "operating cash flow", "basis note"]
+      ]
+    },
+    {
+      "name": "per-metric periods are preserved",
+      "groups": [
+        ["borrowings_period", "total_equity_period", "cfo_period"],
+        ["balance-sheet metrics", "annual flow metrics"]
+      ]
+    },
+    {
+      "name": "plain valuation inputs avoid interim earnings noise",
+      "groups": [
+        ["valuation_inputs", "annual_net_profit", "market_cap"],
+        ["P/E", "P/B", "interim net profit"]
+      ]
+    },
+    {
+      "name": "sector screens keep the full peer set",
+      "groups": [
+        ["Sugar sector", "market_data", "fed_tickers"],
+        ["sector ranking", "full served peer set"]
+      ]
+    }
+  ]
+}

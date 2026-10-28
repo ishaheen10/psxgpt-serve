@@ -1,0 +1,548 @@
+[
+  {
+    "id": "natf_competitors_preserve_explicit_entity",
+    "query": "What are the competitors for NATF?",
+    "intent": "An explicit valid ticker must survive competitor expansion and cannot be replaced by an adjacent ticker's industry universe.",
+    "expect": {
+      "required_tables": ["market_data"],
+      "required_tickers": ["NATF"],
+      "forbidden_tickers": ["NATM", "SANE"],
+      "min_context_tables": 1,
+      "max_failed_lanes": 0,
+      "answer_terms": ["National Foods"],
+      "forbidden_phrases": ["Data quality notice", "WARNING:"],
+      "allowed_runtime_interventions": ["global_max_period_multi_ticker"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "natf_inconsistent_peer_plan_requires_router_retry",
+    "query": "What are the competitors for NATF?",
+    "intent": "Typed entity-plan validation must reject a Router plan that drops explicit NATF and substitutes the Textile Spinning universe; runtime must not rewrite it.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {
+      "resolution_context": {
+        "company_scope": [{"ticker":"NATF","origin":"explicit_ticker"}],
+        "unresolved_mentions": [],
+        "topic_mentions": []
+      },
+      "asks": [
+        {
+          "id": "wrong_peers",
+          "table": "market_data",
+          "tickers": ["NATM", "SANE"],
+          "industry": "Textile Spinning",
+          "is_selector": true,
+          "ask": "select Nadeem Textile Mills and textile spinning peers"
+        }
+      ]
+    },
+    "expect": {
+      "required_tables": ["market_data"],
+      "required_tickers": ["NATF"],
+      "forbidden_tickers": ["NATM", "SANE"],
+      "min_context_tables": 1,
+      "max_failed_lanes": 0,
+      "required_runtime_interventions": ["router_contract_corrective_retry"],
+      "allowed_runtime_interventions": ["router_contract_corrective_retry", "global_max_period_multi_ticker"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "cnergy_spm_topic_preserves_conversation_scope",
+    "query": "what benefit per barrel in procurement does it get via SPM, what is the chemical plant on its balance sheet",
+    "chat_history": [
+      {"role":"user","content":"tell me interesting facts about cynergico that may be unknown"},
+      {"role":"assistant","content":"Cnergyico PK Limited (CNERGY) operates Pakistan's first Single Point Mooring facility."}
+    ],
+    "intent": "An uppercase facility acronym is topic context and must not erase the Router's conversation-grounded company scope.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {
+      "resolution_context": {
+        "company_scope": [{"ticker":"CNERGY","origin":"conversation"}],
+        "unresolved_mentions": [],
+        "topic_mentions": ["SPM"]
+      },
+      "asks": [
+        {"table":"financial_documents_new","tickers":["CNERGY"],"posture":"numeric","concepts":["SPM","Single Point Mooring","benefit per barrel"],"ask":"quantitative procurement benefit from the SPM facility"},
+        {"table":"financial_documents_new","tickers":["CNERGY"],"posture":"numeric","concepts":["chemical plant","property plant equipment"],"ask":"chemical or petrochemical plant assets in the fixed asset notes"}
+      ]
+    },
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "required_tickers": ["CNERGY"],
+      "forbidden_tickers": ["SPM"],
+      "require_router_plan_preserved": true,
+      "forbidden_runtime_interventions": ["router_contract_corrective_retry"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "competitor_followup_preserves_peer_expansion",
+    "query": "how does the forward PE compare to its competitors?",
+    "chat_history": [
+      {"role":"user","content":"Analyse Systems Limited's recent quarterly results."},
+      {"role":"assistant","content":"Systems Limited (SYS) trades on a premium trailing P/E."}
+    ],
+    "intent": "A competitor follow-up intentionally expands beyond the inherited ticker through an evidence-backed selector.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {
+      "asks": [
+        {"id":"sys_peers","table":"market_data","tickers":["SYS","AVN","NETSOL","TRG"],"industry":"Technology","is_selector":true,"ask":"select SYS and served technology peers for valuation comparison"},
+        {"table":"financial_statements","depends_on":"sys_peers","ask":"valuation_inputs for selected technology peers including trailing P/E inputs"}
+      ]
+    },
+    "expect": {
+      "required_tables": ["market_data","financial_statements"],
+      "required_tickers": ["SYS","AVN","NETSOL","TRG"],
+      "require_router_plan_preserved": true,
+      "allowed_runtime_interventions": ["global_max_period_multi_ticker"],
+      "forbidden_runtime_interventions": ["router_contract_corrective_retry"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "valid_narrative_roic_plan_crosses_runtime_unchanged",
+    "query": "Which companies discuss improving ROIC in their filings?",
+    "intent": "A valid narrative discovery plan must not be replaced by a deterministic ROIC ranking merely because query text contains which companies and ROIC.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {
+      "resolution_context": {"company_scope": [], "unresolved_mentions": [], "topic_mentions": ["PSX", "ROIC"]},
+      "asks": [
+        {
+          "table": "financial_documents_new",
+          "ask": "find filing discussion of improving return on invested capital, capital efficiency, and operating returns across PSX companies",
+          "scope": "market_wide",
+          "posture": "narrative",
+          "concepts": ["return on invested capital", "capital efficiency", "improving returns"]
+        }
+      ]
+    },
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "forbidden_tables": ["roic_screen"],
+      "forbidden_router_intent": "roic_screen",
+      "require_router_plan_preserved": true,
+      "min_context_sources": 3,
+      "forbidden_runtime_interventions": ["router_contract_corrective_retry", "recover_empty_router_plan"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "valid_paraphrased_model_plan_crosses_runtime_unchanged",
+    "query": "Put together a forward operating model for MCB using deposits and provisions.",
+    "intent": "A structurally valid model_build plan is authoritative even when the user's wording is outside a runtime regex vocabulary.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {
+      "intent": "model_build",
+      "ticker": "MCB",
+      "template_id": "bank",
+      "asks": [],
+      "resolution_context": {
+        "company_scope": [{"ticker": "MCB", "origin": "explicit_ticker"}],
+        "unresolved_mentions": [],
+        "topic_mentions": ["financial model"]
+      }
+    },
+    "expect": {
+      "required_tickers": ["MCB"],
+      "required_router_intent": "model_build",
+      "require_router_plan_preserved": true,
+      "require_model_build": true,
+      "min_model_build_attachments": 3,
+      "forbidden_runtime_interventions": ["guard_non_explicit_model_build_intent", "router_contract_corrective_retry"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "empty_roic_plan_uses_typed_recovery_only",
+    "query": "Rank the top 10 PSX companies by ROIC.",
+    "intent": "Query-text compute detection is permitted only as traced recovery from an empty Router plan.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {"asks": []},
+    "expect": {
+      "required_tables": ["roic_screen"],
+      "required_router_intent": "roic_screen",
+      "required_runtime_interventions": ["recover_empty_router_plan"],
+      "forbidden_runtime_interventions": ["router_contract_corrective_retry"],
+      "allowed_runtime_interventions": ["recover_empty_router_plan"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "empty_explicit_model_plan_uses_complete_typed_recovery",
+    "query": "Build me a financial model for MCB.",
+    "intent": "An empty Router result for an explicit model request must recover into typed model ownership without fabricating duplicate retrieval asks or invoking a semantic whole-plan retry.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {"asks": []},
+    "expect": {
+      "required_tables": ["model_build"],
+      "required_tickers": ["MCB"],
+      "required_router_intent": "model_build",
+      "require_model_build": true,
+      "min_model_build_attachments": 3,
+      "required_runtime_interventions": ["recover_empty_router_plan"],
+      "forbidden_runtime_interventions": ["router_contract_corrective_retry"],
+      "allowed_runtime_interventions": ["recover_empty_router_plan"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "efert_fair_price_models_preserve_model_build",
+    "origin_trace_id": "f7259ba5-e684-4e14-9072-3ce62c19cecd",
+    "query": "Can you calculate all possible fair price models for EFERT?",
+    "intent": "Explicit fair-price model language should preserve prompt-pack model_build intent and keep deterministic model attachments.",
+    "expect": {
+      "required_tickers": ["EFERT"],
+      "require_model_build": true,
+      "min_model_build_attachments": 3,
+      "min_context_tables": 3,
+      "min_final_attachments": 3,
+      "answer_terms": ["scenario", "fair value"],
+      "forbid_answer_intervention_categories": ["semantic_rewrite"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbid_citation_selection_fallback": true,
+      "max_duration_ms": 180000,
+      "forbidden_patterns": [
+        "\\b(?:the\\s+)?single fair value is\\s+(?:PKR|Rs\\.?|[0-9])",
+        "\\bdefinitive fair value is\\s+(?:PKR|Rs\\.?|[0-9])"
+      ]
+    }
+  },
+  {
+    "id": "mcb_financial_model_uses_bank_specific_runtime_inputs",
+    "query": "Build a simple financial model for MCB using deposits, net interest income, profit, provisions, and valuation multiples.",
+    "intent": "Explicit bank model-building should keep model_build, but the runtime support lane should be bank-shaped rather than generic industrial cash/debt/capex-first context.",
+    "expect": {
+      "required_tickers": ["MCB"],
+      "require_model_build": true,
+      "min_model_build_attachments": 3,
+      "min_context_tables": 3,
+      "min_final_attachments": 3,
+      "table_terms": ["deposits", "net_interest_income", "provisions"],
+      "answer_terms": ["deposits", "net interest", "provisions"],
+      "forbid_answer_intervention_categories": ["semantic_rewrite"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbid_citation_selection_fallback": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "projected_financials_language_does_not_force_model_build",
+    "query": "What are KOHC projected financials based on the latest trend and management outlook?",
+    "intent": "Vague projection language should not be promoted into deterministic model_build unless the user explicitly asks for a model/fair-price/scenario model.",
+    "expect": {
+      "required_tables": ["financial_statements", "financial_documents_new"],
+      "required_tickers": ["KOHC"],
+      "forbid_model_build": true,
+      "min_context_tables": 1,
+      "min_context_sources": 3,
+      "min_final_attachments": 1,
+      "answer_terms": ["KOHC", "outlook"],
+      "forbid_answer_intervention_categories": ["semantic_rewrite"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbid_citation_selection_fallback": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "roic_screen_uses_upstream_coverage_not_answer_rewrite",
+    "query": "Which companies have the highest ROIC over the last 10 years?",
+    "intent": "ROIC horizon wording should be handled by the screen/context contract, not by a post-answer semantic rewrite.",
+    "expect": {
+      "required_tables": ["roic_screen"],
+      "max_failed_lanes": 0,
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "quality_flags_within_selected_tickers": true,
+      "max_data_quality_flags": 12,
+      "answer_terms": ["ROIC"],
+      "forbid_answer_intervention_categories": ["semantic_rewrite"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbid_citation_selection_fallback": true,
+      "forbidden_phrases": ["by 10-year average ROIC"],
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "roic_screen_drivers_use_dependent_filing_lane",
+    "query": "Rank the top 5 PSX companies by ROIC and explain the drivers from their latest filings.",
+    "intent": "The deterministic screen owns ranking, then its evidence-backed selected tickers scope a dependent narrative filing lane.",
+    "expect": {
+      "required_tables": ["roic_screen", "financial_documents_new"],
+      "min_selected_tickers": 5,
+      "min_context_tables": 1,
+      "min_context_sources": 3,
+      "min_final_attachments": 1,
+      "quality_flags_within_selected_tickers": true,
+      "max_data_quality_flags": 12,
+      "answer_terms": ["ROIC"],
+      "forbid_answer_intervention_categories": ["semantic_rewrite"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbid_citation_selection_fallback": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "closed_compute_corrective_retry_preserves_dependent_narrative",
+    "query": "Rank the top 5 PSX companies by ROIC and explain the drivers from their latest filings.",
+    "intent": "A deliberately invalid whole-plan override must receive a medium-risk Router retry that removes the colliding structured lane while preserving the dependent filing request.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {
+      "intent": "roic_screen",
+      "asks": [
+        {
+          "table": "financial_statements",
+          "ask": "retrieve market-wide ROIC inputs",
+          "scope": "market_wide"
+        },
+        {
+          "table": "financial_documents_new",
+          "ask": "explain operating and capital-efficiency drivers for the selected ROIC leaders from their latest filings",
+          "posture": "narrative",
+          "depends_on": "roic_screen",
+          "concepts": ["operating profit", "capital efficiency", "strategy", "outlook"]
+        }
+      ]
+    },
+    "expect": {
+      "required_tables": ["roic_screen", "financial_documents_new"],
+      "forbidden_tables": ["financial_statements"],
+      "min_selected_tickers": 5,
+      "min_context_tables": 1,
+      "min_context_sources": 3,
+      "required_runtime_interventions": ["router_contract_corrective_retry"],
+      "runtime_intervention_risks": {"router_contract_corrective_retry": "medium"},
+      "quality_flags_within_selected_tickers": true,
+      "max_data_quality_flags": 12,
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "dividend_screen_has_one_compute_owner",
+    "query": "Which five PSX companies have the highest latest dividend yield, and how is the yield calculated?",
+    "intent": "The Router's closed dividend-yield compute must run without a superseded evidence lane or query-text collision.",
+    "expect": {
+      "required_tables": ["dividend_yield_screen"],
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "max_failed_lanes": 0,
+      "quality_flags_within_selected_tickers": true,
+      "max_data_quality_flags": 12,
+      "answer_terms": ["dividend", "yield"],
+      "forbid_answer_intervention_categories": ["semantic_rewrite"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbid_citation_selection_fallback": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "fcf_yield_screen_has_one_compute_owner",
+    "query": "Rank the top 10 PSX companies by free cash flow yield.",
+    "intent": "The Router's closed FCF-yield compute must run as the only owner and disclose its deterministic formula basis.",
+    "expect": {
+      "required_tables": ["fcf_yield_screen"],
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "max_failed_lanes": 0,
+      "quality_flags_within_selected_tickers": true,
+      "max_data_quality_flags": 12,
+      "answer_terms": ["FCF", "yield"],
+      "forbid_answer_intervention_categories": ["semantic_rewrite"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbid_citation_selection_fallback": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "fabl_deposit_breakup_no_unit_semantic_rewrite",
+    "origin_trace_id": "8d02617a-fb3e-4309-92ae-71ffb8eace9a",
+    "query": "Can we find out the breakup for Faysal Bank's individual deposits versus total deposits?",
+    "intent": "Unit handling should come from retrieved tables/source context, not the old post-answer unit-claim softening rewrite.",
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "required_tickers": ["FABL"],
+      "min_context_sources": 6,
+      "min_extracted_sources": 3,
+      "min_context_tables": 1,
+      "min_final_attachments": 1,
+      "context_terms": ["individual", "deposit", "total"],
+      "table_terms": ["individual", "deposit"],
+      "answer_terms": ["deposit", "total"],
+      "forbid_answer_intervention_categories": ["semantic_rewrite"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbid_citation_selection_fallback": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "hubco_alias_runtime_does_not_obstruct_hubc_scope",
+    "origin_trace_id": "2334701e-7e1b-40c1-bb60-220bc11cd9f3",
+    "query": "Can you analyse HUBCO performance and growth factors moving forward?",
+    "intent": "Runtime entity grounding must not mark HUBCO as unresolved when the prompt pack correctly resolves the company alias to HUBC.",
+    "expect": {
+      "required_tables": ["financial_statements", "financial_documents_new"],
+      "required_tickers": ["HUBC"],
+      "min_context_tables": 2,
+      "min_context_sources": 6,
+      "min_final_attachments": 1,
+      "min_final_sources": 1,
+      "answer_terms": ["HUBC", "performance", "growth"],
+      "forbid_answer_intervention_categories": ["semantic_rewrite"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbid_citation_selection_fallback": true,
+      "forbidden_phrases": ["OUT_OF_UNIVERSE", "out of universe", "unresolved ticker", "not in the served universe"],
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "typed_report_inventory_surface_is_plan_owned",
+    "query": "How many annual reports are available in the corpus?",
+    "intent": "The Router selects report inventory through evidence_kind; lane runtime does not infer it from ask prose.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {
+      "resolution_context": {"company_scope": [], "unresolved_mentions": [], "topic_mentions": ["annual reports", "corpus"]},
+      "asks": [{
+        "table": "financial_documents_new",
+        "ask": "count available annual reports by filing period",
+        "scope": "market_wide",
+        "posture": "numeric",
+        "period_cadence": "annual",
+        "evidence_kind": "report_inventory",
+        "coverage_policy": "best_effort",
+        "result_contract": {
+          "kind": "structured_rows",
+          "require_non_empty": true,
+          "require_analytical_value": true,
+          "entity_coverage": "best_effort",
+          "publishes": ["table"]
+        }
+      }]
+    },
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "require_router_plan_preserved": true,
+      "min_context_tables": 1,
+      "max_failed_lanes": 0,
+      "forbidden_runtime_interventions": ["router_contract_corrective_retry", "recover_empty_router_plan"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "empty_non_compute_plan_uses_one_generic_fallback",
+    "query": "Give me an investment-quality overview of NATF with recent financials, valuation, risks, and sources.",
+    "intent": "Empty-plan recovery must not resurrect the old ticker-overview recognizer or fabricate a four-lane incident-specific plan.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {"asks": []},
+    "expect": {
+      "required_tables": ["financial_statements", "financial_documents_new"],
+      "forbidden_tables": ["market_data", "psx_announcements"],
+      "required_tickers": ["NATF"],
+      "required_runtime_interventions": ["recover_empty_router_plan"],
+      "allowed_runtime_interventions": ["recover_empty_router_plan"],
+      "forbidden_runtime_interventions": ["router_contract_corrective_retry"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "typed_mixed_duration_surface_is_plan_owned",
+    "query": "Which companies have low debt and positive operating cash flow?",
+    "intent": "A valid market-wide structured screen remains Router-owned and crosses runtime unchanged.",
+    "router_runtime_mode": "live",
+    "router_plan_override": {
+      "resolution_context": {"company_scope": [], "unresolved_mentions": [], "topic_mentions": ["market", "debt", "operating cash flow"]},
+      "asks": [{
+        "id": "low_leverage_cash_flow",
+        "table": "financial_statements",
+        "ask": "screen companies for low leverage and positive operating cash flow",
+        "scope": "market_wide",
+        "is_selector": true,
+        "statement_types": ["balance_sheet", "cash_flow"],
+        "evidence_kind": "structured_rows",
+        "coverage_policy": "best_effort",
+        "result_contract": {
+          "kind": "structured_rows",
+          "require_non_empty": true,
+          "require_analytical_value": true,
+          "entity_coverage": "best_effort",
+          "publishes": ["table", "selected_tickers"]
+        }
+      }]
+    },
+    "expect": {
+      "required_tables": ["financial_statements"],
+      "require_router_plan_preserved": true,
+      "min_context_tables": 1,
+      "max_failed_lanes": 0,
+      "forbidden_runtime_interventions": ["router_contract_corrective_retry", "recover_empty_router_plan"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "live_report_inventory_router_emits_typed_surface",
+    "query": "How many annual reports are available in the corpus?",
+    "intent": "The live Router must finish with the report-inventory evidence product without runtime query classification.",
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "min_context_tables": 1,
+      "max_failed_lanes": 0,
+      "forbidden_runtime_interventions": ["recover_empty_router_plan"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "live_mixed_duration_router_emits_typed_surface",
+    "query": "Which companies have low debt and positive operating cash flow?",
+    "intent": "The live Router must finish with a market-wide structured statement screen; runtime does not infer it from wording.",
+    "expect": {
+      "required_tables": ["financial_statements"],
+      "min_context_tables": 1,
+      "max_failed_lanes": 0,
+      "forbidden_runtime_interventions": ["recover_empty_router_plan"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "live_router_classifies_spm_as_topic",
+    "query": "For CNERGY, what benefit per barrel comes from SPM?",
+    "intent": "The live Router must echo CNERGY as company scope and SPM as topic context rather than relying on a runtime stoplist.",
+    "expect": {
+      "required_tables": ["financial_documents_new"],
+      "required_tickers": ["CNERGY"],
+      "required_resolution_tickers": ["CNERGY"],
+      "required_topic_mentions": ["SPM"],
+      "forbidden_runtime_interventions": ["recover_empty_router_plan"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "max_duration_ms": 180000
+    }
+  },
+  {
+    "id": "live_router_classifies_unknown_ticker_as_unresolved",
+    "query": "Tell me about BFARGO.",
+    "intent": "The live Router must classify the intended unknown company symbol as unresolved and must not substitute nearby BFAGRO.",
+    "expect": {
+      "required_unresolved_mentions": ["BFARGO"],
+      "forbidden_tickers": ["BFAGRO"],
+      "allow_empty_tables": ["market_data"],
+      "allowed_runtime_interventions": ["apply_entity_grounding"],
+      "forbidden_runtime_interventions": ["recover_empty_router_plan"],
+      "forbid_unallowlisted_high_risk_interventions": true,
+      "forbidden_phrases": ["Barkat Frisian Agro"],
+      "max_duration_ms": 180000
+    }
+  }
+]

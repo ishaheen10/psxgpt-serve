@@ -1,0 +1,251 @@
+{
+  "version": 1,
+  "stage": "financial_documents_new narrative retrieval",
+  "purpose": "Gold cases for optimizing narrative-lane search-word guidance. These cases score whether generated BM25 MATCH terms recover verified filing-note/source pages before analyst synthesis.",
+  "notes": [
+    "The source IDs were verified against production D1 on 2026-06-26.",
+    "Use these as retrieval-stage golds, not router or analyst prose golds.",
+    "For multi-ticker cases, evaluate per-ticker coverage. A global BM25 top-k can pass relevance while failing coverage."
+  ],
+  "cases": [
+    {
+      "id": "fdn_bank_sector_lending_01",
+      "query": "Compare sector lending exposure for HBL, UBL, and BAFL in the latest annual reports.",
+      "evidence_type": "credit_exposure",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["HBL", "UBL", "BAFL"],
+        "posture": "numeric",
+        "concepts": ["sectoral concentration", "credit risk by industry sector", "gross advances"],
+        "ask": "retrieve sector lending exposure pages"
+      },
+      "expected": {
+        "must_cover_tickers": ["HBL", "UBL", "BAFL"],
+        "source_ids_by_ticker": {
+          "HBL": [301315],
+          "UBL": [388314],
+          "BAFL": [256789, 256904]
+        }
+      }
+    },
+    {
+      "id": "fdn_bank_advances_breakdown_02",
+      "query": "Show advances breakdown and NPL coverage pages for MCB and BAHL.",
+      "evidence_type": "credit_exposure",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["MCB", "BAHL"],
+        "posture": "numeric",
+        "concepts": ["advances breakdown", "gross advances", "NPL coverage"],
+        "ask": "retrieve advances breakdown note pages"
+      },
+      "expected": {
+        "must_cover_tickers": ["MCB", "BAHL"],
+        "source_ids_by_ticker": {
+          "MCB": [331825],
+          "BAHL": [260833]
+        }
+      }
+    },
+    {
+      "id": "fdn_bank_repricing_03",
+      "query": "Compare interest-rate risk and repricing gap disclosure for BAHL, BAFL, and MEBL.",
+      "evidence_type": "interest_rate_risk",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["BAHL", "BAFL", "MEBL"],
+        "posture": "numeric",
+        "concepts": ["interest rate risk", "repricing gap", "IRRBB"],
+        "ask": "retrieve interest-rate risk/repricing disclosure"
+      },
+      "expected": {
+        "must_cover_tickers": ["BAHL", "BAFL", "MEBL"],
+        "source_ids_by_ticker": {
+          "BAHL": [260890, 260756],
+          "BAFL": [256793, 256908],
+          "MEBL": [334706]
+        }
+      }
+    },
+    {
+      "id": "fdn_bank_yield_gap_04",
+      "query": "Retrieve yield/interest-rate sensitivity gap pages for HBL, UBL, and MCB.",
+      "evidence_type": "interest_rate_risk",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["HBL", "UBL", "MCB"],
+        "posture": "numeric",
+        "concepts": ["interest rate sensitive assets", "yield rate table", "effective yield"],
+        "ask": "retrieve yield gap and interest-sensitive asset/liability pages"
+      },
+      "expected": {
+        "must_cover_tickers": ["HBL", "UBL", "MCB"],
+        "source_ids_by_ticker": {
+          "HBL": [301101],
+          "UBL": [388375, 388316],
+          "MCB": [331885, 332021]
+        }
+      }
+    },
+    {
+      "id": "fdn_bank_funding_strategy_05",
+      "query": "Compare funding strategy and deposit mix for MCB, BAFL, and BAHL.",
+      "evidence_type": "funding_strategy",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["MCB", "BAFL", "BAHL"],
+        "posture": "narrative",
+        "concepts": ["funding strategy", "deposit mix", "low-cost deposits", "CASA"],
+        "ask": "retrieve funding/deposit strategy pages"
+      },
+      "expected": {
+        "must_cover_tickers": ["MCB", "BAFL", "BAHL"],
+        "source_ids_by_ticker": {
+          "MCB": [331570, 331552],
+          "BAFL": [256448, 256752],
+          "BAHL": [260895, 260761]
+        }
+      }
+    },
+    {
+      "id": "fdn_bank_future_outlook_06",
+      "query": "Find bank future outlook/risk pages for MCB and BAFL.",
+      "evidence_type": "risk_outlook",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["MCB", "BAFL"],
+        "posture": "narrative",
+        "concepts": ["future outlook", "risk management", "monetary policy"],
+        "ask": "retrieve future outlook and risk narrative pages"
+      },
+      "expected": {
+        "must_cover_tickers": ["MCB", "BAFL"],
+        "source_ids_by_ticker": {
+          "MCB": [331551, 331629],
+          "BAFL": [256691, 256673]
+        }
+      }
+    },
+    {
+      "id": "fdn_energy_risk_outlook_07",
+      "query": "Retrieve circular-debt and principal-risk pages for OGDC, PPL, and HUBC.",
+      "evidence_type": "power_risk",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["OGDC", "PPL", "HUBC"],
+        "posture": "narrative",
+        "concepts": ["circular debt", "principal risks", "receivables", "risk opportunity"],
+        "ask": "retrieve energy-sector risk/outlook evidence"
+      },
+      "expected": {
+        "must_cover_tickers": ["OGDC", "PPL", "HUBC"],
+        "source_ids_by_ticker": {
+          "OGDC": [125294, 125371],
+          "PPL": [362215, 362280],
+          "HUBC": [307051, 307328]
+        }
+      }
+    },
+    {
+      "id": "fdn_industrial_outlook_08",
+      "query": "Compare outlook pages for FFC, LUCK, and PAEL.",
+      "evidence_type": "industrial_outlook",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["FFC", "LUCK", "PAEL"],
+        "posture": "narrative",
+        "concepts": ["future outlook", "forward looking", "demand", "capacity utilization"],
+        "ask": "retrieve industrial outlook pages"
+      },
+      "expected": {
+        "must_cover_tickers": ["FFC", "LUCK", "PAEL"],
+        "source_ids_by_ticker": {
+          "FFC": [294483, 294485],
+          "LUCK": [326828, 326829],
+          "PAEL": [126508]
+        }
+      }
+    },
+    {
+      "id": "fdn_ppe_schedule_09",
+      "query": "Retrieve the PPE schedule for LUCK and FFC, including additions and depreciation.",
+      "evidence_type": "ppe_schedule",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["LUCK", "FFC"],
+        "posture": "numeric",
+        "concepts": ["property plant and equipment", "operating fixed assets", "additions", "depreciation"],
+        "ask": "retrieve PPE schedule pages and neighbors"
+      },
+      "expected": {
+        "must_cover_tickers": ["LUCK", "FFC"],
+        "source_ids_by_ticker": {
+          "LUCK": [326956, 326958],
+          "FFC": [294657, 294789, 294791]
+        },
+        "recommended_shaping": [{ "tool": "expand_neighbors", "radius": 2 }]
+      }
+    },
+    {
+      "id": "fdn_ppe_schedule_10",
+      "query": "Retrieve operating fixed asset schedules for OGDC, HUBC, and PAEL.",
+      "evidence_type": "ppe_schedule",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["OGDC", "HUBC", "PAEL"],
+        "posture": "numeric",
+        "concepts": ["operating fixed assets", "accumulated depreciation", "capital work in progress"],
+        "ask": "retrieve PPE/fixed asset schedule pages"
+      },
+      "expected": {
+        "must_cover_tickers": ["OGDC", "HUBC", "PAEL"],
+        "source_ids_by_ticker": {
+          "OGDC": [125358, 125465],
+          "HUBC": [307180, 307258],
+          "PAEL": [126546, 126547]
+        },
+        "recommended_shaping": [{ "tool": "expand_neighbors", "radius": 2 }]
+      }
+    },
+    {
+      "id": "fdn_segment_geography_11",
+      "query": "Retrieve segment and geography disclosures for SYS, ILP, and GATM.",
+      "evidence_type": "segment_geography",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["SYS", "ILP", "GATM"],
+        "posture": "narrative",
+        "concepts": ["performance by segment", "geography", "export sales", "segment information"],
+        "ask": "retrieve segment/geography pages"
+      },
+      "expected": {
+        "must_cover_tickers": ["SYS", "ILP", "GATM"],
+        "source_ids_by_ticker": {
+          "SYS": [383651, 383652, 383650],
+          "ILP": [309843, 309775],
+          "GATM": [184525, 184560]
+        }
+      }
+    },
+    {
+      "id": "fdn_segment_operations_12",
+      "query": "Retrieve business segment disclosure for FFC, PAEL, and OGDC.",
+      "evidence_type": "segment_geography",
+      "ask_object": {
+        "table": "financial_documents_new",
+        "tickers": ["FFC", "PAEL", "OGDC"],
+        "posture": "narrative",
+        "concepts": ["segment reporting", "operating segments", "geographical locations"],
+        "ask": "retrieve segment and operating geography pages"
+      },
+      "expected": {
+        "must_cover_tickers": ["FFC", "PAEL", "OGDC"],
+        "source_ids_by_ticker": {
+          "FFC": [294833, 294764],
+          "PAEL": [126574, 126575],
+          "OGDC": [125405, 125408, 125411]
+        }
+      }
+    }
+  ]
+}

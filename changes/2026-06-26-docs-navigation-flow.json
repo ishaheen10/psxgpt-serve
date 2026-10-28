@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-26-docs-navigation-flow",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 7,
+  "tag": "improvement",
+  "title": "Improved cross-section navigation in public docs",
+  "points": [
+    "The docs now use a single section-flow navigator that shows the intended reading path across overview, pipeline, engine, database, design choices, and changelog.",
+    "Changelog pages now show a bridge back to the docs section the reader came from, plus quick links to the main explanatory sections.",
+    "Docs tab navigation now participates in browser history so back and forward move through docs sections instead of trapping readers in one view.",
+    "Direct browser visits to docs and admin app paths now fall back to the app shell, so shared links do not depend on first loading the home page."
+  ],
+  "public": true
+}

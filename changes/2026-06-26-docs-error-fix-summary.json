@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-error-fix-summary",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 20,
+  "tag": "improvement",
+  "title": "Simplified the error-to-fix docs section",
+  "points": [
+    "Condensed the query-engine error-fix examples into short high-level rows.",
+    "Made each row point directly to the detailed changelog fix instead of repeating the full trace chain in the section.",
+    "Kept the section focused on the pattern: visible failure, traced layer, targeted fix, and guardrail."
+  ],
+  "public": true
+}

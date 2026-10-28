@@ -1,0 +1,16 @@
+{
+  "id": "2026-07-04-context-quality-screens-and-sources",
+  "date": "2026-07-04",
+  "system": "engine",
+  "seq": 3,
+  "tag": "fix",
+  "title": "Improved context-quality screens and source traceability",
+  "points": [
+    "Structured valuation, ratio, and net-cash answers now recover source-page previews from curated views so trace outputs show the statement pages behind computed tables.",
+    "ROIC plus earnings-yield screens now use aligned statement model inputs and current market-cap data, returning ranked top-10 tables with usable-period coverage instead of collapsing to one company.",
+    "Free-cash-flow yield screens now use a deterministic compute stage with financial-sector exclusions, current market-data filters, and outlier guards.",
+    "Narrative lanes preserve earlier candidate pages when a later SQL attempt returns no rows, preventing valid announcement evidence from being erased before fallback submission.",
+    "EV-per-ton requests now retrieve debt, market-cap, and capacity evidence explicitly, and analyst answers must not label market-cap-less-cash proxies as enterprise value when debt inputs are missing."
+  ],
+  "public": true
+}

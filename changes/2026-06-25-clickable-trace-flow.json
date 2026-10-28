@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-clickable-trace-flow",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 13,
+  "tag": "improvement",
+  "title": "Made query traces easier to navigate",
+  "points": [
+    "Failure case: the trace viewer exposed the right raw material but stacked audit, router, lane, artifact, table, analyst, and source details together, making ordinary trace review noisy.",
+    "Flow logic changed: traces now start with a clickable stage map that separates Overview, Router, Lanes, Artifacts, Tables, Analyst, and Sources.",
+    "Shipped result: users can inspect one stage at a time, starting from answer health and moving into deeper SQL, prompt, artifact, or source detail only when needed."
+  ],
+  "public": true
+}

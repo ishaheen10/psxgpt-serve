@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-trace-analyst-context-boundary",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 26,
+  "tag": "fix",
+  "title": "Made analystContext boundaries clearer in traces and docs",
+  "points": [
+    "The Write trace stage now opens computed tables from analystContext before the generated analyst message so SQL-derived rows are visible immediately.",
+    "Docs now distinguish the persisted analystContext object from the final user message sent to the analyst model.",
+    "The spec no longer claims ordinary lane SQL and raw execution artifacts are copied wholesale into the analyst message; those remain in trace/debug storage."
+  ],
+  "public": true
+}

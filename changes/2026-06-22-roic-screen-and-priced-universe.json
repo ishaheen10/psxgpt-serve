@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-22-roic-screen-and-priced-universe",
+  "date": "2026-06-22",
+  "system": "engine",
+  "seq": 6,
+  "tag": "fix",
+  "title": "Added deterministic ROIC screening and removed unpriced tickers from served coverage",
+  "points": [
+    "Added a deterministic ROIC screen that ranks operating companies from structured statement rows and shows NOPAT, invested capital, usable periods, and formula basis.",
+    "Added ROIC compute instructions so ROIC and return-on-invested-capital screens follow a fixed lane instead of broad language-model retrieval.",
+    "Removed tickers with no market-data closing price or market cap from the served ticker reference so price-dependent queries disclose unsupported coverage instead of failing late."
+  ],
+  "public": true
+}

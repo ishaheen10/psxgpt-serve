@@ -1,0 +1,16 @@
+{
+  "id": "2026-07-25-limited-history-model-builds",
+  "date": "2026-07-25",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Allowed model builds from limited annual history",
+  "points": [
+    "Deterministic bank and non-financial models now run when at least one usable annual consolidated period is available instead of refusing histories shorter than three periods.",
+    "Models built from one or two periods disclose that assumptions requiring more history use the model template or industry defaults and should be reviewed.",
+    "Zero usable periods remains a hard failure because a forecast needs at least one sourced actual-period anchor.",
+    "Model-only Analyst answers now explicitly self-check their limitations and next-step sections so valuation-only terminology is not introduced into a forecast request.",
+    "The deployed model-build eval now reproduces the MARI two-period case and verifies actuals, assumptions, five forecast years, provenance, and limited-history disclosure."
+  ],
+  "public": true
+}

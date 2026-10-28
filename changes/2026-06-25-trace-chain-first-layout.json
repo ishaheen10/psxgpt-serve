@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-trace-chain-first-layout",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 20,
+  "tag": "improvement",
+  "title": "Moved trace checks higher in the viewer",
+  "points": [
+    "Failure case: the trace dropdowns appeared too late because the screen showed summary panels before the workflow itself.",
+    "Display logic changed: the separate run summary block was folded into a compact query header and the workflow is now a horizontal trace chain at the top of the trace card.",
+    "Shipped result: users see Plan, Retrieve, Compute, Write, and Verify immediately, with the active stage details appearing directly underneath."
+  ],
+  "public": true
+}

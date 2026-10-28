@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-25-trace-flow-visual-redesign",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 18,
+  "tag": "improvement",
+  "title": "Mapped the trace viewer to a smoother workflow design",
+  "points": [
+    "Failure case: production traces exposed the right fields but still felt like nested implementation logs, making it hard to follow the run step by step.",
+    "Flow logic changed: the trace viewer now opens on Plan, keeps one workflow stage active at a time, and uses a compact stage rail for Plan, Retrieve, Compute, Write, and Verify.",
+    "Retrieval design is now explicit: the Retrieve stage documents the BM25-first retrieval choice and shows how lexical FTS keeps source search fast, inspectable, and tunable without adding an embedding dependency.",
+    "Shipped result: trace review starts with workflow intent and compact cards, while raw router, lane, artifact, analyst, and source details remain available behind collapsed controls."
+  ],
+  "public": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-trace-analyst-packet-view",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 23,
+  "tag": "improvement",
+  "title": "Made analyst trace input readable",
+  "points": [
+    "The trace viewer now parses the actual analyst input message into readable sections such as query, coverage, retrieval summary, computed data, and sources.",
+    "User trace view no longer shows the stored analystContext JSON blob.",
+    "Admin trace view still keeps the raw analystContext JSON and system prompt available as debug-only disclosures."
+  ],
+  "public": true
+}

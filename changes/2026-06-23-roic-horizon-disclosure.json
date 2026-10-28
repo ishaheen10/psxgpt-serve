@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-roic-horizon-disclosure",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 24,
+  "tag": "fix",
+  "title": "Clarified multi-year ROIC screen coverage",
+  "points": [
+    "ROIC screens now parse requested horizons such as 10 years, pull the available annual statement window, and average across usable periods in that window.",
+    "The answer contract now requires usable-period disclosure so a 10-year request is not overstated when a company has fewer than 10 usable annual periods."
+  ],
+  "public": true
+}

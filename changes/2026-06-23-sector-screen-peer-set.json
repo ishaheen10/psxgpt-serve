@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-sector-screen-peer-set",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 25,
+  "tag": "fix",
+  "title": "Expanded sector screens before ranking",
+  "points": [
+    "Sector ranking questions now expand the served industry peer set before running market and statement lanes, instead of truncating normal sectors to the first eight tickers.",
+    "Added regression coverage for sugar-sector screens to ensure the broad peer set is retrieved and non-sugar tickers such as SNBL are excluded."
+  ],
+  "public": true
+}

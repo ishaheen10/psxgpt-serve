@@ -1,0 +1,17 @@
+{
+  "id": "2026-07-20-explicit-entity-plan-consistency",
+  "date": "2026-07-20",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Prevented explicit company tickers from being replaced during peer expansion",
+  "points": [
+    "Explicit valid tickers are now presented to the Router as a compact ticker-company-industry block and must remain in its executable plan, including when a competitor request expands to an industry peer set.",
+    "Ticker and industry metadata are checked against the canonical company inventory before lane execution, preventing adjacent ticker substitutions such as NATF being treated as NATM.",
+    "Canonical company identities now continue into the answer context so the Analyst does not guess a company name from its ticker symbol.",
+    "Stale market-price observations remain visible as row-level freshness notes but no longer label the whole answer with a global warning.",
+    "Inconsistent plans are returned to the Router for one corrected plan; runtime does not rewrite the company or manufacture a replacement peer universe.",
+    "Regression coverage now includes the National Foods competitor query and a deliberately inconsistent textile-peer plan."
+  ],
+  "public": true
+}

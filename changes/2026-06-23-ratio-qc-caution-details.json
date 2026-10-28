@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-ratio-qc-caution-details",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 22,
+  "tag": "improvement",
+  "title": "Added calculation details to ratio QC cautions",
+  "points": [
+    "Pipeline ratio unit/scale warnings now publish deterministic caution payloads with the ratio formula, numerator, denominator, result, period, section, and failed QC rule.",
+    "When a user asks for a flagged ratio slice, psxGPT appends a Data checks block with the calculation details; clean periods for the same ticker remain unwarned."
+  ],
+  "public": true
+}

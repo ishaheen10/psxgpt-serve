@@ -1,0 +1,28 @@
+name = "psxgpt-serve-test"
+main = "src/index.ts"
+compatibility_date = "2025-10-28"
+compatibility_flags = ["nodejs_compat"]
+
+[[durable_objects.bindings]]
+name = "CHAT_DO"
+class_name = "ChatSessionDO"
+
+[[rules]]
+globs = ["**/*.md"]
+type = "Text"
+fallthrough = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "psx"
+database_id = "YOUR_D1_DATABASE_ID"
+preview_database_id = "YOUR_D1_DATABASE_ID"
+
+[vars]
+SUPABASE_URL = "https://YOUR_PROJECT.supabase.co"
+GEMINI_MODEL = "gemini-3.1-flash-lite"
+DEEPSEEK_ANALYST_MODEL = "deepseek-v4-pro"
+
+[[migrations]]
+tag = "v1-sqlite"
+new_sqlite_classes = ["ChatSessionDO"]

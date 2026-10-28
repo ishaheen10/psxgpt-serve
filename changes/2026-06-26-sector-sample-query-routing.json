@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-sector-sample-query-routing",
+  "date": "2026-06-26",
+  "system": "engine",
+  "seq": 8,
+  "tag": "fix",
+  "title": "Fixed sector sample prompts with exchange-style labels",
+  "points": [
+    "Sector prompts generated from raw PSX labels such as INV. BANKS / INV. COS. / SECURITIES COS. no longer treat label words like INV or COS as unsupported ticker symbols.",
+    "The Equities page now phrases sector prompts as sector-scoped questions and includes a small covered-ticker sample to make routing less brittle.",
+    "Added the failed investment-companies announcement prompt to the equities sample eval, and swept the top public sector labels across overview, screen, announcement, and comparison prompt types."
+  ],
+  "public": true
+}

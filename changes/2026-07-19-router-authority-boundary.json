@@ -1,0 +1,16 @@
+{
+  "id": "2026-07-19-router-authority-boundary",
+  "date": "2026-07-19",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Kept valid Router decisions authoritative at runtime",
+  "points": [
+    "Valid narrative plans are no longer replaced by ROIC screens merely because query wording resembles a ranking request.",
+    "Valid model-build plans are no longer deleted when users describe a forward operating model with wording outside a runtime regex list.",
+    "Empty explicit model requests now recover directly into a complete typed model plan without a whole-plan LLM corrective retry.",
+    "Router traces now expose the complete final plan, and collision evals assert that structurally valid plans cross runtime unchanged.",
+    "ROIC answers that overstate a requested horizon now receive one traced Analyst retry using the supplied usable-period evidence instead of a runtime text rewrite."
+  ],
+  "public": true
+}

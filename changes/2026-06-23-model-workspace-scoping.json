@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-model-workspace-scoping",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 21,
+  "tag": "fix",
+  "title": "Scoped saved-model recall to the requested ticker",
+  "points": [
+    "Saved-model recall no longer falls back to an unrelated previous model when the router asks for a specific model ID that is not present in the user's workspace.",
+    "Explicit requests to build a new ticker model, such as SYS, now continue into deterministic model_build instead of loading the last saved model for another company."
+  ],
+  "public": true
+}

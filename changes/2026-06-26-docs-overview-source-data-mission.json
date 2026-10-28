@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-overview-source-data-mission",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 8,
+  "tag": "improvement",
+  "title": "Clarified the public docs overview mission",
+  "points": [
+    "The docs overview now frames psxGPT as a source-data system for knowledge workers, with PSX equities as the current public proof point.",
+    "The overview now states the product direction more plainly: reliable source data, CapIQ-quality structured surfaces, Excel-like modeling, and traceable validation.",
+    "The intro emphasizes that psxGPT is meant to remove slow retrieval and checking work so users can spend more time exercising judgment."
+  ],
+  "public": true
+}

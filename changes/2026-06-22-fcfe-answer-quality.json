@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-22-fcfe-answer-quality",
+  "date": "2026-06-22",
+  "system": "engine",
+  "seq": 8,
+  "tag": "fix",
+  "title": "Tightened FCFE answer quality and source-unit handling",
+  "points": [
+    "Added analyst guardrails so FCFE answers present retrieved inputs and gaps instead of inventing cost-of-equity, terminal-growth, or per-share fair-value assumptions.",
+    "Added retrieved-ticker scope instructions so follow-up answers do not repeat an unsupported company count when fewer tickers were actually retrieved.",
+    "Improved unit handling for filing-note extractions so source-page values are not automatically labelled as PKR thousands unless the source supports that basis."
+  ],
+  "public": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-changelog-entry-return-links",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 10,
+  "tag": "improvement",
+  "title": "Added return links to each changelog entry",
+  "points": [
+    "Each changelog card now includes a back button that returns readers to the docs section they came from.",
+    "Deep-linked changelog fixes are easier to use because readers no longer have to scroll back to the top bridge before continuing through the docs.",
+    "The changelog still keeps the top evidence bridge, but individual entries now support the same back-and-forth reading flow."
+  ],
+  "public": true
+}

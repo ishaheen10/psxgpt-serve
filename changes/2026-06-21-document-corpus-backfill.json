@@ -1,0 +1,16 @@
+{
+  "id": "2026-06-21-document-corpus-backfill",
+  "date": "2026-06-21",
+  "system": "pipeline",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Filing-page source corpus backfilled for the full ticker universe",
+  "points": [
+    "financial_documents_new and filings_fts_new were missing 333 of the 471 tickers in the database. The statement spine (financial_statements via 13_d1_push) and ratios (15_ratios) were rebuilt for all 471 tickers during the universe expansion, but the page/document corpus is published by a separate per-ticker step (17_publish_documents) that was not run for the new tickers — so numeric answers for those companies could appear without source page previews and full-text search could not retrieve their filings.",
+    "All 333 missing tickers were published into financial_documents_new and filings_fts_new from existing review/ (search_text summaries + section tags) and markdown_pages/ (full page text). No re-parse, re-review, or re-extract was required — the metadata and search_text were already on disk.",
+    "Reviewed page PDFs and their thumbnails were uploaded to the remote source host (R2) so source links and previews resolve under source.psxgpt.com for the backfilled tickers.",
+    "Root-cause fix: step 17 (publish documents) and step 18 (publish assets) are now documented in the pipeline spec and wired into run.py as the documents chain, so a future universe expansion publishes the source corpus alongside statements and ratios instead of silently lagging behind.",
+    "The backfill flow now computes the financial_statements-vs-financial_documents_new gap directly from D1 with 17_publish_documents.py --gap, then uses 18_publish_assets.py for thumbnails and R2 source assets."
+  ],
+  "public": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-fallback-audit-and-lane-failure-contract",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 17,
+  "tag": "improvement",
+  "title": "Tightened fallback handling across routing, lanes, and answers",
+  "points": [
+    "Serve operations now require a deterministic fallback inventory and risk rating before changing fallback behavior, so eval fixes do not bypass the router, lane, and analyst stage contracts.",
+    "Analyst answer handling now relies on prompts and retrieved evidence for P/E, FCFE, ROIC, and model-only behavior instead of post-generation answer rewrites.",
+    "Lanes that fail to make a valid submit no longer feed unsubmitted probe rows or auto-selected pages into the final analyst context."
+  ],
+  "public": true
+}

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "target": "apps/analysis/context/lane/instruction/financial_documents_new.md",
+  "profiles": [
+    {
+      "id": "current_concepts_only",
+      "description": "Baseline: use ask concepts only, quoted phrases where needed.",
+      "aliases": {}
+    },
+    {
+      "id": "note_aware_v1",
+      "description": "Generalized note-aware search vocabulary for common filing-note evidence types.",
+      "aliases": {
+        "interest_rate_risk": ["\"interest rate risk\"", "IRRBB", "repricing", "\"maturity gap\"", "\"gap analysis\"", "\"yield risk\"", "\"profit rate risk\"", "\"impact of 1% change\"", "\"discount rate\""],
+        "credit_exposure": ["\"credit risk by industry\"", "\"industry-wise advances\"", "\"sector-wise advances\"", "\"sectoral concentration\"", "\"advances by sector\"", "\"gross advances\"", "\"concentration of credit risk\"", "\"credit concentration\"", "\"financing by sector\""],
+        "funding_strategy": ["CASA", "\"deposit mix\"", "\"low-cost deposits\"", "\"cost of deposits\"", "\"cost of funds\"", "\"funding mix\"", "\"deposit growth\"", "\"current accounts\"", "\"savings accounts\""],
+        "risk_outlook": ["\"future outlook\"", "\"near-term outlook\"", "\"key risk\"", "\"principal risk\"", "\"material risk\"", "strategy", "demand", "margins"],
+        "ppe_schedule": ["\"operating fixed assets\"", "\"property plant and equipment\"", "\"accumulated depreciation\"", "\"written down value\"", "additions", "disposals", "depreciation"],
+        "business_quality": ["\"business model\"", "customers", "geography", "segments", "contracts", "acquisitions", "competition", "strategy", "\"future outlook\"", "\"key risk\""],
+        "sector_drivers": ["\"fertilizer demand\"", "\"urea demand\"", "feedstock", "gas", "subsidy", "offtake", "margins", "\"future outlook\""],
+        "power_risk": ["\"circular debt\"", "receivables", "PPA", "\"power purchase agreement\"", "\"capacity payment\"", "generation", "\"future outlook\"", "\"key risk\""],
+        "cement_outlook": ["\"cement demand\"", "clinker", "\"capacity utilization\"", "\"domestic demand\"", "\"export growth\"", "margins", "expansion", "\"future outlook\""],
+        "textile_outlook": ["\"textile exports\"", "\"export demand\"", "\"export market\"", "\"export sales\"", "margins", "\"energy cost\"", "\"future outlook\""],
+        "industrial_outlook": ["\"future outlook\"", "\"forward looking\"", "demand", "\"capacity utilization\"", "margins", "expansion", "strategy"],
+        "segment_geography": ["\"performance by segment\"", "\"segment information\"", "\"segment reporting\"", "\"operating segments\"", "\"geographical locations\"", "geography", "\"export sales\""]
+      }
+    },
+    {
+      "id": "note_aware_compact_v1",
+      "description": "Same evidence families, but fewer high-recall terms to control latency and broad false positives.",
+      "aliases": {
+        "interest_rate_risk": ["\"interest rate risk\"", "repricing", "\"maturity gap\"", "\"impact of 1% change\"", "\"profit rate risk\""],
+        "credit_exposure": ["\"credit risk by industry\"", "\"industry-wise advances\"", "\"sectoral concentration\"", "\"gross advances\"", "\"financing by sector\""],
+        "funding_strategy": ["CASA", "\"deposit mix\"", "\"cost of deposits\"", "\"cost of funds\"", "\"funding mix\""],
+        "risk_outlook": ["\"future outlook\"", "\"near-term outlook\"", "\"key risk\"", "strategy", "margins"],
+        "ppe_schedule": ["\"operating fixed assets\"", "\"property plant and equipment\"", "\"accumulated depreciation\"", "\"written down value\"", "additions"],
+        "business_quality": ["customers", "geography", "segments", "contracts", "strategy", "\"future outlook\"", "\"key risk\""],
+        "sector_drivers": ["\"fertilizer demand\"", "\"urea demand\"", "feedstock", "gas", "\"future outlook\""],
+        "power_risk": ["\"circular debt\"", "receivables", "PPA", "\"power purchase agreement\"", "\"future outlook\""],
+        "cement_outlook": ["\"cement demand\"", "clinker", "\"capacity utilization\"", "\"domestic demand\"", "\"future outlook\""],
+        "textile_outlook": ["\"textile exports\"", "\"export demand\"", "\"export market\"", "\"energy cost\"", "\"future outlook\""],
+        "industrial_outlook": ["\"future outlook\"", "\"forward looking\"", "demand", "\"capacity utilization\""],
+        "segment_geography": ["\"performance by segment\"", "\"segment information\"", "\"operating segments\"", "geography"]
+      }
+    }
+  ]
+}

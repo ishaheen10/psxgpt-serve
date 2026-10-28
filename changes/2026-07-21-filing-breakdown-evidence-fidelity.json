@@ -1,0 +1,17 @@
+{
+  "id": "2026-07-21-filing-breakdown-evidence-fidelity",
+  "date": "2026-07-21",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Preserved filing breakdown tables through AnalystContext",
+  "points": [
+    "Filing requests for reported figures and breakdowns now retain numeric posture even when the user asks for a text search, and subsidiary cash-flow requests include the closest disclosed segment schedule in their typed retrieval contract.",
+    "Narrative lanes reject page-local claims that a whole report lacks a disclosure and reject quantitative rewrites whose number sequence is not aligned to a source row.",
+    "Invalid extraction output receives one bounded correction attempt and otherwise falls back to the raw filing page, with the intervention recorded in the stage ledger.",
+    "Analyst source excerpts now allocate the existing total character budget adaptively so high-priority structured schedules can arrive intact without increasing the overall context allowance.",
+    "Analyst answers surface the full relevant segment axis rather than cherry-picking rows when a source table provides a usable breakdown.",
+    "Regression coverage reproduces the ENGROH 2025 annual-report follow-up and requires the reported Fertilizer and Connectivity capital-expenditure figures while rejecting invented explicit-absence claims."
+  ],
+  "public": true
+}

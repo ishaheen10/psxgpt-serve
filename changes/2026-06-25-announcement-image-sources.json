@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-announcement-image-sources",
+  "date": "2026-06-25",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Fixed image-based PSX announcement source previews",
+  "points": [
+    "Failure case: image-only PSX announcements, including GIF/image notices, could appear in answers without a useful source-panel thumbnail or stable hosted preview.",
+    "Source logic fixed: announcement source links now prefer hosted `source.psxgpt.com/ANNOUNCEMENTS/...` assets, and the publisher scans local `announcement_documents/` files so image notices are not skipped when a generated JSONL scope is narrower than D1.",
+    "Shipped result: image-based announcements now open with a hosted source asset and preview in the source panel instead of falling back to direct PSX URLs without thumbnails."
+  ],
+  "public": true
+}

@@ -1,0 +1,48 @@
+{
+  "id": "2026-06-20-industry-specific-ratios",
+  "date": "2026-06-20",
+  "system": "pipeline",
+  "seq": 0,
+  "tag": "improvement",
+  "title": "Industry-specific ratios for banking and insurance; basis column on all ratio rows",
+  "points": [
+    "Banking ratios added: cost-to-income (operating expenses / total income) and net interest margin (net interest income / total assets, using latest-prior-or-same-date balance sheet). These join the universal ratios already computed for banks.",
+    "Insurance ratios added: loss ratio, expense ratio, combined ratio (loss + expense), underwriting margin, and investment yield — all denominated on net premium written. Tickers are identified by the presence of the net_premium canonical rather than any hardcoded list.",
+    "Income field fallback chain for net_margin and asset_turnover extended from two legs to four: revenue_net (corporates) → total_income (banks) → net_premium (insurance) → operating_revenue (holding companies such as IGIHL and FCSC). Each leg fires only when all prior legs are absent for that exact ticker-period pair.",
+    "A basis TEXT column is now present on every row in the ratios table. It records the canonical name of the denominator field used in the calculation — for example net_premium for insurance net margins or total_income for bank net margins. This is the authoritative signal for labelling a ratio correctly when shown to users.",
+    "P&L-only ratios (net_margin, gross_margin, cost_to_income, all insurance ratios) are computed across 3M / 6M / 9M / 12M / LTM periods. Ratios that join to a balance sheet item (ROE, ROA, asset_turnover, net_interest_margin) remain restricted to 12M / LTM to ensure the income period is annualised before dividing by a point-in-time balance sheet figure.",
+    "Total ratio rows: 63,457 across 20 distinct ratio names (up from 56,908 across 7 names before this change)."
+  ],
+  "public": true,
+  "keystones": [
+    {
+      "name": "banking-specific ratios: cost_to_income and net_interest_margin",
+      "groups": [
+        ["cost_to_income", "cost to income", "efficiency ratio"],
+        ["net_interest_margin", "NIM", "net interest margin"]
+      ]
+    },
+    {
+      "name": "insurance-specific ratios: loss_ratio, expense_ratio, combined_ratio, underwriting_margin, investment_yield",
+      "groups": [
+        ["loss_ratio", "loss ratio", "claims ratio"],
+        ["combined_ratio", "combined ratio"],
+        ["underwriting_margin", "underwriting profit"]
+      ]
+    },
+    {
+      "name": "income fallback chain: revenue_net → total_income → net_premium → operating_revenue",
+      "groups": [
+        ["fallback", "fallback chain", "income field"],
+        ["net_premium", "total_income", "operating_revenue"]
+      ]
+    },
+    {
+      "name": "basis column on every ratio row shows which denominator was used",
+      "groups": [
+        ["basis", "basis column", "denominator"],
+        ["calculation basis", "how computed", "label"]
+      ]
+    }
+  ]
+}

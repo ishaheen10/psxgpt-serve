@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-23-selector-ticker-normalization",
+  "date": "2026-06-23",
+  "system": "engine",
+  "seq": 18,
+  "tag": "fix",
+  "title": "Cleaned selector ticker handoffs",
+  "points": [
+    "Selector and ranking lanes now normalize selected ticker metadata before downstream lane rewrites and coverage assembly.",
+    "This prevents punctuation-bearing values such as `SCBPL,` from appearing as fake missing or unselected ticker coverage in audit traces."
+  ],
+  "public": true
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2026-07-19-period-aligned-statement-history",
+  "date": "2026-07-19",
+  "system": "engine",
+  "seq": 3,
+  "tag": "fix",
+  "title": "Kept point-in-time rows in annual and quarterly histories",
+  "points": [
+    "Explicit annual and quarterly requests now carry typed cadence and period-count fields from the Router into the financial-statements lane.",
+    "Annual history aligns 12-month flow rows with point-in-time balance-sheet rows at the same annual dates; quarterly history applies the same contract to 3-month flows.",
+    "Last-N mixed-statement requests select one shared date window before retrieving metrics, preventing balance-sheet or flow rows from silently dropping.",
+    "Reliability evals now assert exact period counts, required duration families, forbidden duration families, and the aligned D1 view used by the lane.",
+    "A repeatable anonymized cohort builder can sample 100 distinct queries from the most active non-owner users for production-shaped test-Worker evaluation without committing user identities or query content."
+  ],
+  "public": true
+}

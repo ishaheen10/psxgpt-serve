@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-22-query-replay-reliability",
+  "date": "2026-06-22",
+  "system": "engine",
+  "seq": 10,
+  "tag": "fix",
+  "title": "Improved replay reliability for recent failed queries",
+  "points": [
+    "Fixed mixed acronym/company routing so SBP and STI are treated as financing context when a valid company scope is present.",
+    "Added a deterministic bare-ticker overview path for prompts such as GHNI, returning current market data and latest annual/quarterly financials without a slow document-analysis pass.",
+    "Added a deterministic report-source path for simple PDF/report link follow-ups, returning the latest filing page-level PDF links for the scoped ticker."
+  ],
+  "public": true
+}

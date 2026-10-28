@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-26-docs-end-to-end-reader-flow",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 11,
+  "tag": "improvement",
+  "title": "Improved the end-to-end docs reading flow",
+  "points": [
+    "The overview now includes a short first-user path that connects a real equities query, trace inspection, database coverage checks, and changelog validation.",
+    "Pipeline artifacts now collapse behind view controls and each major stage explains why the check matters before showing detailed examples.",
+    "The database section now shows its public/admin explanation before live health data finishes loading, and the changelog can be filtered by system theme.",
+    "Pipeline, database, and design-choice sections now link to related production fixes so readers can connect architecture decisions to concrete changes."
+  ],
+  "public": true
+}

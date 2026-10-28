@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-25-macro-documents-serving",
+  "date": "2026-06-25",
+  "system": "engine",
+  "seq": 2,
+  "tag": "new",
+  "title": "Made macro reports queryable with source pages",
+  "points": [
+    "Added a dedicated `macro_documents` retrieval lane for Budget, Economic Survey, and SBP annual report questions.",
+    "Macro retrieval uses `macro_fts` BM25 over parsed table/text markdown while keeping macro separate from company filings and PSX announcements.",
+    "Macro source PDFs and thumbnails are hosted under `source.psxgpt.com/MACRO_PAGES/...` and `MACRO_THUMBNAILS/...` so answers can show clickable report pages.",
+    "The source panel now groups macro evidence separately from Statements, Filings, and Announcements."
+  ],
+  "public": true
+}

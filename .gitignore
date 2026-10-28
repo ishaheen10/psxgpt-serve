@@ -1,0 +1,24 @@
+# dependencies / build
+node_modules/
+dist/
+.wrangler/
+*.tsbuildinfo
+
+# secrets (commit the .example templates only)
+.dev.vars
+.env
+.env.local
+.admin-token.local
+*.pem
+
+# python / notebooks
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+eval/outputs/
+
+# misc
+.DS_Store
+
+# Claude Code local state
+.claude/

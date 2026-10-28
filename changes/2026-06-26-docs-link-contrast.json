@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-link-contrast",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 12,
+  "tag": "fix",
+  "title": "Improved docs link contrast in light mode",
+  "points": [
+    "Underlined in-text docs links now use a brighter dedicated orange color in light mode instead of the pale primary accent used for filled controls.",
+    "Artifact toggles and trace-stage action labels now use the same stronger docs action color so they remain readable in light mode.",
+    "The change stays scoped to docs text actions so card links, icon links, the main app theme, and button backgrounds keep their original colors."
+  ],
+  "public": true
+}

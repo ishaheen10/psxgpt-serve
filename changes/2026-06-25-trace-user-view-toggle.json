@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-trace-user-view-toggle",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 19,
+  "tag": "improvement",
+  "title": "Added a user-view toggle for trace review",
+  "points": [
+    "Failure case: admin users could only see the trace viewer with admin chrome, making it hard to review the normal user experience.",
+    "Display logic changed: trace admins now get a User view/Admin toggle in the trace header.",
+    "Shipped result: User view hides admin-only panels and loads only the signed-in user's traces, while Admin mode keeps the full operator view."
+  ],
+  "public": true
+}

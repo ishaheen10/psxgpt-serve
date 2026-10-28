@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-equities-sample-query-mix",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 2,
+  "tag": "improvement",
+  "title": "Expanded Equities sample queries across research workflows",
+  "points": [
+    "The Equities page now shows a broader sample query library instead of only broad sector research prompts.",
+    "The prompt mix covers quick lookup, source-page retrieval, narrative filing evidence, ticker detail, company comparison, sector screening, deterministic modeling, model scenarios, PSX announcements, data-quality checks, macro context, and arithmetic transformations.",
+    "Added an equities-sample eval script that runs the public prompts through the query engine, checks expected lanes and answer shape, and asks an LLM judge to evaluate each answer."
+  ],
+  "public": true
+}

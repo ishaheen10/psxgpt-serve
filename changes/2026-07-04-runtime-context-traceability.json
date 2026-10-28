@@ -1,0 +1,14 @@
+{
+  "id": "2026-07-04-runtime-context-traceability",
+  "date": "2026-07-04",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Made runtime context changes traceable",
+  "points": [
+    "Router runtime now preserves valid resolved ticker scope when raw user text contains an alias-like invalid token, instead of rewriting the plan as out-of-universe.",
+    "Numeric filing-page extractions now become model-visible workpaper tables when no stronger aggregate table is available, so the analyst sees the extracted evidence instead of only trace previews.",
+    "Admin traces now expose router raw/normalized plans, runtime intervention before/after snapshots, and analyst citation tag selection for context-quality review."
+  ],
+  "public": true
+}

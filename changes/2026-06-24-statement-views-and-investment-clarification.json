@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-24-statement-views-and-investment-clarification",
+  "date": "2026-06-24",
+  "system": "engine",
+  "seq": 1,
+  "tag": "improvement",
+  "title": "Added curated statement views and faster clarification for broad investment asks",
+  "points": [
+    "Added D1 statement views and supporting indexes for latest snapshots, annual history, model/valuation inputs, bank inputs, and copyable statement exports so financial-statement lanes can use bounded query surfaces instead of broad raw-table pulls.",
+    "Generic prompts such as 'best to invest' now route to a clarification request unless the user supplies a ticker, sector, metric, time horizon, risk preference, or screen criterion.",
+    "Narrative source validation now stays strict for direct small named comparisons while allowing broad screens and industry context lanes to submit partial source coverage with explicit disclosure instead of spinning through retries.",
+    "Regression coverage now includes the generic investment clarification path, and serve operations document unique-Durable-Object eval users for parallel eval runs."
+  ],
+  "public": true
+}

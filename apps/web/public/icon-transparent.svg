@@ -1,0 +1,25 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#0F766E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2DD4BF;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Chart bars -->
+  <rect x="18" y="52" width="13" height="26" rx="3" fill="url(#grad1)"/>
+  <rect x="35" y="38" width="13" height="40" rx="3" fill="url(#grad1)"/>
+  <rect x="52" y="28" width="13" height="50" rx="3" fill="url(#grad1)"/>
+  <rect x="69" y="42" width="13" height="36" rx="3" fill="url(#grad1)"/>
+
+  <!-- AI spark on top bar -->
+  <circle cx="58" cy="28" r="8" fill="#2DD4BF" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="58" cy="28" r="4" fill="white"/>
+</svg>

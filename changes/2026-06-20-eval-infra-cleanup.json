@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-20-eval-infra-cleanup",
+  "date": "2026-06-20",
+  "system": "engine",
+  "seq": 1,
+  "tag": "improvement",
+  "title": "Regression eval root rewrites; model-build eval generic expect fields; quality audit ratio-period fix",
+  "points": [
+    "Regression eval cases for FECTC and RPL were rewritten from the ground up. Both tickers are in the 471-ticker universe with real D1 data, so the prior out-of-universe assertions were structurally wrong. New cases verify correct name resolution (Fecto cement → FECTC, Roshan packaging → RPL) and reject wrong substitutions (FCCL for Fecto, PRL/PKGS for Roshan).",
+    "Model-build eval removed two if(testCase.id === 'saved_kohc_update') branches that embedded case-ID-specific logic inside the generic evaluation function. Workspace model presence (ticker, minVersion) and assumption update (field, value) are now expressed as fields in each test case's expect object; the evaluation function reads them generically.",
+    "Quality audit (run_quality_audit.py) split MARGIN_RATIOS into PL_RATIOS (all flow periods: 3M/6M/9M/12M/LTM) and FLOW_RATIOS (12M/LTM only). Without this fix every insurance and banking ratio row computed at a sub-annual period would have been flagged as an ERROR because the old MARGIN_RATIOS set only allowed 12M and LTM.",
+    "Router rules example: removed FBL from the hardcoded banking ticker list. FBL is not in the 471-ticker universe; its presence in the illustrative example could cause the router to reference a non-existent ticker in banking industry queries."
+  ],
+  "public": false
+}

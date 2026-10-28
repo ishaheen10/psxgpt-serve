@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-trace-source-card-cleanup",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 17,
+  "tag": "improvement",
+  "title": "Cleaned up trace source cards",
+  "points": [
+    "Failure case: trace source cards were hard to scan on mobile, with pale titles, raw URLs running as body text, and duplicated source labels.",
+    "Display logic changed: surfaced sources and source-log rows now share one compact source card with a strong title, metadata row, truncated URL, snippet, and open-source action.",
+    "Shipped result: source pages remain clickable, but the Verify stage reads like a source browser instead of a raw URL dump."
+  ],
+  "public": true
+}

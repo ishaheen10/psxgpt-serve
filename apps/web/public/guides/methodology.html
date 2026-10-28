@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asfi Models — Methodology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#0d1d2e; --ink-soft:#2b3d51; --muted:#5c6e80; --soft:#eef3f8;
+    --line:#d6e2ed; --surface:#ffffff; --blue:#1550a8; --green:#0f6b52;
+    --amber:#a05e10; --red:#b03330; --purple:#5240a8; --sand:#f8f5f0;
+    --bg:var(--sand); --text:var(--ink-soft); --heading:var(--ink); --border:var(--line);
+    --shadow-sm:0 2px 8px rgba(13,29,46,.08); --shadow-md:0 8px 28px rgba(13,29,46,.12);
+    --display:'DM Serif Display',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+    --mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace; --sidebar:288px; --r:10px;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:var(--sans); background:var(--bg); color:var(--text); line-height:1.65; -webkit-font-smoothing:antialiased; }
+  a { color:var(--blue); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  code { font-family:var(--mono); font-size:.92em; background:var(--soft); border:1px solid var(--line); padding:1px 6px; border-radius:5px; color:var(--blue); }
+  #sidebar { position:fixed; inset:0 auto 0 0; width:var(--sidebar); background:#07111c; color:#c9d8e8; overflow:auto; border-right:1px solid rgba(255,255,255,.08); }
+  #sidebar::before { content:''; position:fixed; left:0; top:0; width:var(--sidebar); height:220px; pointer-events:none; background:radial-gradient(ellipse at 30% 20%, rgba(21,80,168,.35), transparent 70%); }
+  #sidebar header { position:relative; padding:26px 22px 20px; border-bottom:1px solid rgba(255,255,255,.08); }
+  #sidebar h1 { margin:0; color:#fff; font-family:var(--display); font-size:24px; font-weight:400; line-height:1.05; }
+  #sidebar p { margin:8px 0 0; color:#8fa9c4; font-size:12px; }
+  .nav-section { padding:18px 22px 6px; color:#6d8aaa; font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+  .nav-item { display:block; margin:2px 10px; padding:8px 12px; color:#c9d8e8; font-size:13px; border-radius:8px; }
+  .nav-item:hover, .nav-item.active { background:rgba(255,255,255,.08); color:#fff; text-decoration:none; }
+  main { margin-left:var(--sidebar); max-width:1080px; padding:46px 48px 90px; }
+  .section { padding-top:54px; }
+  .section-title { margin:0 0 14px; color:var(--heading); font-family:var(--display); font-size:clamp(32px,4vw,48px); font-weight:400; line-height:1.06; letter-spacing:-.01em; }
+  .lead { margin:0 0 24px; color:var(--muted); font-size:18px; max-width:820px; line-height:1.65; }
+  .sub { margin:32px 0 10px; color:var(--heading); font-size:17px; font-weight:700; }
+  p { font-size:15px; line-height:1.72; color:var(--text); margin:0 0 14px; max-width:760px; }
+  .callout { border-left:4px solid var(--blue); background:#eef5ff; padding:14px 17px; border-radius:0 8px 8px 0; margin:18px 0; color:#1b4d91; font-size:14px; line-height:1.6; max-width:760px; }
+  .callout.green { border-color:var(--green); background:#ecfdf5; color:#065f46; }
+  .callout.amber { border-color:var(--amber); background:#fffbeb; color:#92400e; }
+  .callout.red   { border-color:var(--red);   background:#fef2f2; color:#991b1b; }
+  table { border-collapse:separate; border-spacing:0; width:100%; margin:16px 0; background:#fff; border:1px solid var(--border); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow-sm); }
+  th,td { border-bottom:1px solid var(--border); padding:10px 14px; text-align:left; vertical-align:top; font-size:13.5px; }
+  tr:last-child td { border-bottom:none; }
+  th { background:#f7fafc; color:#334155; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; }
+  .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:18px 0; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:18px; box-shadow:var(--shadow-sm); }
+  .card h3 { margin:0 0 8px; font-size:14px; color:var(--heading); font-weight:700; }
+  .card p { font-size:13.5px; margin:0; color:var(--muted); }
+  /* principle cards */
+  .principle { display:flex; gap:16px; align-items:flex-start; background:#fff; border:1px solid var(--border); border-left:4px solid var(--blue); border-radius:var(--r); padding:16px 18px; margin:10px 0; box-shadow:var(--shadow-sm); max-width:760px; }
+  .principle.green { border-left-color:var(--green); }
+  .principle.amber { border-left-color:var(--amber); }
+  .principle.purple { border-left-color:var(--purple); }
+  .principle h3 { margin:0 0 5px; font-size:14px; color:var(--heading); }
+  .principle p  { font-size:13.5px; margin:0; color:var(--muted); }
+  /* cost ladder */
+  .ladder { border:1px solid var(--border); border-radius:var(--r); overflow:hidden; background:#fff; box-shadow:var(--shadow-sm); margin:18px 0; max-width:760px; }
+  .rung { display:grid; grid-template-columns:150px 1fr 80px; align-items:center; gap:12px; padding:11px 16px; border-bottom:1px solid var(--border); font-size:13px; }
+  .rung:last-child { border-bottom:none; }
+  .rung:nth-child(1) { border-left:4px solid #059669; }
+  .rung:nth-child(2) { border-left:4px solid #2563eb; }
+  .rung:nth-child(3) { border-left:4px solid #d97706; }
+  .rung:nth-child(4) { border-left:4px solid #dc2626; }
+  .rung-label { font-weight:700; color:var(--heading); }
+  .rung-desc  { color:var(--muted); }
+  .rung-cost  { font-weight:700; text-align:right; font-size:12px; }
+  .rung-cost.free { color:#059669; }
+  .rung-cost.low  { color:#2563eb; }
+  .rung-cost.mid  { color:#d97706; }
+  .rung-cost.high { color:#dc2626; }
+  /* file type grid */
+  .file-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:18px 0; }
+  .file-card { background:#fff; border:1px solid var(--border); border-top:3px solid var(--blue); border-radius:var(--r); padding:14px 16px; box-shadow:var(--shadow-sm); }
+  .file-card.green  { border-top-color:var(--green); }
+  .file-card.amber  { border-top-color:var(--amber); }
+  .file-card.purple { border-top-color:var(--purple); }
+  .file-card h3 { margin:0 0 6px; font-size:13.5px; font-weight:700; color:var(--heading); }
+  .file-card p  { font-size:13px; margin:0 0 8px; color:var(--muted); line-height:1.5; }
+  .file-card code { font-size:11px; }
+  /* bucket pills */
+  .buckets { display:flex; gap:10px; margin:16px 0; flex-wrap:wrap; }
+  .bucket { flex:1; min-width:180px; border-radius:var(--r); padding:16px; font-size:13.5px; }
+  .bucket h3 { margin:0 0 6px; font-size:13px; font-weight:700; }
+  .bucket p  { margin:0; font-size:13px; line-height:1.55; }
+  .bucket.fact        { background:#dbeafe; color:#1e3a5f; }
+  .bucket.instruction { background:#dcfce7; color:#14532d; }
+  .bucket.code-b      { background:#fef3c7; color:#713f12; }
+  /* course module cards */
+  .module { display:flex; gap:16px; align-items:flex-start; background:#fff; border:1px solid var(--border); border-radius:var(--r); padding:18px 20px; box-shadow:var(--shadow-sm); margin:10px 0; max-width:760px; }
+  .module-num { flex-shrink:0; width:34px; height:34px; border-radius:9px; background:#07111c; color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:14px; font-weight:700; margin-top:1px; }
+  .module h3 { margin:0 0 4px; font-size:15px; color:var(--heading); }
+  .module p  { font-size:13.5px; margin:0; color:var(--muted); line-height:1.55; }
+  .module a  { font-size:12.5px; display:inline-block; margin-top:8px; }
+
+  @media (max-width:850px) {
+    #sidebar{position:static;width:auto;height:auto;} main{margin-left:0;padding:24px 18px 60px;}
+    .grid,.file-grid{grid-template-columns:1fr;}
+    .rung{grid-template-columns:1fr 1fr;} .rung-cost{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <header>
+    <h1>Asfi Models<br>Methodology</h1>
+    <p>The framework behind the course</p>
+  </header>
+  <div class="nav-section">Foundation</div>
+  <a class="nav-item" href="#prototype-to-system">Prototype to system</a>
+  <a class="nav-item" href="#architecture">Two systems</a>
+  <div class="nav-section">Discipline</div>
+  <a class="nav-item" href="#compute">When to spend compute</a>
+  <a class="nav-item" href="#working-files">Working files</a>
+  <a class="nav-item" href="#buckets">Fact, instruction, code</a>
+  <a class="nav-item" href="#qc-loops">Quality check loops</a>
+  <a class="nav-item" href="#evals">Evaluations and gold sets</a>
+  <div class="nav-section">Practice</div>
+  <a class="nav-item" href="#fix-order">Fix in order</a>
+  <a class="nav-item" href="#optimizers">Prompt optimizers</a>
+  <a class="nav-item" href="#course">The course</a>
+</aside>
+
+<main>
+
+  <!-- ── Prototype to system ───────────────────────────── -->
+  <section class="section" id="prototype-to-system">
+    <h2 class="section-title">Prototype to system</h2>
+    <p class="lead">Building a demo that answers questions from documents takes a week. Making that demo reliable takes months. The gap between the two is what this course is about.</p>
+
+    <p>An LLM handles the extraction, a retrieval step finds the relevant pages, a synthesis step produces an answer. The demo impresses. Then you put it in front of real users and the problems appear: a number that came from the wrong period, an answer that cites a page it never read, a schema that worked on the first ten documents and breaks on the eleventh. None of these failures announce themselves. They look like correct output.</p>
+
+    <div class="principle">
+      <div>
+        <h3>The prototype is not the system</h3>
+        <p>A working demo proves the approach is viable. It does not prove the output is correct. Correctness requires surfaces — places where a human or an automated check can verify that what the system returned matches what the source document actually says.</p>
+      </div>
+    </div>
+
+    <div class="principle green">
+      <div>
+        <h3>Traceability is the foundation</h3>
+        <p>Every answer must carry a citation: which document, which page, which line. Every stage must write a file that can be inspected. Without these surfaces the system cannot be audited, cannot be debugged, and cannot be improved — you can only guess at what went wrong.</p>
+      </div>
+    </div>
+
+    <div class="principle amber">
+      <div>
+        <h3>The schema will be wrong at first — that is expected</h3>
+        <p>The data model you design before seeing real usage will not survive contact with real usage. Fields will be missing, types will be wrong, edge cases will appear that the schema does not handle. The methodology is built for iteration: every stage writes a file, every file can be re-generated, and changing one stage does not require rebuilding the others. Usage tells you what the schema actually needs to be. You build toward that incrementally.</p>
+      </div>
+    </div>
+
+    <div class="callout amber">This course does not teach you to build a demo. It teaches you to build a system — one that is inspectable when something goes wrong, and improvable without breaking what is already working.</div>
+  </section>
+
+    <!-- ── Two systems ────────────────────────────────────── -->
+  <section class="section" id="architecture">
+    <h2 class="section-title">Two systems, one database</h2>
+    <p class="lead">The approach splits into a pipeline and an engine. They share one database. The pipeline's job is to produce data the engine can trust. The engine's job is to answer questions with citations.</p>
+
+    <table>
+      <tr><th>System</th><th>Input</th><th>Output</th><th>Primary concern</th></tr>
+      <tr>
+        <td><strong>Pipeline</strong></td>
+        <td>Raw PDFs</td>
+        <td>Structured rows + source page links in SQLite</td>
+        <td>Correctness of extracted values and completeness of citations</td>
+      </tr>
+      <tr>
+        <td><strong>Engine</strong></td>
+        <td>A natural-language question</td>
+        <td>A structured answer with source citations</td>
+        <td>Relevance of retrieved evidence and faithfulness of the answer to that evidence</td>
+      </tr>
+    </table>
+
+    <p>The pipeline writes two tables: <code>financial_statements</code> (one row per metric per period) and <code>financial_documents</code> (one row per page, with OCR text and metadata). The engine reads both. A ratio question uses <code>financial_statements</code>. A question that requires reading a note or a management comment uses <code>financial_documents</code>.</p>
+
+    <div class="callout">The split is intentional. Structured data answers structured questions precisely. Unstructured document pages answer open-ended questions with source context. Conflating them produces a system that does neither well.</div>
+  </section>
+
+  <!-- ── When to spend compute ──────────────────────────── -->
+  <section class="section" id="compute">
+    <h2 class="section-title">When to spend compute</h2>
+    <p class="lead">Every stage of the pipeline has a cost. The discipline is to spend as little as possible at each stage — run the cheap check first, escalate to the expensive one only when the cheap check cannot decide.</p>
+
+    <div class="ladder">
+      <div class="rung">
+        <div class="rung-label">Free deterministic</div>
+        <div class="rung-desc">Regex, structural checks, keyword gates — runs on every page, no API call</div>
+        <div class="rung-cost free">Free</div>
+      </div>
+      <div class="rung">
+        <div class="rung-label">Cheap LLM</div>
+        <div class="rung-desc">Single-turn classification or short extraction — fast, low token count</div>
+        <div class="rung-cost low">Low</div>
+      </div>
+      <div class="rung">
+        <div class="rung-label">Medium LLM</div>
+        <div class="rung-desc">Extraction with full page context, repair calls on flagged pages</div>
+        <div class="rung-cost mid">Medium</div>
+      </div>
+      <div class="rung">
+        <div class="rung-label">Expensive multi-turn</div>
+        <div class="rung-desc">Multi-step reasoning, large context windows — reserved for the engine only</div>
+        <div class="rung-cost high">High</div>
+      </div>
+    </div>
+
+    <p>The pipeline spends compute only on pages that survive the preceding gates. A page that is deterministically identified as a table of contents never reaches the classifier. A page that the classifier rejects with high confidence never reaches the extractor. Spend accumulates only at the stages where it is genuinely needed.</p>
+  </section>
+
+  <!-- ── Working files ──────────────────────────────────── -->
+  <section class="section" id="working-files">
+    <h2 class="section-title">Working files are the control points</h2>
+    <p class="lead">Every stage writes a file. That file is the contract between that stage and the next. It is also the primary debugging surface — when something goes wrong, the file shows exactly what the stage decided and why.</p>
+
+    <div class="file-grid">
+      <div class="file-card">
+        <h3>Routing files</h3>
+        <p>Decide which pages go to which stage next. The skip manifest, classification manifest, and extraction manifest are routing files. They contain no content — only decisions.</p>
+        <code>stage1_qc.json, stage2_classification.jsonl</code>
+      </div>
+      <div class="file-card green">
+        <h3>Product files</h3>
+        <p>The output the next system will actually use. Flat financial statement rows, compiled document pages, the SQLite database. These are the deliverables.</p>
+        <code>stage5_flat_*.jsonl, psxgpt_course.db</code>
+      </div>
+      <div class="file-card amber">
+        <h3>Diagnostic files</h3>
+        <p>Explain why a page failed a check or was routed to repair. Not consumed downstream — read by a human debugging an anomaly.</p>
+        <code>repair_manifest.json, qc_failures.json</code>
+      </div>
+      <div class="file-card purple">
+        <h3>Gold files</h3>
+        <p>Manually verified correct outputs for a sample of documents. Used to evaluate the pipeline and catch regressions when a stage is changed.</p>
+        <code>gold_classification.json, gold_extraction.json</code>
+      </div>
+    </div>
+
+    <p>Because each stage reads a file and writes a file, any stage can be re-run in isolation. If the classifier changes, only the files downstream of classification need to be regenerated. Earlier stages are unaffected.</p>
+  </section>
+
+  <!-- ── Fact, instruction, code ────────────────────────── -->
+  <section class="section" id="buckets">
+    <h2 class="section-title">Fact, instruction, code</h2>
+    <p class="lead">Every prompt is built from three types of content. Keeping them separate is not style — it is the mechanism that makes prompts debuggable and improvable without side effects.</p>
+
+    <div class="buckets">
+      <div class="bucket fact">
+        <h3>Fact</h3>
+        <p>The data the model needs to do its job: the page text, the metadata, the prior outputs. Facts change with every document. They should never be embedded in the instruction text.</p>
+      </div>
+      <div class="bucket instruction">
+        <h3>Instruction</h3>
+        <p>What the model must do, and the standards it must meet. Instructions change rarely — only when the task definition itself changes. They should be versioned and tested independently.</p>
+      </div>
+      <div class="bucket code-b">
+        <h3>Code</h3>
+        <p>The output format: JSON schema, field names, required keys. Code changes when the downstream consumer changes. Keeping it separate makes schema migrations visible.</p>
+      </div>
+    </div>
+
+    <p>When an extraction fails, this separation tells you where to look. A wrong value with a correct structure is a fact problem or an instruction problem. A correct value with a wrong structure is a code problem. You do not need to read the whole prompt to diagnose the failure.</p>
+  </section>
+
+  <!-- ── Quality check loops ────────────────────────────── -->
+  <section class="section" id="qc-loops">
+    <h2 class="section-title">Two quality check loops</h2>
+    <p class="lead">Quality is maintained by two loops that operate at different speeds and catch different classes of error.</p>
+
+    <div class="principle">
+      <div>
+        <h3>The fast loop — deterministic, runs on every document</h3>
+        <p>Structural checks that can run without any model call: do the columns add up, are required fields present, are values within plausible ranges, are source page links intact? The fast loop runs in milliseconds and produces a pass/fail routing decision for every row. A row that fails goes to repair or is flagged for review — it does not enter the database.</p>
+      </div>
+    </div>
+
+    <div class="principle green">
+      <div>
+        <h3>The slow loop — sampled, runs on batches</h3>
+        <p>Human review of a sample of outputs compared against gold sets. The slow loop catches errors the fast loop cannot detect: a structurally valid but semantically wrong extraction, a figure that is arithmetically plausible but factually incorrect. Run it before deploying a changed stage, and run it periodically on production outputs.</p>
+      </div>
+    </div>
+
+    <div class="callout">A system with only a fast loop will confidently produce wrong answers that pass every check. A system with only a slow loop will catch errors too late. Both loops are required.</div>
+  </section>
+
+  <!-- ── Evaluations and gold sets ─────────────────────── -->
+  <section class="section" id="evals">
+    <h2 class="section-title">Evaluations and gold sets</h2>
+    <p class="lead">Each LLM stage needs a gold set: a small, manually verified dataset that defines what correct output looks like for that stage. Without gold sets, you cannot tell whether a change improved the system or just changed it.</p>
+
+    <table>
+      <tr><th>Stage</th><th>What the gold set contains</th><th>How it is used</th></tr>
+      <tr>
+        <td>Classification</td>
+        <td>Pages labeled by hand with their correct type</td>
+        <td>Measures classifier accuracy; catches regressions after prompt changes</td>
+      </tr>
+      <tr>
+        <td>Statement page locator</td>
+        <td>The correct statement pages for a sample of filings</td>
+        <td>Measures whether the right pages are routed to the right extractor</td>
+      </tr>
+      <tr>
+        <td>Extraction</td>
+        <td>Correct financial values with their source page citations</td>
+        <td>Measures extraction accuracy and citation completeness</td>
+      </tr>
+      <tr>
+        <td>Query engine</td>
+        <td>Questions with correct answers and source references</td>
+        <td>Measures answer faithfulness, retrieval precision, and citation accuracy</td>
+      </tr>
+    </table>
+
+    <p>Gold sets do not need to be large. Ten to thirty examples per stage are enough to catch systematic failures. The discipline is to add a case to the gold set every time a real-world failure is found and fixed — so the fix is tested permanently.</p>
+  </section>
+
+  <!-- ── Fix in order ───────────────────────────────────── -->
+  <section class="section" id="fix-order">
+    <h2 class="section-title">Fix in order</h2>
+    <p class="lead">When something is wrong, there is a correct order of diagnosis. Skipping steps wastes time and produces fixes that break at the next document.</p>
+
+    <table>
+      <tr><th>Order</th><th>What to check</th><th>Why first</th></tr>
+      <tr>
+        <td>1</td>
+        <td><strong>The source data</strong></td>
+        <td>If the input document is corrupt, unreadable, or formatted unusually, no amount of prompt tuning will produce correct output. Confirm the source is valid before touching the pipeline.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>The routing files</strong></td>
+        <td>If the right pages are not reaching the right stage, the extractor has nothing correct to work with. Check the manifests before assuming the extraction is wrong.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>The prompt facts</strong></td>
+        <td>Confirm that the correct page text and metadata are being passed to the model. A wrong fact in the prompt produces a wrong answer that looks like a model failure.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>The instructions</strong></td>
+        <td>Only if source, routing, and facts are all correct should you change the instruction. At this point you know the model is receiving everything it needs and is still producing the wrong output.</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ── Prompt optimizers ──────────────────────────────── -->
+  <section class="section" id="optimizers">
+    <h2 class="section-title">Where prompt optimizers fit</h2>
+    <p class="lead">Prompt optimizers — tools that automatically tune instruction text against a metric — are useful, but they operate at step four of the fix order. They cannot compensate for bad source data, wrong routing, or incorrect gold sets.</p>
+
+    <p>An optimizer that is given a bad gold set will learn instructions that produce the wrong answers the gold set calls correct. An optimizer that is given good gold but bad source data will learn workarounds that pass the evaluation but fail on the next real document.</p>
+
+    <div class="callout amber">Use optimizers after the system is already producing mostly-correct outputs on good inputs. Their role is refinement, not foundation.</div>
+
+    <p>The sequence is: build correct working files, build correct gold sets, run the slow loop to verify the system is mostly right, then use an optimizer to close the remaining gap on the instruction text.</p>
+  </section>
+
+  <!-- ── The course ─────────────────────────────────────── -->
+  <section class="section" id="course">
+    <h2 class="section-title">The course</h2>
+    <p class="lead">The course applies this methodology to a concrete problem: making Pakistani equity filings queryable with source-linked answers. Every principle above is visible in the implementation. The skills transfer to any corpus.</p>
+
+    <p>There are two modules, each with a dedicated guide. Work through them in order.</p>
+
+    <div class="module">
+      <div class="module-num">1</div>
+      <div>
+        <h3>Pipeline — from PDF to structured database</h3>
+        <p>You will run an eight-stage pipeline that takes raw company filings and produces normalised financial statement rows and document pages in SQLite. Every stage writes a file you can inspect. Every LLM call has a seeded output so you can study the result without cost. The pipeline is the foundation — without correct structured data, the engine cannot give correct answers.</p>
+        <a href="/guides/pipeline_guide.html" target="_blank">Open pipeline guide &rarr;</a>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="module-num">2</div>
+      <div>
+        <h3>Engine — from question to source-linked answer</h3>
+        <p>You will build a query engine that takes a natural-language question, retrieves relevant rows and document pages, and returns a structured answer with citations. The engine reads the database the pipeline produced. The two systems are independent — changing one does not require changing the other — but they are designed to compose.</p>
+        <a href="/guides/engine_guide.html" target="_blank">Open engine guide &rarr;</a>
+      </div>
+    </div>
+
+    <div class="callout green" style="margin-top:28px;">When you finish, you will have built a complete, inspectable, source-linked financial analysis system — and the mental model to apply the same pattern to any document corpus.</div>
+  </section>
+
+</main>
+
+<script>
+const navItems = document.querySelectorAll('.nav-item');
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    navItems.forEach(item => item.classList.toggle('active', item.getAttribute('href') === '#' + entry.target.id));
+  });
+}, { rootMargin:'-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

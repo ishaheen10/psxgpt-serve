@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-mobile-nav-compact",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 21,
+  "tag": "improvement",
+  "title": "Made docs section navigation compact on mobile",
+  "points": [
+    "Replaced the stacked mobile section cards with a shallow horizontal pill rail.",
+    "Kept section descriptions visible on wider screens while hiding them on phone-sized screens.",
+    "Reduced the space taken before the first useful docs content appears."
+  ],
+  "public": true
+}

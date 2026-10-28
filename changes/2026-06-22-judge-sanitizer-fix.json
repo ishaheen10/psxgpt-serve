@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-22-judge-sanitizer-fix",
+  "date": "2026-06-22",
+  "system": "engine",
+  "seq": 9,
+  "tag": "fix",
+  "title": "Fixed citation marker leakage found by LLM judge audit",
+  "points": [
+    "Ran a DeepSeek judge over 50 recent successful production answers to catch hidden answer-quality issues.",
+    "Fixed sanitizer handling for italicized USED_SOURCE_TAGS and USED_TABLE_TAGS lines so internal citation markers do not leak to users.",
+    "Removed model-emitted duplicate disclaimers before appending the standard psxGPT disclaimer."
+  ],
+  "public": true
+}

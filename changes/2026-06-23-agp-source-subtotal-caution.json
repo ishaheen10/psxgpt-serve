@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-agp-source-subtotal-caution",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 6,
+  "tag": "fix",
+  "title": "Reclassified AGP cash-flow subtotal issue as a source caution",
+  "points": [
+    "Reviewed AGP annual 2024 unconsolidated cash-flow source page and kept the PDF-reported operating cash-flow subtotal rather than fabricating a balancing row.",
+    "The database health gate now treats this case as a scoped yellow source-filing caution instead of a red extraction failure.",
+    "User-facing caution text points to the linked filing page and explains that the visible operating cash-flow rows appear internally inconsistent with the reported subtotal."
+  ],
+  "public": true
+}

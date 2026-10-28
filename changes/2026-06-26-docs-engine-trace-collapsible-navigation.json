@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-engine-trace-collapsible-navigation",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 14,
+  "tag": "improvement",
+  "title": "Made query-engine trace docs easier to navigate",
+  "points": [
+    "The Explore the trace cards now start closed so readers choose which stage to open.",
+    "The stage picker is now a true vertical accordion: opening Plan, Retrieve, Compute, Write, or Verify expands the real detail inside that stage row while the remaining stages keep their reading order below it.",
+    "The redundant second stage-detail navigation layer was removed so the accordion is the primary way to inspect Plan, Retrieve, Compute, Write, and Verify."
+  ],
+  "public": true
+}

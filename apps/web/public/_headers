@@ -1,0 +1,11 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+  # CSP: adjust domains if you change Supabase/API/source hosts.
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https://*.supabase.co https://*.workers.dev wss://*.workers.dev; img-src 'self' data: https://source.psxgpt.com; frame-src https://source.psxgpt.com https://www.psx.com.pk; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:
+
+/guides/*
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com

@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-26-public-docs-query-engine-rewrite",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 0,
+  "tag": "improvement",
+  "title": "Explained the query engine retrieval design in public docs",
+  "points": [
+    "Public docs now introduce psxGPT as a traceable research engine built from a curated corpus, a query engine, deterministic checks, and a repair loop for failures.",
+    "The query-engine docs now show how a user question becomes typed asks, page-level concepts, BM25 full-text retrieval, candidate shaping, optional extraction, deterministic compute, and cited answers.",
+    "The docs now explain why narrative retrieval is BM25-first today: search_text summaries, MATCH terms, scores, candidate previews, and shaping decisions are inspectable without adding an embedding dependency.",
+    "The in-app How psxGPT works page and architecture narrative now describe source summaries, BM25 retrieval, data-quality warnings, traces, evals, and how user-visible errors become fixes."
+  ],
+  "public": true
+}

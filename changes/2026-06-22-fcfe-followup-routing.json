@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-22-fcfe-followup-routing",
+  "date": "2026-06-22",
+  "system": "engine",
+  "seq": 7,
+  "tag": "fix",
+  "title": "Fixed FCFE and follow-up statement retrieval routing",
+  "points": [
+    "Stopped FCFE from being treated as an unsupported ticker symbol so FCFE prompts route to financial statement, market data, and note evidence.",
+    "Added numeric note retrieval for depreciation, amortization, fixed-asset schedules, and borrowing proceeds or repayments when FCFE inputs require off-face filing detail.",
+    "Improved follow-up statement retrieval by reusing recent company scope when the user asks for a figure without repeating the ticker."
+  ],
+  "public": true
+}

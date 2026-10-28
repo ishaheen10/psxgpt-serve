@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-23-stale-market-health-flags",
+  "date": "2026-06-23",
+  "system": "pipeline",
+  "seq": 16,
+  "tag": "improvement",
+  "title": "Surfaced stale market-data rows in health checks",
+  "points": [
+    "Pipeline Step 19 now promotes stale PSX latest price rows from Step 16 market QC into warning-level data quality flags.",
+    "The database health matrix now marks a ticker row yellow when it has an open flag outside the currently displayed statement periods, so stale market-data warnings do not disappear from the dashboard.",
+    "Published the refreshed quality-flag table to production D1, including the stale market-data warnings."
+  ],
+  "public": true
+}

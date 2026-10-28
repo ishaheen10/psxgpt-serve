@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-21-market-data-close-mcap",
+  "date": "2026-06-21",
+  "system": "pipeline",
+  "seq": 3,
+  "tag": "fix",
+  "title": "Market data refreshed from self-contained PSX close and market-cap publisher",
+  "points": [
+    "The market-data publisher now lives inside psxgpt-pipeline instead of depending on legacy infrastructure code. It fetches PSX DPS EOD rows directly and uses the documented payload shape [timestamp, close, volume, open], so closing_price is the true close rather than the open field.",
+    "Production market_data was refreshed for close, total shares, and market cap. Deprecated derived valuation fields such as PE, PB, dividend yield, enterprise value, and P/E basis fields are cleared on refreshed rows instead of being treated as authoritative.",
+    "Serve routing and lane instructions now use market_data for direct market fields only: closing price, shares, market cap, ticker enumeration, and 52-week fields where present. Derived valuation metrics must combine market cap with sourced financial-statement or ratio inputs.",
+    "Pipeline QC now validates D1 closing_price, total_shares, and market_cap against live PSX DPS/company-page inputs instead of comparing stale P/E and dividend-yield calculations."
+  ],
+  "public": true
+}

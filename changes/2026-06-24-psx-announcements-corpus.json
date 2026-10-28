@@ -1,0 +1,16 @@
+{
+  "id": "2026-06-24-psx-announcements-corpus",
+  "date": "2026-06-24",
+  "system": "pipeline",
+  "seq": 3,
+  "tag": "new",
+  "title": "Added a PSX corporate announcements corpus",
+  "points": [
+    "Added a deterministic pipeline step for ticker-specific PSX corporate announcements, separate from annual and quarterly filing pages.",
+    "The new corpus downloads all PSX announcement attachment formats, parses them to markdown with Gemini 3.1 Flash Lite, and publishes searchable rows to `psx_announcements` and `psx_announcements_fts`.",
+    "Announcement `search_text` now mirrors the filing-page BM25 contract: compact ticker/date/title/status/summary discovery text, while parsed markdown is stored separately in bounded `text` rows and full local markdown artifacts.",
+    "Published the January 1, 2026 through June 24, 2026 announcement corpus to D1: 8,847 searchable rows across 553 tickers and 118 dates, with matching FTS rows.",
+    "Persistent Gemini parse failures are kept in local coverage artifacts and skipped from D1 by default; the current backfill skipped 118 failed attachments after retries."
+  ],
+  "public": true
+}

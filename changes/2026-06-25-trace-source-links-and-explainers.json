@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-trace-source-links-and-explainers",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 14,
+  "tag": "improvement",
+  "title": "Made trace sources and raw JSON easier to inspect",
+  "points": [
+    "Failure case: trace sources hid the useful page URL behind a small icon, and router/lane JSON exposed internal structures before explaining what happened.",
+    "Flow logic changed: source titles now open the underlying source URL in a new tab, URLs are visible in source cards, and router/lane stages show plain-language summary blocks before raw JSON.",
+    "Shipped result: users can click straight into source pages and understand the trace flow first, while raw JSON remains available behind collapsed debugging controls."
+  ],
+  "public": true
+}

@@ -1,0 +1,1475 @@
+[
+  {
+    "qid": "q001",
+    "query": "For UBL show net profit trend over last 6 quarters.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "net profit trend over the last 6 quarterly periods"
+      }
+    ]
+  },
+  {
+    "qid": "q002",
+    "query": "For HBL compute ROE trend over last 5 years.",
+    "expected_plan": [
+      {
+        "table": "ratios",
+        "tickers": [
+          "HBL"
+        ],
+        "ratio_names": [
+          "roe"
+        ],
+        "ask": "ROE trend for the last 5 annual periods"
+      }
+    ]
+  },
+  {
+    "qid": "q003",
+    "query": "For MCB show deposits and advances for last 8 quarters.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "MCB"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "deposits and advances trend over the last 8 quarterly periods"
+      }
+    ]
+  },
+  {
+    "qid": "q004",
+    "query": "For NBP calculate cost-to-income trend over last 4 years.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "NBP"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "cost-to-income trend for the last 4 annual periods"
+      }
+    ]
+  },
+  {
+    "qid": "q005",
+    "query": "For MEBL show quarterly EPS and revenue trend over last 8 quarters.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "MEBL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "EPS and revenue trend over the last 8 quarterly periods"
+      }
+    ]
+  },
+  {
+    "qid": "q006",
+    "query": "For LUCK calculate gross margin trend over last 5 years.",
+    "expected_plan": [
+      {
+        "table": "ratios",
+        "tickers": [
+          "LUCK"
+        ],
+        "ratio_names": [
+          "gross_margin"
+        ],
+        "ask": "gross margin trend for the last 5 annual periods"
+      }
+    ]
+  },
+  {
+    "qid": "q007",
+    "query": "For ENGRO compare revenue and net profit trend over last 5 years.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "ENGRO"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "revenue and net profit trend for the last 5 annual periods"
+      }
+    ]
+  },
+  {
+    "qid": "q008",
+    "query": "For FFC compute dividend yield and PE trend over last 12 months.",
+    "expected_plan": [
+      {
+        "table": "market_data",
+        "tickers": [
+          "FFC"
+        ],
+        "ask": "dividend yield and PE ratio trend over the last 12 months"
+      }
+    ]
+  },
+  {
+    "qid": "q009",
+    "query": "For PSO show operating cash flow trend over last 4 years.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "PSO"
+        ],
+        "statement_types": [
+          "cash_flow"
+        ],
+        "ask": "operating cash flow trend for the last 4 annual periods"
+      }
+    ]
+  },
+  {
+    "qid": "q010",
+    "query": "For HUBC show profit trend over last 6 quarters.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "HUBC"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "profit trend over the last 6 quarterly periods"
+      }
+    ]
+  },
+  {
+    "qid": "q011",
+    "query": "For UBL calculate 5-year deposit growth and explain drivers from directors report.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "deposits trend for the last 5 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "deposit strategy",
+          "deposit growth",
+          "funding strategy",
+          "low-cost deposits"
+        ],
+        "ask": "directors report discussion of deposit growth drivers across the last 5 annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q012",
+    "query": "For HBL compute 5-year ROE trend and summarize commentary on margins from annual reports.",
+    "expected_plan": [
+      {
+        "table": "ratios",
+        "tickers": [
+          "HBL"
+        ],
+        "ratio_names": [
+          "roe"
+        ],
+        "ask": "ROE trend for the last 5 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "margin pressure",
+          "cost of funds",
+          "spread",
+          "profitability"
+        ],
+        "ask": "management commentary on margins across the last 5 annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q013",
+    "query": "For MEBL compute cost-to-income trend and pull qualitative discussion on digital banking growth.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "MEBL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "cost-to-income trend for the last 3 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MEBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "digital banking",
+          "mobile banking",
+          "strategy",
+          "growth"
+        ],
+        "ask": "management discussion of digital banking growth in the latest annual report"
+      }
+    ]
+  },
+  {
+    "qid": "q014",
+    "query": "For LUCK calculate 5-year gross margin trend and summarize capacity expansion commentary from filings.",
+    "expected_plan": [
+      {
+        "table": "ratios",
+        "tickers": [
+          "LUCK"
+        ],
+        "ratio_names": [
+          "gross_margin"
+        ],
+        "ask": "gross margin trend for the last 5 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "LUCK"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "capacity expansion",
+          "capacity utilization",
+          "clinker",
+          "growth project"
+        ],
+        "ask": "management commentary on capacity expansion across recent filings"
+      }
+    ]
+  },
+  {
+    "qid": "q015",
+    "query": "For PSO compute 4-year operating cash flow trend and explain working-capital commentary from filings.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "PSO"
+        ],
+        "statement_types": [
+          "cash_flow"
+        ],
+        "ask": "operating cash flow trend for the last 4 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "PSO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "working capital",
+          "receivables",
+          "inventory",
+          "cash flow"
+        ],
+        "ask": "management commentary on working capital across recent filings"
+      }
+    ]
+  },
+  {
+    "qid": "q016",
+    "query": "Compare HUBC and KAPCO on profitability trend and extract guidance language from latest filings.",
+    "expected_plan": [
+      {
+        "table": "ratios",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "ratio_names": [
+          "net_margin",
+          "roe",
+          "roa"
+        ],
+        "ask": "profitability ratios trend for the last 3-4 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "posture": "narrative",
+        "ask": "guidance and outlook language from latest filings"
+      }
+    ]
+  },
+  {
+    "qid": "q017",
+    "query": "For NBP compute deposit growth from 2020 to latest period and summarize directors explanation.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "NBP"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "deposits trend from 2020 to the latest annual period"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "NBP"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "deposit growth",
+          "funding strategy",
+          "low-cost deposits",
+          "deposit mix"
+        ],
+        "ask": "directors report explanation of deposit growth"
+      }
+    ]
+  },
+  {
+    "qid": "q018",
+    "query": "For ENGRO show revenue CAGR over 3 years and summarize management outlook from annual report.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "ENGRO"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "revenue CAGR over the last 3 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "ENGRO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "outlook",
+          "guidance",
+          "future prospects",
+          "strategy"
+        ],
+        "ask": "management outlook from the latest annual report"
+      }
+    ]
+  },
+  {
+    "qid": "q019",
+    "query": "For EFERT show margin trend over last 4 years and extract risk commentary from filings.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "EFERT"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "margin trend for the last 4 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "EFERT"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "risk",
+          "key risks",
+          "gas supply",
+          "demand outlook"
+        ],
+        "ask": "risk commentary from recent filings"
+      }
+    ]
+  },
+  {
+    "qid": "q020",
+    "query": "For MARI show earnings trend over last 6 quarters and summarize production commentary from filings.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "MARI"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "earnings trend over the last 6 quarterly periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MARI"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "production",
+          "output",
+          "field performance",
+          "guidance"
+        ],
+        "ask": "production commentary from recent filings"
+      }
+    ]
+  },
+  {
+    "qid": "q021",
+    "query": "Top 5 banks by latest deposits.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "latest deposits for Banking companies"
+      }
+    ]
+  },
+  {
+    "qid": "q022",
+    "query": "Top 5 banks by latest CASA/deposit ratio and explain funding strategy from directors report.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "posture": "numeric",
+        "concepts": [
+          "CASA",
+          "current accounts",
+          "savings accounts",
+          "deposit mix",
+          "low-cost deposits"
+        ],
+        "ask": "latest CASA mix and deposit ratio for Banking companies"
+      },
+      {
+        "table": "financial_documents_new",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "funding strategy",
+          "deposit strategy",
+          "low-cost deposits",
+          "funding mix"
+        ],
+        "ask": "directors report discussion of funding strategy in the latest annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q023",
+    "query": "Top 3 cement companies by 3-year revenue growth.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "industry": "Cement",
+        "tickers": [
+          "BWCL",
+          "CHCC",
+          "DGKC",
+          "FCCL",
+          "KOHC",
+          "LUCK",
+          "MLCF",
+          "PIOC",
+          "THCCL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "3-year revenue growth for Cement companies"
+      }
+    ]
+  },
+  {
+    "qid": "q024",
+    "query": "Top 3 fertilizer firms by net profit growth over last 3 years.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "industry": "Fertilizer",
+        "tickers": [
+          "EFERT",
+          "FATIMA",
+          "FFBL",
+          "FFC"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "net profit growth over the last 3 annual periods for Fertilizer companies"
+      }
+    ]
+  },
+  {
+    "qid": "q025",
+    "query": "Largest banks by total assets and summarize their funding commentary.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "latest total assets for Banking companies"
+      },
+      {
+        "table": "financial_documents_new",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "funding strategy",
+          "deposit mix",
+          "low-cost deposits",
+          "borrowings"
+        ],
+        "ask": "funding commentary from the latest annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q026",
+    "query": "Top 5 companies by market cap and their latest PE ratio.",
+    "expected_plan": [
+      {
+        "table": "market_data",
+        "scope": "market_wide",
+        "is_selector": true,
+        "ask": "rank all companies by market cap and return top 5 with their latest PE ratio"
+      }
+    ]
+  },
+  {
+    "qid": "q027",
+    "query": "Top 3 textile firms by net profit growth and summarize export-demand commentary from annual reports.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "industry": "Textile",
+        "tickers": [
+          "BNWM",
+          "GADT",
+          "IBFL",
+          "ILP",
+          "KTML",
+          "MEHT",
+          "NCL",
+          "YOUW"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "net profit growth over the last 3 annual periods for Textile companies"
+      },
+      {
+        "table": "financial_documents_new",
+        "industry": "Textile",
+        "tickers": [
+          "BNWM",
+          "GADT",
+          "IBFL",
+          "ILP",
+          "KTML",
+          "MEHT",
+          "NCL",
+          "YOUW"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "export demand",
+          "exports",
+          "orders",
+          "outlook"
+        ],
+        "ask": "export-demand commentary from annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q028",
+    "query": "Largest power producers by revenue over last year and extract guidance from latest filings.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "industry": "Power",
+        "tickers": [
+          "HUBC",
+          "KAPCO",
+          "KEL",
+          "NCPL",
+          "NPL",
+          "PKGP",
+          "SPWL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "latest annual revenue for Power companies"
+      },
+      {
+        "table": "financial_documents_new",
+        "industry": "Power",
+        "tickers": [
+          "HUBC",
+          "KAPCO",
+          "KEL",
+          "NCPL",
+          "NPL",
+          "PKGP",
+          "SPWL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "guidance",
+          "outlook",
+          "capacity utilization",
+          "generation"
+        ],
+        "ask": "guidance from the latest filings"
+      }
+    ]
+  },
+  {
+    "qid": "q029",
+    "query": "Top 5 banks by advances growth over last 4 quarters.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "industry": "Banking",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SCBPL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "advances growth over the last 4 quarterly periods for Banking companies"
+      }
+    ]
+  },
+  {
+    "qid": "q030",
+    "query": "Top 5 companies by latest dividend yield.",
+    "expected_plan": [
+      {
+        "table": "market_data",
+        "scope": "market_wide",
+        "is_selector": true,
+        "ask": "rank all companies by latest dividend yield and return top 5"
+      }
+    ]
+  },
+  {
+    "qid": "q031",
+    "query": "Summarize directors report commentary for UBL on deposit strategy.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "deposit strategy",
+          "funding strategy",
+          "deposit mix",
+          "low-cost deposits"
+        ],
+        "ask": "directors report commentary on deposit strategy"
+      }
+    ]
+  },
+  {
+    "qid": "q032",
+    "query": "What did HBL management say about margin pressure in the latest annual report?",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "margin pressure",
+          "cost of funds",
+          "spread",
+          "profitability"
+        ],
+        "ask": "management commentary on margin pressure in the latest annual report"
+      }
+    ]
+  },
+  {
+    "qid": "q033",
+    "query": "Extract guidance language from HUBC latest filing.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HUBC"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "guidance",
+          "outlook",
+          "future outlook",
+          "strategy"
+        ],
+        "ask": "guidance language from the latest filing"
+      }
+    ]
+  },
+  {
+    "qid": "q034",
+    "query": "From PSO annual report, summarize commentary on working capital and receivables.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "PSO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "working capital",
+          "receivables",
+          "liquidity",
+          "cash flow"
+        ],
+        "ask": "commentary on working capital and receivables from the annual report"
+      }
+    ]
+  },
+  {
+    "qid": "q035",
+    "query": "For MEBL, summarize digital banking strategy from directors report over last 2 years.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MEBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "digital banking",
+          "mobile banking",
+          "strategy",
+          "customer adoption"
+        ],
+        "ask": "directors report discussion of digital banking strategy across the last 2 annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q036",
+    "query": "For ENGRO, summarize key risks discussed in latest filing.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "ENGRO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "key risks",
+          "principal risks",
+          "business risk",
+          "risk management"
+        ],
+        "ask": "key risks discussed in the latest filing"
+      }
+    ]
+  },
+  {
+    "qid": "q037",
+    "query": "For LUCK, what does management say about capacity utilization?",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "LUCK"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "capacity utilization",
+          "clinker",
+          "cement demand",
+          "operations"
+        ],
+        "ask": "management commentary on capacity utilization"
+      }
+    ]
+  },
+  {
+    "qid": "q038",
+    "query": "For EFERT, summarize export and demand commentary from latest annual report.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "EFERT"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "export demand",
+          "domestic demand",
+          "urea demand",
+          "market outlook"
+        ],
+        "ask": "export and demand commentary from the latest annual report"
+      }
+    ]
+  },
+  {
+    "qid": "q039",
+    "query": "For NBP, summarize loan mix commentary from directors report.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "NBP"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "loan mix",
+          "advances mix",
+          "sectoral concentration",
+          "credit portfolio"
+        ],
+        "ask": "directors report commentary on loan mix"
+      }
+    ]
+  },
+  {
+    "qid": "q040",
+    "query": "For KAPCO, extract forward-looking statements from the latest filing.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "KAPCO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "forward-looking",
+          "outlook",
+          "guidance",
+          "going forward"
+        ],
+        "ask": "forward-looking statements from the latest filing"
+      }
+    ]
+  },
+  {
+    "qid": "q041",
+    "query": "Compare UBL and HBL deposits trend over last 6 quarters.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL",
+          "HBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "deposits trend over the last 6 quarterly periods"
+      }
+    ]
+  },
+  {
+    "qid": "q042",
+    "query": "Compare ENGRO, FFC, EFERT on 3-year revenue CAGR.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "ENGRO",
+          "FFC",
+          "EFERT"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "revenue CAGR over the last 3 annual periods"
+      }
+    ]
+  },
+  {
+    "qid": "q043",
+    "query": "Compare HUBC and KAPCO PE ratio trend over last 12 months.",
+    "expected_plan": [
+      {
+        "table": "market_data",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "ask": "PE ratio trend over the last 12 months"
+      }
+    ]
+  },
+  {
+    "qid": "q044",
+    "query": "Compare UBL, MCB, and MEBL cost-to-income trend over last 4 years.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL",
+          "MCB",
+          "MEBL"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "cost-to-income trend for the last 4 annual periods"
+      }
+    ]
+  },
+  {
+    "qid": "q045",
+    "query": "Compare PSO and APL on operating cash flow trend over last 4 years.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "PSO",
+          "APL"
+        ],
+        "statement_types": [
+          "cash_flow"
+        ],
+        "ask": "operating cash flow trend for the last 4 annual periods"
+      }
+    ]
+  },
+  {
+    "qid": "q046",
+    "query": "Compare HBL and UBL and summarize differences in funding commentary from latest reports.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "HBL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "deposits and borrowings trend for the last 3 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HBL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "funding strategy",
+          "deposit mix",
+          "funding commentary"
+        ],
+        "ask": "funding mix and deposit strategy commentary from latest annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q047",
+    "query": "Compare LUCK and DGKC on gross margin trend and extract demand outlook commentary.",
+    "expected_plan": [
+      {
+        "table": "ratios",
+        "tickers": [
+          "LUCK",
+          "DGKC"
+        ],
+        "ratio_names": [
+          "gross_margin"
+        ],
+        "ask": "gross margin trend for the last 3 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "LUCK",
+          "DGKC"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "demand outlook",
+          "cement demand",
+          "future outlook",
+          "domestic demand"
+        ],
+        "ask": "demand outlook commentary from recent annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q048",
+    "query": "Compare ENGRO and EFERT profitability trend and summarize management guidance.",
+    "expected_plan": [
+      {
+        "table": "ratios",
+        "tickers": [
+          "ENGRO",
+          "EFERT"
+        ],
+        "ratio_names": [
+          "net_margin",
+          "roe",
+          "roa",
+          "gross_margin"
+        ],
+        "ask": "profitability ratios trend for the last 3-4 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "ENGRO",
+          "EFERT"
+        ],
+        "posture": "narrative",
+        "ask": "management guidance and outlook from latest filings"
+      }
+    ]
+  },
+  {
+    "qid": "q049",
+    "query": "Compare MEBL and UBL loan growth trend and summarize digital strategy commentary.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "MEBL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "advances trend for the last 4 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MEBL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "digital strategy",
+          "digital banking",
+          "mobile banking",
+          "customer adoption"
+        ],
+        "ask": "digital strategy commentary from recent annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q050",
+    "query": "Compare HUBC and KAPCO earnings trend and summarize forward-looking statements.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "statement_types": [
+          "profit_loss"
+        ],
+        "ask": "earnings trend for the last 4 annual periods"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HUBC",
+          "KAPCO"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "forward-looking",
+          "outlook",
+          "guidance",
+          "going forward"
+        ],
+        "ask": "forward-looking statements from recent annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q051",
+    "query": "Can you perform a discounted cash flow analysis of UBL",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "UBL"
+        ],
+        "statement_types": [
+          "profit_loss",
+          "balance_sheet",
+          "cash_flow"
+        ],
+        "ask": "historical financial model inputs for UBL discounted cash flow analysis"
+      },
+      {
+        "table": "market_data",
+        "tickers": [
+          "UBL"
+        ],
+        "ask": "latest market price, total shares, market cap, PE, PB, dividend yield, and enterprise value for valuation context"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "future outlook",
+          "funding strategy",
+          "capital adequacy",
+          "asset quality",
+          "NPL",
+          "deposit mix",
+          "dividend policy",
+          "risk"
+        ],
+        "ask": "management outlook, funding strategy, capital adequacy, asset quality, and risks relevant to DCF assumptions"
+      }
+    ]
+  },
+  {
+    "qid": "q052",
+    "query": "What is the fair value of HALEON",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "HALEON"
+        ],
+        "statement_types": [
+          "profit_loss",
+          "balance_sheet",
+          "cash_flow"
+        ],
+        "ask": "historical financial model inputs for HALEON fair value analysis"
+      },
+      {
+        "table": "market_data",
+        "tickers": [
+          "HALEON"
+        ],
+        "ask": "latest market price, total shares, market cap, PE, PB, dividend yield, and enterprise value for valuation context"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "HALEON"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "future outlook",
+          "strategy",
+          "demand",
+          "margins",
+          "cost pressure",
+          "capex",
+          "competition",
+          "risk"
+        ],
+        "ask": "management outlook, business drivers, and risks relevant to fair value assumptions"
+      }
+    ]
+  },
+  {
+    "qid": "q053",
+    "query": "Do a deep research on Systems Limited listed on PSX as SYS. Business quality only, no financials, no valuation.",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "SYS"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "customers",
+          "segments",
+          "geography",
+          "contracts",
+          "acquisitions",
+          "competition",
+          "strategy",
+          "risk",
+          "outlook"
+        ],
+        "ask": "business quality evidence from filings, excluding financial statement trend and valuation analysis"
+      }
+    ]
+  },
+  {
+    "qid": "q054",
+    "query": "Find the top 5 banks by deposits and explain their funding strategy.",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "industry": "Commercial Banks",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SNBL",
+          "UBL"
+        ],
+        "statement_types": [
+          "balance_sheet"
+        ],
+        "ask": "rank Commercial Banks by latest deposits and select the top 5"
+      },
+      {
+        "table": "financial_documents_new",
+        "industry": "Commercial Banks",
+        "tickers": [
+          "ABL",
+          "AKBL",
+          "BAFL",
+          "BAHL",
+          "BIPL",
+          "BOP",
+          "FABL",
+          "HBL",
+          "HMB",
+          "MCB",
+          "MEBL",
+          "NBP",
+          "SNBL",
+          "UBL"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "deposit mix",
+          "low-cost deposits",
+          "funding strategy",
+          "CASA",
+          "cost of deposits"
+        ],
+        "ask": "funding strategy commentary for the selected top-deposit banks"
+      }
+    ]
+  },
+  {
+    "qid": "q055",
+    "query": "Can you compare DGKC and MLCF and give a 360 view of both companies?",
+    "expected_plan": [
+      {
+        "table": "financial_statements",
+        "tickers": [
+          "DGKC",
+          "MLCF"
+        ],
+        "statement_types": [
+          "profit_loss",
+          "balance_sheet",
+          "cash_flow"
+        ],
+        "ask": "historical financial model inputs for a 360 view comparison"
+      },
+      {
+        "table": "market_data",
+        "tickers": [
+          "DGKC",
+          "MLCF"
+        ],
+        "ask": "latest market price, market cap, PE, PB, dividend yield, and enterprise value for comparison"
+      },
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "DGKC",
+          "MLCF"
+        ],
+        "posture": "narrative",
+        "concepts": [
+          "growth drivers",
+          "future outlook",
+          "management plans",
+          "cement demand",
+          "capacity utilization",
+          "margins",
+          "risk",
+          "strategy"
+        ],
+        "ask": "growth drivers, future outlook, management plans, strategy, and risks from recent annual reports"
+      }
+    ]
+  },
+  {
+    "qid": "q056",
+    "query": "fixed asset schedule for maple leaf cement",
+    "expected_plan": [
+      {
+        "table": "financial_documents_new",
+        "tickers": [
+          "MLCF"
+        ],
+        "posture": "numeric",
+        "concepts": [
+          "fixed assets",
+          "property plant equipment",
+          "capital work in progress",
+          "additions",
+          "disposals",
+          "depreciation"
+        ],
+        "ask": "fixed asset schedule and related notes from the latest annual report"
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-trace-inline-drilldown",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 21,
+  "tag": "improvement",
+  "title": "Made trace stages expand inline",
+  "points": [
+    "Failure case: stage details still appeared as a separate area below the trace chain, so the opened content felt disconnected from the block the user clicked.",
+    "Display logic changed: each trace stage is now an inline drill-down block that opens its detail directly underneath and collapses when clicked again.",
+    "Shipped result: users can scan Plan, Retrieve, Compute, Write, and Verify as blocks, then drill into one step without losing position in the chain."
+  ],
+  "public": true
+}

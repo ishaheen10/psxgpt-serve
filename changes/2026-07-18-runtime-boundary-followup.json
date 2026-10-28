@@ -1,0 +1,17 @@
+{
+  "id": "2026-07-18-runtime-boundary-followup",
+  "date": "2026-07-18",
+  "system": "engine",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Made screen, quality, and failure boundaries explicit",
+  "points": [
+    "Market-wide screens still use every relevant blocker internally for exclusion, while analyst context now receives only selected-ticker warnings and a bounded failure sample.",
+    "Failed lanes and deterministic screens now emit failed or blocked component boundaries instead of appearing to pass or disappearing from trace output.",
+    "ROIC, dividend-yield, and FCF-yield screens can hand their evidence-backed selected tickers to an explicitly requested filing or announcement explanation without adding a second structured compute owner.",
+    "Whole-plan Router corrective retries are classified as medium obstruction risk and covered by a forced collision evaluation.",
+    "Analyst quality-warning text is capped so corpus-wide diagnostics cannot crowd out the evidence used for the answer.",
+    "Admin health now separates explicitly disclosed partial filing coverage after a screen from a silent high-severity ticker drop."
+  ],
+  "public": true
+}

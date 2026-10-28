@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-25-trace-collapse-and-contrast",
+  "date": "2026-06-25",
+  "system": "app",
+  "seq": 15,
+  "tag": "fix",
+  "title": "Fixed trace collapse behavior and contrast",
+  "points": [
+    "Failure case: some trace controls could open but not reliably collapse again, and light-mode stage accents were too faint to distinguish from nested dropdowns.",
+    "Flow logic fixed: trace stages now toggle closed when clicked again, and expandable detail blocks keep their own open state instead of being pinned open by a fixed prop.",
+    "Shipped result: users can collapse stages and subdetails predictably, with stronger primary accents for stages and brighter blue accents for nested dropdowns."
+  ],
+  "public": true
+}

@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-21-query-audit-reliability",
+  "date": "2026-06-21",
+  "system": "engine",
+  "seq": 0,
+  "tag": "fix",
+  "title": "Query audit reliability and safer ticker grounding",
+  "points": [
+    "Unknown uppercase ticker-like requests now close as out-of-universe instead of retrieving nearest valid tickers, so a query such as BFARGO no longer pulls BFAGRO evidence.",
+    "Finance acronyms such as COGS, NPAT, and GM are treated as business concepts in trace audits instead of false unresolved ticker symbols.",
+    "Gemini router and lane calls use the pinned Gemini 3.1 Flash Lite model with shared retry handling for rate limits and transient 5xx failures.",
+    "Admin issue traces now expose error classes and distinguish cancelled runs from hard failures, making daily failure triage faster and less dependent on manual D1 joins."
+  ],
+  "public": true
+}

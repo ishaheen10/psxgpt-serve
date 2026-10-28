@@ -1,0 +1,69 @@
+{
+  "id": "2026-06-12-pipeline-design-corrections",
+  "date": "2026-06-12",
+  "system": "pipeline",
+  "seq": 2,
+  "tag": "improvement",
+  "title": "Pipeline design corrections: image pages, one review pass, statement-page selection",
+  "points": [
+    "Useful image-heavy pages are now routed to ReOCR/vision instead of being silently dropped — the page tagger decides whether an `img.jpg` page has statement, remuneration, multi-year, or other useful cues.",
+    "The page-review stage is being consolidated into a single pass per page: summary, tags, and repair/image flags from one call, so input tokens are never paid twice for the same page.",
+    "Deterministic gates only remove pages we are certain are useless, corrupt, blank, or out of scope; exact statement pages remain a model-assisted `statement_pages` manifest built from tagged candidates and nearby context.",
+    "These corrections are recorded in the pipeline spec and this public changelog so the implemented design stays auditable."
+  ],
+  "public": true,
+  "keystones": [
+    {
+      "name": "useful image pages routed to ReOCR/vision instead of dropped",
+      "groups": [
+        [
+          "image-heavy",
+          "img.jpg"
+        ],
+        [
+          "reocr",
+          "vision",
+          "visual read"
+        ]
+      ]
+    },
+    {
+      "name": "deterministic gates exclude only certain useless/corrupt pages",
+      "groups": [
+        [
+          "deterministic"
+        ],
+        [
+          "useless",
+          "corrupt",
+          "blank",
+          "out of scope"
+        ]
+      ]
+    },
+    {
+      "name": "statement_pages locator owns exact statement-page map",
+      "groups": [
+        [
+          "statement_pages",
+          "statement-page selector",
+          "statement-page selection"
+        ],
+        [
+          "exact"
+        ]
+      ]
+    },
+    {
+      "name": "one review pass per page (summary + tags + flags in one call)",
+      "groups": [
+        [
+          "one review pass",
+          "one call",
+          "one llm call",
+          "single pass"
+        ]
+      ]
+    }
+  ]
+}

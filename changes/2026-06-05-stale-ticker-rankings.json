@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-05-stale-ticker-rankings",
+  "date": "2026-06-05",
+  "system": "engine",
+  "seq": 1,
+  "tag": "fix",
+  "title": "Stale tickers no longer pollute ranking screens",
+  "points": [
+    "Suspended or frozen tickers whose prices had not updated in months were producing nonsensical values in \"top N\" screens — for example, a ticker stuck at an old price showing a dividend yield above 1,000%.",
+    "Every ranking screen (dividend yield, market cap, PE, PB, enterprise value) now applies a mandatory 30-day staleness filter: tickers whose latest market data is more than 30 days behind the freshest date are excluded from the ranking entirely.",
+    "Tickers with a missing (NULL) value for the ranked metric are also excluded, instead of being silently treated as zero."
+  ],
+  "public": true
+}

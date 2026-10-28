@@ -1,0 +1,14 @@
+{
+  "id": "2026-07-04-company-alias-and-broad-filing-retrieval",
+  "date": "2026-07-04",
+  "system": "engine",
+  "seq": 2,
+  "tag": "fix",
+  "title": "Fixed company alias handling and broad filing retrieval",
+  "points": [
+    "HUBCO is now treated as a company alias for HUBC rather than an unresolved ticker diagnostic.",
+    "Admin issue scans no longer classify known company aliases as wrong ticker substitutions.",
+    "Broad 5+ ticker filing scans now avoid grouped or aliased BM25 patterns that caused cement capacity-expansion filing retrieval to fail."
+  ],
+  "public": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-12-public-docs",
+  "date": "2026-06-12",
+  "system": "app",
+  "seq": 1,
+  "tag": "new",
+  "title": "Public docs and changelog",
+  "points": [
+    "Added this docs page explaining the data pipeline and query engine, plus a public changelog.",
+    "Each pipeline step is shown with the real artifact it produces — a filing page next to its OCR markdown, page review records, the statement page map, a QC failure report — and the query engine is traced through a real question.",
+    "A Docs button in the app header now links here, with the docs and public changelog generated from repo-owned source files."
+  ],
+  "public": true
+}

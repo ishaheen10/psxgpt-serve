@@ -1,0 +1,15 @@
+{
+  "id": "2026-06-22-data-health-qc-tightening",
+  "date": "2026-06-22",
+  "system": "pipeline",
+  "seq": 3,
+  "tag": "improvement",
+  "title": "Tighter database health gating",
+  "points": [
+    "Reduced noisy database-health warnings by keeping broad ratio outlier diagnostics in pipeline artifacts while publishing only actionable unit/scale suspects as user-visible cautions.",
+    "Ratios are now rebuilt only from source statement rows that passed deterministic QC, so rows already marked with unit or scale concerns do not generate misleading derived ratios.",
+    "SCS P/E and dividend-yield comparisons now publish as yellow cautions rather than red blockers; red health cells are reserved for hard statement QC failures.",
+    "Source-filing subtotal mismatches now preserve the PDF-reported number while surfacing a scoped caution that says the source filing may have an internal arithmetic, reclassification, omitted-line, or unlabelled-subtotal issue."
+  ],
+  "public": true
+}

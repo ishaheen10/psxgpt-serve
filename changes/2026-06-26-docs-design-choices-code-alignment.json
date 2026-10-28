@@ -1,0 +1,14 @@
+{
+  "id": "2026-06-26-docs-design-choices-code-alignment",
+  "date": "2026-06-26",
+  "system": "app",
+  "seq": 5,
+  "tag": "improvement",
+  "title": "Aligned Design Choices docs with the implemented engine contracts",
+  "points": [
+    "The Design Choices section now explains the actual served corpus, router ask fields, lane table contracts, narrative BM25 shaping tools, curated numeric views, model_build compute path, and regression eval suites.",
+    "The diagrams keep the same approachable style but now label concrete surfaces such as filing pages, PSX notices, valuation_inputs, source IDs, coverage fields, and focused eval checks.",
+    "The evals language now describes focused regression/model/sample checks instead of implying a generic gold-set gate."
+  ],
+  "public": true
+}
